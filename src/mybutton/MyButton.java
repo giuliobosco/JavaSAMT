@@ -98,16 +98,29 @@ public class MyButton implements MouseListener{
     }
 
     /**
+     * Check if the Mouse event as been triggered in the button area.
+     * @param e Mouse Event.
+     * @return True if the Mouse Event as been triggered in the button area.
+     */
+    private boolean isMouseEventIn(MouseEvent e) {
+        if (e.getX() >= this.x && e.getX() <= this.x + this.w && e.getY() >= this.y && e.getY() <= this.y + this.h) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Mouse Clicked Event.
      * @param e Mouse Event.
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getX() >= this.x && e.getX() <= this.x + this.w && e.getY() >= this.y && e.getY() <= this.y + this.h) {
+        if (this.isMouseEventIn(e)) {
             for (MyButtonListener listener : listeners) {
                 listener.buttonClicked(this);
             }
-        } 
+        }
     }
 
     /**
@@ -116,7 +129,7 @@ public class MyButton implements MouseListener{
      */
     @Override
     public void mousePressed(MouseEvent e) {
-        if (e.getX() >= this.x && e.getX() <= this.x + this.w && e.getY() >= this.y && e.getY() <= this.y + this.h) {
+        if (this.isMouseEventIn(e)) {
             for (MyButtonListener listener : listeners) {
                 listener.buttonPressed(this);
             }
@@ -129,7 +142,7 @@ public class MyButton implements MouseListener{
      */
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (e.getX() >= this.x && e.getX() <= this.x + this.w && e.getY() >= this.y && e.getY() <= this.y + this.h) {
+        if (this.isMouseEventIn(e)) {
             for (MyButtonListener listener : listeners) {
                 listener.buttonReleased(this);
             }
@@ -142,7 +155,7 @@ public class MyButton implements MouseListener{
      */
     @Override
     public void mouseEntered(MouseEvent e) {
-        if (e.getX() >= this.x && e.getX() <= this.x + this.w && e.getY() >= this.y && e.getY() <= this.y + this.h) {
+        if (this.isMouseEventIn(e)) {
             for (MyButtonListener listener : listeners) {
                 listener.buttonOver(this);
             }
