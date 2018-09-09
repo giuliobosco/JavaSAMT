@@ -24,11 +24,12 @@
 package mybutton;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.Graphics;
 
 /**
  * MyButton.
@@ -36,6 +37,7 @@ import java.awt.Graphics;
  * @version 28.05.2018
  */
 public class MyButton implements MouseListener{
+
     /**
      * Y Position of the button in the view.
      */
@@ -178,5 +180,9 @@ public class MyButton implements MouseListener{
     public void paint(Graphics g) {
         g.setColor(color);
         g.fillRect(x, y, w, h);
+
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 13));
+        g.setColor(Color.black);
+        g.drawString(this.content, this.x, this.y + 13);
     }
 }
