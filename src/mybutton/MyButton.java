@@ -98,22 +98,83 @@ public class MyButton implements MouseListener{
      * Button listeners.
      */
     private List<MyButtonListener> listeners;
-    
+
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
      * @param y Y position of the button in the view.
      * @param x X position of the button in the view.
-     * @param w width of the button.
-     * @param h height of the button.
-     * @param bgColor bgColor of the button.
-     * @param content content of the button.
+     * @param w Width of the button.
+     * @param h Height of the button.
+     * @param content Content of the button.
      */
-    public MyButton(int y, int x, int w, int h, Color bgColor, String content) {
-        this.y = y;
+    public MyButton(int x, int y, int w, int h, String content) {
         this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.content = content;
+        listeners = new ArrayList<>();
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     * @param y Y position of the button in the view.
+     * @param x X position of the button in the view.
+     * @param w Width of the button.
+     * @param h Height of the button.
+     * @param bgColor Background color of the button.
+     * @param content Content of the button.
+     */
+    public MyButton(int x, int y, int w, int h, Color bgColor, String content) {
+        this.x = x;
+        this.y = y;
         this.w = w;
         this.h = h;
         this.bgColor = bgColor;
+        this.content = content;
+        listeners = new ArrayList<>();
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     * @param y Y position of the button in the view.
+     * @param x X position of the button in the view.
+     * @param w Width of the button.
+     * @param h Height of the button.
+     * @param bgColor Background color of the button.
+     * @param fgColor Foreground color of the button.
+     * @param content Content of the button.
+     */
+    public MyButton(int x, int y, int w, int h, Color bgColor, Color fgColor, String content) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.bgColor = bgColor;
+        this.fgColor = fgColor;
+        this.content = content;
+        listeners = new ArrayList<>();
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     * @param y Y position of the button in the view.
+     * @param x X position of the button in the view.
+     * @param w Width of the button.
+     * @param h Height of the button.
+     * @param bgColor Background color of the button.
+     * @param fgColor Foreground color of the button.
+     * @param fontSize Font size of the button content.
+     * @param content Content of the button.
+     */
+    public MyButton(int x, int y, int w, int h, Color bgColor, Color fgColor, int fontSize, String content) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.bgColor = bgColor;
+        this.fgColor = fgColor;
+        this.fontSize = fontSize;
         this.content = content;
         listeners = new ArrayList<>();
     }
