@@ -37,6 +37,23 @@ import java.util.List;
  * @version 28.05.2018
  */
 public class MyButton implements MouseListener{
+    /**
+     * Default button background bgColor.
+     * Value: (Color) Blue.
+     */
+    public static final Color DEFAULT_BG_COLOR = Color.blue;
+
+    /**
+     * Default button foreground bgColor.
+     * Value: (Color) White.
+     */
+    public static final Color DEFAULT_FG_COLOR = Color.white;
+
+    /**
+     * Default content font size.
+     * Value: 13.
+     */
+    public static final int DEFAULT_FONT_SIZE = 13;
 
     /**
      * Y Position of the button in the view.
@@ -58,10 +75,20 @@ public class MyButton implements MouseListener{
     private int h = 80;
     
     /**
-     * Button Color.
+     * Button background Color.
      */
-    private Color color = Color.blue;
-    
+    private Color bgColor = DEFAULT_BG_COLOR;
+
+    /**
+     * Button Foreground Color.
+     */
+    private Color fgColor = DEFAULT_FG_COLOR;
+
+    /**
+     * Button content font-size.
+     */
+    private int fontSize = DEFAULT_FONT_SIZE;
+
     /**
      * Label of the button
      */
@@ -73,20 +100,20 @@ public class MyButton implements MouseListener{
     private List<MyButtonListener> listeners;
     
     /**
-     * Constructor with y position, x position, width, height, color, label content.
+     * Constructor with y position, x position, width, height, bgColor, label content.
      * @param y Y position of the button in the view.
      * @param x X position of the button in the view.
      * @param w width of the button.
      * @param h height of the button.
-     * @param color color of the button.
+     * @param bgColor bgColor of the button.
      * @param content content of the button.
      */
-    public MyButton(int y, int x, int w, int h, Color color, String content) {
+    public MyButton(int y, int x, int w, int h, Color bgColor, String content) {
         this.y = y;
         this.x = x;
         this.w = w;
         this.h = h;
-        this.color = color;
+        this.bgColor = bgColor;
         this.content = content;
         listeners = new ArrayList<>();
     }
@@ -178,11 +205,11 @@ public class MyButton implements MouseListener{
      * @param g Graphics of the window.
      */
     public void paint(Graphics g) {
-        g.setColor(color);
+        g.setColor(this.bgColor);
         g.fillRect(x, y, w, h);
 
-        g.setFont(new Font("TimesRoman", Font.PLAIN, 13));
-        g.setColor(Color.black);
-        g.drawString(this.content, this.x, this.y + 13);
+        g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
+        g.setColor(this.fgColor);
+        g.drawString(this.content, this.x, this.y + fontSize);
     }
 }
