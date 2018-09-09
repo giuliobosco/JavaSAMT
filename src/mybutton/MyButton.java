@@ -142,7 +142,11 @@ public class MyButton implements MouseListener{
      */
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+        if (e.getX() >= this.x && e.getX() <= this.x + this.w && e.getY() >= this.y && e.getY() <= this.y + this.h) {
+            for (MyButtonListener listener : listeners) {
+                listener.buttonOver(this);
+            }
+        }
     }
 
     /**
@@ -151,7 +155,7 @@ public class MyButton implements MouseListener{
      */
     @Override
     public void mouseExited(MouseEvent e) {
-        
+
     }
     
     /**

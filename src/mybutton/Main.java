@@ -28,6 +28,7 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 /**
  * Main Application Class.
@@ -36,7 +37,7 @@ import java.awt.event.MouseListener;
  * @author giuliobosco
  * @version 04.06.2018
  */
-public class Main extends JFrame implements MouseListener, MyButtonListener {
+public class Main extends JFrame implements MouseListener, MouseMotionListener, MyButtonListener {
     
     /**
      * Button of the window.
@@ -53,6 +54,7 @@ public class Main extends JFrame implements MouseListener, MyButtonListener {
         this.setSize(300,200);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.addMouseListener(this);
+        this.addMouseMotionListener(this);
         button = new MyButton(20,20,100,80,Color.red,"MyButton");
         button.addMyButtonListener(this);
     }
@@ -103,6 +105,24 @@ public class Main extends JFrame implements MouseListener, MyButtonListener {
     }
 
     /**
+     * Mouse dragged event.
+     * @param e Mouse Event.
+     */
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        button.mouseEntered(e);
+    }
+
+    /**
+     * Mouse moved event.
+     * @param e Mouse Event.
+     */
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        button.mouseEntered(e);
+    }
+
+    /**
      * Button Clicked event.
      * @param source Event source.
      */
@@ -127,6 +147,15 @@ public class Main extends JFrame implements MouseListener, MyButtonListener {
     @Override
     public void buttonReleased(MyButton source) {
         System.out.println("button released");
+    }
+
+    /**
+     * Over button.
+     * @param source Over source.
+     */
+    @Override
+    public void buttonOver(MyButton source) {
+        System.out.println("button over");
     }
 
     /**

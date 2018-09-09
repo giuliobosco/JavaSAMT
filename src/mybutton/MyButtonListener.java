@@ -53,4 +53,10 @@ public interface MyButtonListener {
      * @param source Released button.
      */
     public void buttonReleased(MyButton source);
+
+    /**
+     * Mouse over button event.
+     * @param source Over button.
+     */
+    public void buttonOver(MyButton source);
 }
