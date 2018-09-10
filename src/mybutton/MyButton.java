@@ -98,7 +98,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
     /**
      * Button listeners.
      */
-    private List<MyButtonListener> listeners;
+    protected List<MyButtonListener> listeners;
 
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
