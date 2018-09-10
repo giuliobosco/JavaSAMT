@@ -37,7 +37,7 @@ import java.awt.event.MouseMotionListener;
  * @author giuliobosco
  * @version 04.06.2018
  */
-public class Main extends JFrame implements MouseListener, MouseMotionListener, MyButtonListener {
+public class Main extends JFrame implements MyButtonListener {
     
     /**
      * Button of the window.
@@ -53,73 +53,12 @@ public class Main extends JFrame implements MouseListener, MouseMotionListener, 
         
         this.setSize(300,200);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.addMouseListener(this);
-        this.addMouseMotionListener(this);
+
         button = new MyButton(20,20,100,80,Color.red,"MyButton");
         button.addMyButtonListener(this);
-    }
 
-    /**
-     * Mouse Clicked event.
-     * @param e Mouse Event.
-     */
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        button.mouseClicked(e);
-    }
-
-    /**
-     * Mouse Pressed event.
-     * @param e Mouse Event.
-     */
-    @Override
-    public void mousePressed(MouseEvent e) {
-        button.mousePressed(e);
-    }
-
-    /**
-     * Mouse Released event.
-     * @param e Mouse Event.
-     */
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        button.mouseReleased(e);
-    }
-
-    /**
-     * Mouse Entered event (not implemented).
-     * @param e Mouse Event
-     */
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        
-    }
-
-    /**
-     * Mouse exited event (not implemented).
-     * @param e Mouse Event.
-     */
-    @Override
-    public void mouseExited(MouseEvent e) {
-        
-    }
-
-    /**
-     * Mouse dragged event.
-     * @param e Mouse Event.
-     */
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        button.mouseEntered(e);
-    }
-
-    /**
-     * Mouse moved event.
-     * @param e Mouse Event.
-     */
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        button.mouseEntered(e);
+        this.addMouseListener(button);
+        this.addMouseMotionListener(button);
     }
 
     /**

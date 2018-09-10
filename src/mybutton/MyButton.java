@@ -28,6 +28,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ import java.util.List;
  * @author giuliobosco
  * @version 28.05.2018
  */
-public class MyButton implements MouseListener{
+public class MyButton implements MouseListener, MouseMotionListener {
     /**
      * Default button background bgColor.
      * Value: (Color) Blue.
@@ -245,11 +246,7 @@ public class MyButton implements MouseListener{
      */
     @Override
     public void mouseEntered(MouseEvent e) {
-        if (this.isMouseEventIn(e)) {
-            for (MyButtonListener listener : listeners) {
-                listener.buttonOver(this);
-            }
-        }
+
     }
 
     /**
@@ -259,6 +256,32 @@ public class MyButton implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+
+    /**
+     * Mouse dragged event.
+     * @param e Mouse Event.
+     */
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        if (this.isMouseEventIn(e)) {
+            for (MyButtonListener listener : listeners) {
+                listener.buttonOver(this);
+            }
+        }
+    }
+
+    /**
+     * Mouse dragged event.
+     * @param e Mouse Event.
+     */
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        if (this.isMouseEventIn(e)) {
+            for (MyButtonListener listener : listeners) {
+                listener.buttonOver(this);
+            }
+        }
     }
     
     /**
