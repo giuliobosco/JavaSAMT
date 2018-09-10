@@ -58,7 +58,7 @@ public class Main extends JFrame implements MyButtonListener {
         buttons = new ArrayList<>();
 
         // add buttons
-        buttons.add(new MyButton(20,20,100,80,Color.red,"MyButton")); // button
+        buttons.add(new MyButton(20,30,100,80,Color.red,"MyButton")); // button
         buttons.add(new MyRoundButton(20,120,100,"MyRndButton")); // round button
 
         // execute for all buttons in the this.buttons list
