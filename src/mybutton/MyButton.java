@@ -345,6 +345,6 @@ public class MyButton implements MouseListener, MouseMotionListener {
         // write the content of the button
         g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
         g.setColor(this.fgColor);
-        g.drawString(this.content, this.x, this.y + fontSize);
+        g.drawString(this.content, this.x + 2, this.y + this.h / 2);
     }
 }
