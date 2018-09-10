@@ -71,13 +71,17 @@ public class MyRoundButton extends MyButton {
      * @param g Graphics of the window.
      */
     public void paint(Graphics g) {
-        // print the button
-        g.setColor(this.bgColor);
+        // design the button margin
+        g.setColor(mgColor);
         g.fillOval(x, y, w, h);
+
+        // design the button
+        g.setColor(this.bgColor);
+        g.fillOval(x + mgSize, y + mgSize, w - 2 * mgSize, h - 2 * mgSize);
 
         // print the content of the button
         g.setFont(new Font("TimesRoman", Font.PLAIN, this.fontSize));
         g.setColor(this.fgColor);
-        g.drawString(this.content, this.x, this.y + this.h / 2);
+        g.drawString(this.content, this.x + mgSize, this.y + this.h / 2);
     }
 }
