@@ -39,13 +39,13 @@ import java.util.List;
  */
 public class MyButton implements MouseListener, MouseMotionListener {
     /**
-     * Default button background bgColor.
+     * Default button background color.
      * Value: (Color) Blue.
      */
     public static final Color DEFAULT_BG_COLOR = Color.blue;
 
     /**
-     * Default button foreground bgColor.
+     * Default button foreground color.
      * Value: (Color) White.
      */
     public static final Color DEFAULT_FG_COLOR = Color.white;
