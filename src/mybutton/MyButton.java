@@ -42,58 +42,58 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * Default button background bgColor.
      * Value: (Color) Blue.
      */
-    public static final Color DEFAULT_BG_COLOR = Color.blue;
+    protected static final Color DEFAULT_BG_COLOR = Color.blue;
 
     /**
      * Default button foreground bgColor.
      * Value: (Color) White.
      */
-    public static final Color DEFAULT_FG_COLOR = Color.white;
+    protected static final Color DEFAULT_FG_COLOR = Color.white;
 
     /**
      * Default content font size.
      * Value: 13.
      */
-    public static final int DEFAULT_FONT_SIZE = 13;
+    protected static final int DEFAULT_FONT_SIZE = 13;
 
     /**
      * Y Position of the button in the view.
      */
-    private int y;
+    protected int y;
     
     /**
      * X Position of the button in the view.
      */
-    private int x;
-    
+    protected int x;
+
     /**
      * Width of the button.
      */
-    private int w = 100;
+    protected int w = 100;
     /**
      * Height of the button.
      */
-    private int h = 80;
+    protected int h = 80;
     
     /**
      * Button background Color.
      */
-    private Color bgColor = DEFAULT_BG_COLOR;
+    protected Color bgColor = DEFAULT_BG_COLOR;
 
     /**
      * Button Foreground Color.
      */
-    private Color fgColor = DEFAULT_FG_COLOR;
+    protected Color fgColor = DEFAULT_FG_COLOR;
 
     /**
      * Button content font-size.
      */
-    private int fontSize = DEFAULT_FONT_SIZE;
+    protected int fontSize = DEFAULT_FONT_SIZE;
 
     /**
      * Label of the button
      */
-    private String content = "UNNAME";
+    protected String content = "UNNAME";
     
     /**
      * Button listeners.
@@ -193,7 +193,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param e Mouse Event.
      * @return True if the Mouse Event as been triggered in the button area.
      */
-    private boolean isMouseEventIn(MouseEvent e) {
+    protected boolean isMouseEventIn(MouseEvent e) {
         if (e.getX() >= this.x && e.getX() <= this.x + this.w && e.getY() >= this.y && e.getY() <= this.y + this.h) {
             return true;
         } else {
