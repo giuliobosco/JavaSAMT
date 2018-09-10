@@ -51,6 +51,12 @@ public class MyButton implements MouseListener, MouseMotionListener {
     public static final Color DEFAULT_FG_COLOR = Color.white;
 
     /**
+     * Default button margin color.
+     * Value: (Color) Black.
+     */
+    public static final Color DEFAULT_MG_COLOR = Color.black;
+
+    /**
      * Default content font size.
      * Value: 13.
      */
@@ -84,6 +90,11 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * Button Foreground Color.
      */
     protected Color fgColor = DEFAULT_FG_COLOR;
+
+    /**
+     * Button Margin Color.
+     */
+    protected Color mgColor = DEFAULT_MG_COLOR;
 
     /**
      * Button content font-size.
@@ -175,6 +186,30 @@ public class MyButton implements MouseListener, MouseMotionListener {
         this.h = h;
         this.bgColor = bgColor;
         this.fgColor = fgColor;
+        this.fontSize = fontSize;
+        this.content = content;
+        listeners = new ArrayList<>();
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     * @param y Y position of the button in the view.
+     * @param x X position of the button in the view.
+     * @param w Width of the button.
+     * @param h Height of the button.
+     * @param bgColor Background color of the button.
+     * @param fgColor Foreground color of the button.
+     * @param fontSize Font size of the button content.
+     * @param content Content of the button.
+     */
+    public MyButton(int x, int y, int w, int h, Color bgColor, Color fgColor, Color mgColor, int fontSize, String content) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.bgColor = bgColor;
+        this.fgColor = fgColor;
+        this.mgColor = mgColor;
         this.fontSize = fontSize;
         this.content = content;
         listeners = new ArrayList<>();
@@ -299,9 +334,13 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param g Graphics of the window.
      */
     public void paint(Graphics g) {
+        // design the button margin
+        g.setColor(this.mgColor);
+        g.fillRect(x, y, w, h);
+
         // design the button
         g.setColor(this.bgColor);
-        g.fillRect(x, y, w, h);
+        g.fillRect(x + 2, y + 2, w - 4, h - 4);
 
         // write the content of the button
         g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
