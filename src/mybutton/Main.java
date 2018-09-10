@@ -78,7 +78,7 @@ public class Main extends JFrame implements MyButtonListener {
      */
     @Override
     public void buttonClicked(MyButton source) {
-        System.out.println("button clicked");
+        System.out.println("button: " + source.content + " clicked");
     }
 
     /**
@@ -87,7 +87,7 @@ public class Main extends JFrame implements MyButtonListener {
      */
     @Override
     public void buttonPressed(MyButton source) {
-        System.out.println("button pressed");
+        System.out.println("button: " + source.content + " pressed");
     }
 
     /**
@@ -96,7 +96,7 @@ public class Main extends JFrame implements MyButtonListener {
      */
     @Override
     public void buttonReleased(MyButton source) {
-        System.out.println("button released");
+        System.out.println("button: " + source.content + " released");
     }
 
     /**
@@ -105,7 +105,7 @@ public class Main extends JFrame implements MyButtonListener {
      */
     @Override
     public void buttonOver(MyButton source) {
-        System.out.println("button over");
+        System.out.println("over button:" + source.content);
     }
 
     /**
