@@ -42,19 +42,19 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * Default button background bgColor.
      * Value: (Color) Blue.
      */
-    protected static final Color DEFAULT_BG_COLOR = Color.blue;
+    public static final Color DEFAULT_BG_COLOR = Color.blue;
 
     /**
      * Default button foreground bgColor.
      * Value: (Color) White.
      */
-    protected static final Color DEFAULT_FG_COLOR = Color.white;
+    public static final Color DEFAULT_FG_COLOR = Color.white;
 
     /**
      * Default content font size.
      * Value: 13.
      */
-    protected static final int DEFAULT_FONT_SIZE = 13;
+    public static final int DEFAULT_FONT_SIZE = 13;
 
     /**
      * Y Position of the button in the view.
