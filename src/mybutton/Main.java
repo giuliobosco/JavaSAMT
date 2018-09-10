@@ -126,7 +126,7 @@ public class Main extends JFrame implements MyButtonListener {
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main("Demo").setVisible(true);
+                new Main("MyButtonAPP").setVisible(true);
             }
         });
     }
