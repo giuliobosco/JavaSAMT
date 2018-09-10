@@ -63,6 +63,12 @@ public class MyButton implements MouseListener, MouseMotionListener {
     public static final int DEFAULT_FONT_SIZE = 13;
 
     /**
+     * Default margin size.
+     * Value: 2.
+     */
+    public static final int DEFAULT_MG_SIZE = 2;
+
+    /**
      * Y Position of the button in the view.
      */
     protected int y;
@@ -100,6 +106,11 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * Button content font-size.
      */
     protected int fontSize = DEFAULT_FONT_SIZE;
+
+    /**
+     * Button margin size.
+     */
+    protected int mgSize = DEFAULT_MG_SIZE;
 
     /**
      * Label of the button
@@ -211,6 +222,35 @@ public class MyButton implements MouseListener, MouseMotionListener {
         this.fgColor = fgColor;
         this.mgColor = mgColor;
         this.fontSize = fontSize;
+        this.content = content;
+        listeners = new ArrayList<>();
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     * @param y Y position of the button in the view.
+     * @param x X position of the button in the view.
+     * @param w Width of the button.
+     * @param h Height of the button.
+     * @param bgColor Background color of the button.
+     * @param fgColor Foreground color of the button.
+     * @param fontSize Font size of the button content.
+     * @param content Content of the button.
+     */
+    public MyButton(int x, int y,
+                    int w, int h,
+                    Color bgColor, Color fgColor, Color mgColor,
+                    int fontSize, int mgSize,
+                    String content) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.bgColor = bgColor;
+        this.fgColor = fgColor;
+        this.mgColor = mgColor;
+        this.fontSize = fontSize;
+        this.mgSize = mgSize;
         this.content = content;
         listeners = new ArrayList<>();
     }
@@ -340,11 +380,11 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
         // design the button
         g.setColor(this.bgColor);
-        g.fillRect(x + 2, y + 2, w - 4, h - 4);
+        g.fillRect(x + mgSize, y + mgSize, w - mgSize * 2, h - mgSize * 2);
 
         // write the content of the button
         g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
         g.setColor(this.fgColor);
-        g.drawString(this.content, this.x + 2, this.y + this.h / 2);
+        g.drawString(this.content, this.x + mgSize, this.y + this.h / 2);
     }
 }
