@@ -29,6 +29,8 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Main Application Class.
@@ -38,11 +40,10 @@ import java.awt.event.MouseMotionListener;
  * @version 04.06.2018
  */
 public class Main extends JFrame implements MyButtonListener {
-    
     /**
-     * Button of the window.
+     * Buttons of the window.
      */
-    private MyButton button;
+    private List<MyButton> buttons;
     
     /**
      * Constructor with window title.
@@ -51,14 +52,20 @@ public class Main extends JFrame implements MyButtonListener {
     public Main(String title) {
         super(title);
         
-        this.setSize(300,200);
+        this.setSize(300,220);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        button = new MyButton(20,20,100,80,Color.red,"MyButton");
-        button.addMyButtonListener(this);
+        buttons = new ArrayList<>();
 
-        this.addMouseListener(button);
-        this.addMouseMotionListener(button);
+        buttons.add(new MyButton(20,20,100,80,Color.red,"MyButton"));
+        buttons.add(new MyRoundButton(20,120,100,"MyRndButton"));
+
+        for (MyButton button : buttons) {
+            button.addMyButtonListener(this);
+
+            this.addMouseListener(button);
+            this.addMouseMotionListener(button);
+        }
     }
 
     /**
@@ -103,7 +110,9 @@ public class Main extends JFrame implements MyButtonListener {
      */
     @Override
     public void paint(Graphics g) {
-        button.paint(g); //To change body of generated methods, choose Tools | Templates.
+        for (MyButton button : buttons) {
+            button.paint(g); //To change body of generated methods, choose Tools | Templates.
+        }
     }
     
     /**
