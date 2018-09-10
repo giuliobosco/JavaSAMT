@@ -26,16 +26,13 @@ package mybutton;
 import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Main Application Class.
- * Create the frame (window) and add the button.
- *
+ * Create the frame (window) and test the working flow of the buttons.
+ * Implements one button and an round button.
  * @author giuliobosco
  * @version 04.06.2018
  */
@@ -51,18 +48,25 @@ public class Main extends JFrame implements MyButtonListener {
      */
     public Main(String title) {
         super(title);
-        
+
+        // set window size
         this.setSize(300,220);
+        // set close operation
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        // initialize buttons list
         buttons = new ArrayList<>();
 
-        buttons.add(new MyButton(20,20,100,80,Color.red,"MyButton"));
-        buttons.add(new MyRoundButton(20,120,100,"MyRndButton"));
+        // add buttons
+        buttons.add(new MyButton(20,20,100,80,Color.red,"MyButton")); // button
+        buttons.add(new MyRoundButton(20,120,100,"MyRndButton")); // round button
 
+        // execute for all buttons in the this.buttons list
         for (MyButton button : buttons) {
+            // add to button the this window as button listener
             button.addMyButtonListener(this);
 
+            // add the MouseListener and the MouseMotionListener to the button
             this.addMouseListener(button);
             this.addMouseMotionListener(button);
         }

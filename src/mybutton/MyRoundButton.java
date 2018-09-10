@@ -2,7 +2,6 @@ package mybutton;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 public class MyRoundButton extends MyButton {
 
@@ -72,9 +71,11 @@ public class MyRoundButton extends MyButton {
      * @param g Graphics of the window.
      */
     public void paint(Graphics g) {
+        // print the button
         g.setColor(this.bgColor);
         g.fillOval(x, y, w, h);
 
+        // print the content of the button
         g.setFont(new Font("TimesRoman", Font.PLAIN, this.fontSize));
         g.setColor(this.fgColor);
         g.drawString(this.content, this.x, this.y + this.h / 2);
