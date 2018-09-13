@@ -50,7 +50,7 @@ public class Main extends JFrame implements MyButtonListener {
         super(title);
 
         // set window size
-        this.setSize(300,220);
+        this.setSize(280,302);
         // set close operation
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -58,8 +58,10 @@ public class Main extends JFrame implements MyButtonListener {
         buttons = new ArrayList<>();
 
         // add buttons
-        buttons.add(new MyButton(20,30,100,80,Color.red,"MyButton")); // button
-        buttons.add(new MyRoundButton(20,120,100,"MyRndButton")); // round button
+        buttons.add(new MyButton(30,52,100,100,Color.red,"L1")); // button on left top
+        buttons.add(new MyRoundButton(30,172,100,"L2")); // round button on left bottom
+        buttons.add(new MyRoundButton(150, 52, 100,"R1")); // round button on right top
+        buttons.add(new MyButton(150,172,100,100,"R2")); // round button on right bottom
 
         // execute for all buttons in the this.buttons list
         for (MyButton button : buttons) {
