@@ -33,6 +33,7 @@ import java.util.List;
  * Main Application Class.
  * Create the frame (window) and test the working flow of the buttons.
  * Implements one button and an round button.
+ *
  * @author giuliobosco
  * @version 04.06.2018
  */
@@ -41,16 +42,17 @@ public class Main extends JFrame implements MyButtonListener {
      * Buttons of the window.
      */
     private List<MyButton> buttons;
-    
+
     /**
      * Constructor with window title.
+     *
      * @param title Window Title.
      */
     public Main(String title) {
         super(title);
 
         // set window size
-        this.setSize(280,302);
+        this.setSize(280, 302);
         // set close operation
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -58,10 +60,10 @@ public class Main extends JFrame implements MyButtonListener {
         buttons = new ArrayList<>();
 
         // add buttons
-        buttons.add(new MyButton(30,52,100,100,Color.red,"L1")); // button on left top
-        buttons.add(new MyRoundButton(30,172,100,"L2")); // round button on left bottom
-        buttons.add(new MyRoundButton(150, 52, 100,"R1")); // round button on right top
-        buttons.add(new MyButton(150,172,100,100,"R2")); // round button on right bottom
+        buttons.add(new MyButton(30, 52, 100, 100, Color.red, "L1")); // button on left top
+        buttons.add(new MyRoundButton(30, 172, 100, "L2")); // round button on left bottom
+        buttons.add(new MyRoundButton(150, 52, 100, "R1")); // round button on right top
+        buttons.add(new MyButton(150, 172, 100, 100, "R2")); // round button on right bottom
 
         // execute for all buttons in the this.buttons list
         for (MyButton button : buttons) {
@@ -76,6 +78,7 @@ public class Main extends JFrame implements MyButtonListener {
 
     /**
      * Button Clicked event.
+     *
      * @param source Event source.
      */
     @Override
@@ -85,6 +88,7 @@ public class Main extends JFrame implements MyButtonListener {
 
     /**
      * Button Pressed event.
+     *
      * @param source Event source.
      */
     @Override
@@ -94,6 +98,7 @@ public class Main extends JFrame implements MyButtonListener {
 
     /**
      * Button released.
+     *
      * @param source Event source.
      */
     @Override
@@ -103,6 +108,7 @@ public class Main extends JFrame implements MyButtonListener {
 
     /**
      * Over button.
+     *
      * @param source Over source.
      */
     @Override
@@ -112,6 +118,7 @@ public class Main extends JFrame implements MyButtonListener {
 
     /**
      * Paint the windows view.
+     *
      * @param g Graphics of the window.
      */
     @Override
@@ -120,9 +127,10 @@ public class Main extends JFrame implements MyButtonListener {
             button.paint(g); //To change body of generated methods, choose Tools | Templates.
         }
     }
-    
+
     /**
      * Application runner.
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {

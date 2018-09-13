@@ -35,6 +35,7 @@ import java.util.List;
 
 /**
  * MyButton.
+ *
  * @author giuliobosco
  * @version 28.05.2018
  */
@@ -73,7 +74,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * Y Position of the button in the view.
      */
     protected int y;
-    
+
     /**
      * X Position of the button in the view.
      */
@@ -87,7 +88,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * Height of the button.
      */
     protected int h = 80;
-    
+
     /**
      * Button background Color.
      */
@@ -117,7 +118,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * Label of the button
      */
     protected String content = "UNNAME";
-    
+
     /**
      * Button listeners.
      */
@@ -125,10 +126,11 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
-     * @param y Y position of the button in the view.
-     * @param x X position of the button in the view.
-     * @param w Width of the button.
-     * @param h Height of the button.
+     *
+     * @param y       Y position of the button in the view.
+     * @param x       X position of the button in the view.
+     * @param w       Width of the button.
+     * @param h       Height of the button.
      * @param content Content of the button.
      */
     public MyButton(int x, int y, int w, int h, String content) {
@@ -142,10 +144,11 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
-     * @param y Y position of the button in the view.
-     * @param x X position of the button in the view.
-     * @param w Width of the button.
-     * @param h Height of the button.
+     *
+     * @param y       Y position of the button in the view.
+     * @param x       X position of the button in the view.
+     * @param w       Width of the button.
+     * @param h       Height of the button.
      * @param bgColor Background color of the button.
      * @param content Content of the button.
      */
@@ -161,10 +164,11 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
-     * @param y Y position of the button in the view.
-     * @param x X position of the button in the view.
-     * @param w Width of the button.
-     * @param h Height of the button.
+     *
+     * @param y       Y position of the button in the view.
+     * @param x       X position of the button in the view.
+     * @param w       Width of the button.
+     * @param h       Height of the button.
      * @param bgColor Background color of the button.
      * @param fgColor Foreground color of the button.
      * @param content Content of the button.
@@ -182,14 +186,15 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
-     * @param y Y position of the button in the view.
-     * @param x X position of the button in the view.
-     * @param w Width of the button.
-     * @param h Height of the button.
-     * @param bgColor Background color of the button.
-     * @param fgColor Foreground color of the button.
+     *
+     * @param y        Y position of the button in the view.
+     * @param x        X position of the button in the view.
+     * @param w        Width of the button.
+     * @param h        Height of the button.
+     * @param bgColor  Background color of the button.
+     * @param fgColor  Foreground color of the button.
      * @param fontSize Font size of the button content.
-     * @param content Content of the button.
+     * @param content  Content of the button.
      */
     public MyButton(int x, int y, int w, int h, Color bgColor, Color fgColor, int fontSize, String content) {
         this.x = x;
@@ -205,14 +210,15 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
-     * @param y Y position of the button in the view.
-     * @param x X position of the button in the view.
-     * @param w Width of the button.
-     * @param h Height of the button.
-     * @param bgColor Background color of the button.
-     * @param fgColor Foreground color of the button.
+     *
+     * @param y        Y position of the button in the view.
+     * @param x        X position of the button in the view.
+     * @param w        Width of the button.
+     * @param h        Height of the button.
+     * @param bgColor  Background color of the button.
+     * @param fgColor  Foreground color of the button.
      * @param fontSize Font size of the button content.
-     * @param content Content of the button.
+     * @param content  Content of the button.
      */
     public MyButton(int x, int y, int w, int h, Color bgColor, Color fgColor, Color mgColor, int fontSize, String content) {
         this.x = x;
@@ -229,14 +235,15 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
-     * @param y Y position of the button in the view.
-     * @param x X position of the button in the view.
-     * @param w Width of the button.
-     * @param h Height of the button.
-     * @param bgColor Background color of the button.
-     * @param fgColor Foreground color of the button.
+     *
+     * @param y        Y position of the button in the view.
+     * @param x        X position of the button in the view.
+     * @param w        Width of the button.
+     * @param h        Height of the button.
+     * @param bgColor  Background color of the button.
+     * @param fgColor  Foreground color of the button.
      * @param fontSize Font size of the button content.
-     * @param content Content of the button.
+     * @param content  Content of the button.
      */
     public MyButton(int x, int y,
                     int w, int h,
@@ -255,9 +262,10 @@ public class MyButton implements MouseListener, MouseMotionListener {
         this.content = content;
         listeners = new ArrayList<>();
     }
-    
+
     /**
      * Add listener to listeners.
+     *
      * @param listener Listener to add.
      */
     public void addMyButtonListener(MyButtonListener listener) {
@@ -266,6 +274,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Remove listener from buttons listeners.
+     *
      * @param listener Listener to remove.
      */
     public void removeMyButtonListener(MyButtonListener listener) {
@@ -274,6 +283,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Check if the Mouse event as been triggered in the button area.
+     *
      * @param p Point to check.
      * @return True if the Mouse Event as been triggered in the button area.
      */
@@ -287,6 +297,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Mouse Clicked Event.
+     *
      * @param e Mouse Event.
      */
     @Override
@@ -302,6 +313,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Mouse Pressed Event.
+     *
      * @param e Mouse Event.
      */
     @Override
@@ -317,6 +329,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Mouse Released Event.
+     *
      * @param e Mouse Event.
      */
     @Override
@@ -332,6 +345,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Mouse Entered Event (not implemented).
+     *
      * @param e Mouse Event.
      */
     @Override
@@ -341,6 +355,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Mouse Exited Event (not implemented).
+     *
      * @param e Mouse Event.
      */
     @Override
@@ -350,6 +365,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Mouse dragged event.
+     *
      * @param e Mouse Event.
      */
     @Override
@@ -365,6 +381,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Mouse dragged event.
+     *
      * @param e Mouse Event.
      */
     @Override
@@ -377,9 +394,10 @@ public class MyButton implements MouseListener, MouseMotionListener {
             }
         }
     }
-    
+
     /**
      * Paint graphics of the button.
+     *
      * @param g Graphics of the window.
      */
     public void paint(Graphics g) {
