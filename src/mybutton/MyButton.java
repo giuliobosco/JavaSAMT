@@ -26,6 +26,7 @@ package mybutton;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -273,12 +274,12 @@ public class MyButton implements MouseListener, MouseMotionListener {
 
     /**
      * Check if the Mouse event as been triggered in the button area.
-     * @param e Mouse Event.
+     * @param p Point to check.
      * @return True if the Mouse Event as been triggered in the button area.
      */
-    protected boolean isMouseEventIn(MouseEvent e) {
-        // check if the event has been wild in the button area.
-        if (e.getX() >= this.x && e.getX() <= this.x + this.w && e.getY() >= this.y && e.getY() <= this.y + this.h) {
+    protected boolean contains(Point p) {
+        // check if the event has been triggered in the button area.
+        if (p.x >= this.x && p.x <= this.x + this.w && p.y >= this.y && p.y <= this.y + this.h) {
             return true;
         }
         return false;
@@ -291,7 +292,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         // check the event position
-        if (this.isMouseEventIn(e)) {
+        if (this.contains(e.getPoint())) {
             // trigger event for each listener
             for (MyButtonListener listener : listeners) {
                 listener.buttonClicked(this);
@@ -306,7 +307,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
     @Override
     public void mousePressed(MouseEvent e) {
         // check the event position
-        if (this.isMouseEventIn(e)) {
+        if (this.contains(e.getPoint())) {
             // trigger event for each listener
             for (MyButtonListener listener : listeners) {
                 listener.buttonPressed(this);
@@ -321,7 +322,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         // check the event position
-        if (this.isMouseEventIn(e)) {
+        if (this.contains(e.getPoint())) {
             // trigger event for each listener
             for (MyButtonListener listener : listeners) {
                 listener.buttonReleased(this);
@@ -354,7 +355,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
     @Override
     public void mouseDragged(MouseEvent e) {
         // check the event position
-        if (this.isMouseEventIn(e)) {
+        if (this.contains(e.getPoint())) {
             // trigger event for each listener
             for (MyButtonListener listener : listeners) {
                 listener.buttonOver(this);
@@ -369,7 +370,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
     @Override
     public void mouseMoved(MouseEvent e) {
         // check the event position
-        if (this.isMouseEventIn(e)) {
+        if (this.contains(e.getPoint())) {
             // trigger event for each listener
             for (MyButtonListener listener : listeners) {
                 listener.buttonOver(this);
