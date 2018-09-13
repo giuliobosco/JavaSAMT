@@ -23,72 +23,137 @@
  */
 package mybutton;
 
-import java.awt.*;
-import java.awt.event.MouseEvent;
+import java.awt.Point;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 
 public class MyRoundButton extends MyButton {
 
     /**
-     * Constructor with y position, x position, width, height, bgColor, label content.
-     * @param y Y position of the button in the view.
-     * @param x X position of the button in the view.
-     * @param radius Radius of the round button.
-     * @param content Content of the button.
+     * Center of the round button.
      */
-    public MyRoundButton(int x, int y, int radius, String content) {
-        super(x,y,radius,radius,content);
+    private Point buttonCenter;
+
+    /**
+     * Radius of the round but
+     */
+    private int radius;
+
+    /**
+     * Getter for the center of the round button center.
+     *
+     * @return Center of the round button.
+     */
+    public Point getButtonCenter() {
+        return buttonCenter;
     }
 
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
-     * @param y Y position of the button in the view.
-     * @param x X position of the button in the view.
-     * @param radius Radius of the round button.
+     *
+     * @param y       Y position of the button in the view.
+     * @param x       X position of the button in the view.
+     * @param radius  Radius of the round button.
+     * @param content Content of the button.
+     */
+    public MyRoundButton(int x, int y, int radius, String content) {
+        this(x, y, radius, DEFAULT_BG_COLOR, DEFAULT_FG_COLOR, DEFAULT_FONT_SIZE, content);
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     *
+     * @param y       Y position of the button in the view.
+     * @param x       X position of the button in the view.
+     * @param radius  Radius of the round button.
      * @param bgColor Background color of the button.
      * @param content Content of the button.
      */
     public MyRoundButton(int x, int y, int radius, Color bgColor, String content) {
-        super(x,y,radius,radius,bgColor,content);
+        this(x, y, radius, bgColor, DEFAULT_FG_COLOR, DEFAULT_FONT_SIZE, content);
     }
 
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
-     * @param y Y position of the button in the view.
-     * @param x X position of the button in the view.
-     * @param radius Radius of the round button.
+     *
+     * @param y       Y position of the button in the view.
+     * @param x       X position of the button in the view.
+     * @param radius  Radius of the round button.
      * @param bgColor Background color of the button.
      * @param fgColor Foreground color of the button.
      * @param content Content of the button.
      */
     public MyRoundButton(int x, int y, int radius, Color bgColor, Color fgColor, String content) {
-        super(x,y,radius,radius,bgColor,fgColor,content);
+        this(x, y, radius, bgColor, fgColor, DEFAULT_FONT_SIZE, content);
     }
 
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
-     * @param y Y position of the button in the view.
-     * @param x X position of the button in the view.
-     * @param radius Radius of the round button.
-     * @param bgColor Background color of the button.
-     * @param fgColor Foreground color of the button.
+     *
+     * @param y        Y position of the button in the view.
+     * @param x        X position of the button in the view.
+     * @param radius   Radius of the round button.
+     * @param bgColor  Background color of the button.
+     * @param fgColor  Foreground color of the button.
      * @param fontSize Font size of the button content.
-     * @param content Content of the button.
+     * @param content  Content of the button.
      */
     public MyRoundButton(int x, int y, int radius, Color bgColor, Color fgColor, int fontSize, String content) {
-        super(x,y,radius,radius,bgColor,fgColor,fontSize,content);
+        this(x, y, radius, bgColor, fgColor, DEFAULT_MG_COLOR, fontSize, DEFAULT_MG_SIZE, content);
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     *
+     * @param y        Y position of the button in the view.
+     * @param x        X position of the button in the view.
+     * @param radius   Radius of the round button.
+     * @param bgColor  Background color of the button.
+     * @param fgColor  Foreground color of the button.
+     * @param fontSize Font size of the button content.
+     * @param content  Content of the button.
+     */
+    public MyRoundButton(int x, int y,
+                         int radius,
+                         Color bgColor, Color fgColor, Color mgColor,
+                         int fontSize,
+                         String content) {
+        this(x, y, radius, bgColor, fgColor, mgColor, fontSize, DEFAULT_MG_SIZE, content);
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     *
+     * @param y        Y position of the button in the view.
+     * @param x        X position of the button in the view.
+     * @param radius   Radius of the round button.
+     * @param bgColor  Background color of the button.
+     * @param fgColor  Foreground color of the button.
+     * @param fontSize Font size of the button content.
+     * @param content  Content of the button.
+     */
+    public MyRoundButton(int x, int y,
+                         int radius,
+                         Color bgColor, Color fgColor, Color mgColor,
+                         int fontSize, int mgSize,
+                         String content) {
+        super(x, y, radius * 2, radius * 2, bgColor, fgColor, mgColor, fontSize, mgSize, content);
+
+        this.buttonCenter = new Point(this.x, this.y);
+        this.radius = radius;
     }
 
     /**
      * Check if the Mouse event as been triggered in the button area.
-     * @param e Mouse Event.
+     *
+     * @param p Point to check.
      * @return True if the Mouse Event as been triggered in the button area.
      */
     @Override
-    protected boolean isMouseEventIn(MouseEvent e) {
+    protected boolean contains(Point p) {
 
-        int radius = (int) this.w / 2;
-
-        if (Math.pow(e.getX() - (this.x + radius), 2) + Math.pow(e.getY() - (this.y + radius), 2) < Math.pow(radius, 2)) {
+        if (buttonCenter.distance(p) < radius) {
             return true;
         }
         return false;
@@ -96,6 +161,7 @@ public class MyRoundButton extends MyButton {
 
     /**
      * Paint graphics of the button.
+     *
      * @param g Graphics of the window.
      */
     public void paint(Graphics g) {
