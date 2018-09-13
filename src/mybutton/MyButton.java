@@ -264,6 +264,14 @@ public class MyButton implements MouseListener, MouseMotionListener {
     }
 
     /**
+     * Remove listener from buttons listeners.
+     * @param listener Listener to remove.
+     */
+    public void removeMyButtonListener(MyButtonListener listener) {
+        this.listeners.remove(listener);
+    }
+
+    /**
      * Check if the Mouse event as been triggered in the button area.
      * @param e Mouse Event.
      * @return True if the Mouse Event as been triggered in the button area.
