@@ -27,6 +27,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -50,7 +51,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * Default button size.
      * Value: 08, 30.
      */
-    public static final Point DEFAULT_SIZE = new Point(80, 30);
+    public static final Dimension DEFAULT_SIZE = new Dimension(80, 30);
 
     /**
      * Default button background color.
@@ -96,7 +97,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
     /**
      * Button size.
      */
-    protected Point size;
+    protected Dimension size;
 
     /**
      * Button background Color.
@@ -147,7 +148,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param y Y position of the button in the view.
      */
     public MyButton(int x, int y) {
-        this(x, y, DEFAULT_SIZE.x, DEFAULT_SIZE.y);
+        this(x, y, DEFAULT_SIZE.width, DEFAULT_SIZE.height);
     }
 
     /**
@@ -160,7 +161,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
     }
 
     public MyButton(Point start, int w, int h) {
-        this(start, new Point(w, h));
+        this(start, new Dimension(w, h));
     }
 
     /**
@@ -181,7 +182,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param start    Start point of the button.
      * @param size     Size of the button.
      */
-    public MyButton(Point start, Point size) {
+    public MyButton(Point start, Dimension size) {
         this(start, size, DEFAULT_CONTENT);
     }
 
@@ -205,7 +206,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param size     Size of the button.
      * @param content  Content of the button.
      */
-    public MyButton(Point start, Point size, String content) {
+    public MyButton(Point start, Dimension size, String content) {
         this(start, size, DEFAULT_BG_COLOR, content);
     }
 
@@ -231,7 +232,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param bgColor  Background color of the button.
      * @param content  Content of the button.
      */
-    public MyButton(Point start, Point size, Color bgColor, String content) {
+    public MyButton(Point start, Dimension size, Color bgColor, String content) {
         this(start, size, bgColor, DEFAULT_FG_COLOR, content);
     }
 
@@ -259,7 +260,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param fgColor  Foreground color of the button.
      * @param content  Content of the button.
      */
-    public MyButton(Point start, Point size, Color bgColor, Color fgColor, String content) {
+    public MyButton(Point start, Dimension size, Color bgColor, Color fgColor, String content) {
         this (start, size, bgColor, fgColor, DEFAULT_FONT_SIZE, content);
     }
 
@@ -289,7 +290,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param fontSize Font size of the button content.
      * @param content  Content of the button.
      */
-    public MyButton(Point start, Point size, Color bgColor, Color fgColor, int fontSize, String content) {
+    public MyButton(Point start, Dimension size, Color bgColor, Color fgColor, int fontSize, String content) {
         this(start, size, bgColor, fgColor, DEFAULT_MG_COLOR, fontSize, content);
     }
 
@@ -320,7 +321,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param fontSize Font size of the button content.
      * @param content  Content of the button.
      */
-    public MyButton(Point start, Point size, Color bgColor, Color fgColor, Color mgColor, int fontSize, String content) {
+    public MyButton(Point start, Dimension size, Color bgColor, Color fgColor, Color mgColor, int fontSize, String content) {
         this(
                 start, size,
                 bgColor, fgColor, mgColor,
@@ -348,7 +349,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
                     String content) {
         this(
                 new Point(x, y),
-                new Point(w, h),
+                new Dimension(w, h),
                 bgColor, fgColor, mgColor,
                 fontSize, mgSize,
                 content
@@ -368,7 +369,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param content  Content of the button.
      */
     public MyButton(Point start,
-                    Point size,
+                    Dimension size,
                     Color bgColor, Color fgColor, Color mgColor,
                     int fontSize, int mgSize,
                     String content) {
@@ -409,7 +410,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      */
     protected boolean contains(Point p) {
         // check if the event has been triggered in the button area.
-        if (p.x >= this.start.x && p.x <= this.start.x + this.size.x && p.y >= this.start.y && p.y <= this.start.y + this.size.y) {
+        if (p.x >= this.start.x && p.x <= this.start.x + this.size.width && p.y >= this.start.y && p.y <= this.start.y + this.size.height) {
             return true;
         }
         return false;
@@ -523,15 +524,15 @@ public class MyButton implements MouseListener, MouseMotionListener {
     public void paint(Graphics g) {
         // design the button margin
         g.setColor(this.mgColor);
-        g.fillRect(start.x, start.y, size.x, size.y);
+        g.fillRect(start.x, start.y, size.width, size.height);
 
         // design the button
         g.setColor(this.bgColor);
-        g.fillRect(start.x + mgSize, start.y + mgSize, size.x - mgSize * 2, size.y - mgSize * 2);
+        g.fillRect(start.x + mgSize, start.y + mgSize, size.width - mgSize * 2, size.height - mgSize * 2);
 
         // write the content of the button
         g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
         g.setColor(this.fgColor);
-        g.drawString(this.content, this.start.x + mgSize, this.start.y + this.size.y / 2);
+        g.drawString(this.content, this.start.x + mgSize, this.start.y + this.size.height / 2);
     }
 }

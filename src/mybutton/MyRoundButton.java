@@ -27,6 +27,7 @@ import java.awt.Point;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Dimension;
 
 public class MyRoundButton extends MyButton {
 
@@ -142,6 +143,7 @@ public class MyRoundButton extends MyButton {
 
         this.buttonCenter = new Point(this.start.x + radius, this.start.y + radius);
         this.radius = radius;
+        this.size = new Dimension(radius * 2, radius * 2);
     }
 
     /**
@@ -167,15 +169,15 @@ public class MyRoundButton extends MyButton {
     public void paint(Graphics g) {
         // design the button margin
         g.setColor(mgColor);
-        g.fillOval(this.start.x, this.start.y, this.size.x, this.size.y);
+        g.fillOval(this.start.x, this.start.y, this.size.width, this.size.height);
 
         // design the button
         g.setColor(this.bgColor);
-        g.fillOval(this.start.x + mgSize, this.start.y + mgSize, this.size.x - 2 * mgSize, this.size.y - 2 * mgSize);
+        g.fillOval(this.start.x + mgSize, this.start.y + mgSize, this.size.width - 2 * mgSize, this.size.height - 2 * mgSize);
 
         // print the content of the button
         g.setFont(new Font("TimesRoman", Font.PLAIN, this.fontSize));
         g.setColor(this.fgColor);
-        g.drawString(this.content, this.start.x + mgSize, this.start.y + this.size.y / 2);
+        g.drawString(this.content, this.start.x + mgSize, this.start.y + this.size.height / 2);
     }
 }
