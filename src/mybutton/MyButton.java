@@ -41,28 +41,16 @@ import java.util.List;
  */
 public class MyButton implements MouseListener, MouseMotionListener {
     /**
-     * Default button X.
-     * Value: 0.
+     * Default button start point.
+     * Value: 0, 0.
      */
-    public static final int DEFAULT_X = 0;
+    public static final Point DEFAULT_START = new Point(0, 0);
 
     /**
-     * Default button Y.
-     * Value: 0.
+     * Default button size.
+     * Value: 08, 30.
      */
-    public static final int DEFAULT_Y = 0;
-
-    /**
-     * Default button Width.
-     * Value: 80.
-     */
-    public static final int DEFAULT_W = 80;
-
-    /**
-     * Default button Height.
-     * Value: 30.
-     */
-    public static final int DEFAULT_H = 30;
+    public static final Point DEFAULT_SIZE = new Point(80, 30);
 
     /**
      * Default button background color.
@@ -101,23 +89,14 @@ public class MyButton implements MouseListener, MouseMotionListener {
     public static final String DEFAULT_CONTENT = "MyButton";
 
     /**
-     * Y Position of the button in the view.
+     * Button start point.
      */
-    protected int y;
+    protected Point start;
 
     /**
-     * X Position of the button in the view.
+     * Button size.
      */
-    protected int x;
-
-    /**
-     * Width of the button.
-     */
-    protected int w;
-    /**
-     * Height of the button.
-     */
-    protected int h;
+    protected Point size;
 
     /**
      * Button background Color.
@@ -158,7 +137,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * Constructor with all default parameters.
      */
     public MyButton() {
-        this(DEFAULT_X, DEFAULT_Y);
+        this(DEFAULT_START, DEFAULT_SIZE);
     }
 
     /**
@@ -168,7 +147,20 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param y Y position of the button in the view.
      */
     public MyButton(int x, int y) {
-        this(x, y, DEFAULT_W, DEFAULT_H);
+        this(x, y, DEFAULT_SIZE.x, DEFAULT_SIZE.y);
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     *
+     * @param start    Start point of the button.
+     */
+    public MyButton(Point start) {
+        this(start, DEFAULT_SIZE);
+    }
+
+    public MyButton(Point start, int w, int h) {
+        this(start, new Point(w, h));
     }
 
     /**
@@ -186,6 +178,16 @@ public class MyButton implements MouseListener, MouseMotionListener {
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
      *
+     * @param start    Start point of the button.
+     * @param size     Size of the button.
+     */
+    public MyButton(Point start, Point size) {
+        this(start, size, DEFAULT_CONTENT);
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     *
      * @param y       Y position of the button in the view.
      * @param x       X position of the button in the view.
      * @param w       Width of the button.
@@ -194,6 +196,17 @@ public class MyButton implements MouseListener, MouseMotionListener {
      */
     public MyButton(int x, int y, int w, int h, String content) {
         this(x, y, w, h, DEFAULT_BG_COLOR, content);
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     *
+     * @param start    Start point of the button.
+     * @param size     Size of the button.
+     * @param content  Content of the button.
+     */
+    public MyButton(Point start, Point size, String content) {
+        this(start, size, DEFAULT_BG_COLOR, content);
     }
 
     /**
@@ -213,6 +226,18 @@ public class MyButton implements MouseListener, MouseMotionListener {
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
      *
+     * @param start    Start point of the button.
+     * @param size     Size of the button
+     * @param bgColor  Background color of the button.
+     * @param content  Content of the button.
+     */
+    public MyButton(Point start, Point size, Color bgColor, String content) {
+        this(start, size, bgColor, DEFAULT_FG_COLOR, content);
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     *
      * @param y       Y position of the button in the view.
      * @param x       X position of the button in the view.
      * @param w       Width of the button.
@@ -223,6 +248,19 @@ public class MyButton implements MouseListener, MouseMotionListener {
      */
     public MyButton(int x, int y, int w, int h, Color bgColor, Color fgColor, String content) {
         this(x, y, w, h, bgColor, fgColor, DEFAULT_FONT_SIZE, content);
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     *
+     * @param start    Start point of the button.
+     * @param size     Size of the button
+     * @param bgColor  Background color of the button.
+     * @param fgColor  Foreground color of the button.
+     * @param content  Content of the button.
+     */
+    public MyButton(Point start, Point size, Color bgColor, Color fgColor, String content) {
+        this (start, size, bgColor, fgColor, DEFAULT_FONT_SIZE, content);
     }
 
     /**
@@ -244,6 +282,20 @@ public class MyButton implements MouseListener, MouseMotionListener {
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
      *
+     * @param start    Start point of the button.
+     * @param size     Size of the button
+     * @param bgColor  Background color of the button.
+     * @param fgColor  Foreground color of the button.
+     * @param fontSize Font size of the button content.
+     * @param content  Content of the button.
+     */
+    public MyButton(Point start, Point size, Color bgColor, Color fgColor, int fontSize, String content) {
+        this(start, size, bgColor, fgColor, DEFAULT_MG_COLOR, fontSize, content);
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     *
      * @param y        Y position of the button in the view.
      * @param x        X position of the button in the view.
      * @param w        Width of the button.
@@ -255,6 +307,26 @@ public class MyButton implements MouseListener, MouseMotionListener {
      */
     public MyButton(int x, int y, int w, int h, Color bgColor, Color fgColor, Color mgColor, int fontSize, String content) {
         this(x, y, w, h, bgColor, fgColor, mgColor, fontSize, DEFAULT_MG_SIZE, content);
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     *
+     * @param start    Start point of the button.
+     * @param size     Size of the button
+     * @param bgColor  Background color of the button.
+     * @param fgColor  Foreground color of the button.
+     * @param mgColor  Margin color of the button.
+     * @param fontSize Font size of the button content.
+     * @param content  Content of the button.
+     */
+    public MyButton(Point start, Point size, Color bgColor, Color fgColor, Color mgColor, int fontSize, String content) {
+        this(
+                start, size,
+                bgColor, fgColor, mgColor,
+                fontSize, DEFAULT_MG_SIZE,
+                content
+        );
     }
 
     /**
@@ -274,10 +346,34 @@ public class MyButton implements MouseListener, MouseMotionListener {
                     Color bgColor, Color fgColor, Color mgColor,
                     int fontSize, int mgSize,
                     String content) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
+        this(
+                new Point(x, y),
+                new Point(w, h),
+                bgColor, fgColor, mgColor,
+                fontSize, mgSize,
+                content
+        );
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, bgColor, label content.
+     *
+     * @param start    Start point of the button.
+     * @param size     Size of the button
+     * @param bgColor  Background color of the button.
+     * @param fgColor  Foreground color of the button.
+     * @param mgColor  Margin color of the button.
+     * @param fontSize Font size of the button content.
+     * @param mgSize   Margin size of the button.
+     * @param content  Content of the button.
+     */
+    public MyButton(Point start,
+                    Point size,
+                    Color bgColor, Color fgColor, Color mgColor,
+                    int fontSize, int mgSize,
+                    String content) {
+        this.start = start;
+        this.size = size;
         this.bgColor = bgColor;
         this.fgColor = fgColor;
         this.mgColor = mgColor;
@@ -313,7 +409,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      */
     protected boolean contains(Point p) {
         // check if the event has been triggered in the button area.
-        if (p.x >= this.x && p.x <= this.x + this.w && p.y >= this.y && p.y <= this.y + this.h) {
+        if (p.x >= this.start.x && p.x <= this.start.x + this.size.x && p.y >= this.start.y && p.y <= this.start.y + this.size.y) {
             return true;
         }
         return false;
@@ -427,15 +523,15 @@ public class MyButton implements MouseListener, MouseMotionListener {
     public void paint(Graphics g) {
         // design the button margin
         g.setColor(this.mgColor);
-        g.fillRect(x, y, w, h);
+        g.fillRect(start.x, start.y, size.x, size.y);
 
         // design the button
         g.setColor(this.bgColor);
-        g.fillRect(x + mgSize, y + mgSize, w - mgSize * 2, h - mgSize * 2);
+        g.fillRect(start.x + mgSize, start.y + mgSize, size.x - mgSize * 2, size.y - mgSize * 2);
 
         // write the content of the button
         g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
         g.setColor(this.fgColor);
-        g.drawString(this.content, this.x + mgSize, this.y + this.h / 2);
+        g.drawString(this.content, this.start.x + mgSize, this.start.y + this.size.y / 2);
     }
 }

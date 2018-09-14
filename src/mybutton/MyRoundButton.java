@@ -140,7 +140,7 @@ public class MyRoundButton extends MyButton {
                          String content) {
         super(x, y, radius * 2, radius * 2, bgColor, fgColor, mgColor, fontSize, mgSize, content);
 
-        this.buttonCenter = new Point(this.x, this.y);
+        this.buttonCenter = new Point(this.start.x + radius, this.start.y + radius);
         this.radius = radius;
     }
 
@@ -167,15 +167,15 @@ public class MyRoundButton extends MyButton {
     public void paint(Graphics g) {
         // design the button margin
         g.setColor(mgColor);
-        g.fillOval(x, y, w, h);
+        g.fillOval(this.start.x, this.start.y, this.size.x, this.size.y);
 
         // design the button
         g.setColor(this.bgColor);
-        g.fillOval(x + mgSize, y + mgSize, w - 2 * mgSize, h - 2 * mgSize);
+        g.fillOval(this.start.x + mgSize, this.start.y + mgSize, this.size.x - 2 * mgSize, this.size.y - 2 * mgSize);
 
         // print the content of the button
         g.setFont(new Font("TimesRoman", Font.PLAIN, this.fontSize));
         g.setColor(this.fgColor);
-        g.drawString(this.content, this.x + mgSize, this.y + this.h / 2);
+        g.drawString(this.content, this.start.x + mgSize, this.start.y + this.size.y / 2);
     }
 }
