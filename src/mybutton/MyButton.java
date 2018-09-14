@@ -41,6 +41,30 @@ import java.util.List;
  */
 public class MyButton implements MouseListener, MouseMotionListener {
     /**
+     * Default button X.
+     * Value: 0.
+     */
+    public static final int DEFAULT_X = 0;
+
+    /**
+     * Default button Y.
+     * Value: 0.
+     */
+    public static final int DEFAULT_Y = 0;
+
+    /**
+     * Default button Width.
+     * Value: 80.
+     */
+    public static final int DEFAULT_W = 80;
+
+    /**
+     * Default button Height.
+     * Value: 30.
+     */
+    public static final int DEFAULT_H = 30;
+
+    /**
      * Default button background color.
      * Value: (Color) Blue.
      */
@@ -71,6 +95,12 @@ public class MyButton implements MouseListener, MouseMotionListener {
     public static final int DEFAULT_MG_SIZE = 2;
 
     /**
+     * Default button content.
+     * Value: "MyButton".
+     */
+    public static final String DEFAULT_CONTENT = "MyButton";
+
+    /**
      * Y Position of the button in the view.
      */
     protected int y;
@@ -83,46 +113,68 @@ public class MyButton implements MouseListener, MouseMotionListener {
     /**
      * Width of the button.
      */
-    protected int w = 100;
+    protected int w;
     /**
      * Height of the button.
      */
-    protected int h = 80;
+    protected int h;
 
     /**
      * Button background Color.
      */
-    protected Color bgColor = DEFAULT_BG_COLOR;
+    protected Color bgColor;
 
     /**
      * Button Foreground Color.
      */
-    protected Color fgColor = DEFAULT_FG_COLOR;
+    protected Color fgColor;
 
     /**
      * Button Margin Color.
      */
-    protected Color mgColor = DEFAULT_MG_COLOR;
+    protected Color mgColor;
 
     /**
      * Button content font-size.
      */
-    protected int fontSize = DEFAULT_FONT_SIZE;
+    protected int fontSize;
 
     /**
      * Button margin size.
      */
-    protected int mgSize = DEFAULT_MG_SIZE;
+    protected int mgSize;
 
     /**
      * Label of the button
      */
-    protected String content = "UNNAME";
+    protected String content;
 
     /**
      * Button listeners.
      */
     protected List<MyButtonListener> listeners;
+
+    /**
+     * Constructor with x position, y position.
+     *
+     * @param x X position of the button in the view.
+     * @param y Y position of the button in the view.
+     */
+    public MyButton(int x, int y) {
+        this(x, y, DEFAULT_W, DEFAULT_H);
+    }
+
+    /**
+     * Constructor with y position, x position, width, height.
+     *
+     * @param x X position of the button in the view.
+     * @param y Y position of the button in the view.
+     * @param w Width of the button.
+     * @param h Height of the button.
+     */
+    public MyButton(int x, int y, int w, int h) {
+        this(x, y, w, h, DEFAULT_CONTENT);
+    }
 
     /**
      * Constructor with y position, x position, width, height, bgColor, label content.
@@ -134,12 +186,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param content Content of the button.
      */
     public MyButton(int x, int y, int w, int h, String content) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.content = content;
-        listeners = new ArrayList<>();
+        this(x, y, w, h, DEFAULT_BG_COLOR, content);
     }
 
     /**
@@ -153,13 +200,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param content Content of the button.
      */
     public MyButton(int x, int y, int w, int h, Color bgColor, String content) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.bgColor = bgColor;
-        this.content = content;
-        listeners = new ArrayList<>();
+        this(x, y, w, h, bgColor, DEFAULT_FG_COLOR, content);
     }
 
     /**
@@ -174,14 +215,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param content Content of the button.
      */
     public MyButton(int x, int y, int w, int h, Color bgColor, Color fgColor, String content) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.bgColor = bgColor;
-        this.fgColor = fgColor;
-        this.content = content;
-        listeners = new ArrayList<>();
+        this(x, y, w, h, bgColor, fgColor, DEFAULT_FONT_SIZE, content);
     }
 
     /**
@@ -197,15 +231,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param content  Content of the button.
      */
     public MyButton(int x, int y, int w, int h, Color bgColor, Color fgColor, int fontSize, String content) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.bgColor = bgColor;
-        this.fgColor = fgColor;
-        this.fontSize = fontSize;
-        this.content = content;
-        listeners = new ArrayList<>();
+        this(x, y, w, h, bgColor, fgColor, DEFAULT_MG_COLOR, fontSize, content);
     }
 
     /**
@@ -221,16 +247,7 @@ public class MyButton implements MouseListener, MouseMotionListener {
      * @param content  Content of the button.
      */
     public MyButton(int x, int y, int w, int h, Color bgColor, Color fgColor, Color mgColor, int fontSize, String content) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.bgColor = bgColor;
-        this.fgColor = fgColor;
-        this.mgColor = mgColor;
-        this.fontSize = fontSize;
-        this.content = content;
-        listeners = new ArrayList<>();
+        this(x, y, w, h, bgColor, fgColor, mgColor, fontSize, DEFAULT_MG_SIZE, content);
     }
 
     /**
