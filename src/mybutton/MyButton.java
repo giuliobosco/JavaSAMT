@@ -155,6 +155,13 @@ public class MyButton implements MouseListener, MouseMotionListener {
     protected List<MyButtonListener> listeners;
 
     /**
+     * Constructor with all default parameters.
+     */
+    public MyButton() {
+        this(DEFAULT_X, DEFAULT_Y);
+    }
+
+    /**
      * Constructor with x position, y position.
      *
      * @param x X position of the button in the view.
