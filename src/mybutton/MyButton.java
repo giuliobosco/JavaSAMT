@@ -135,6 +135,152 @@ public class MyButton implements MouseListener, MouseMotionListener {
     protected List<MyButtonListener> listeners;
 
     /**
+     * Setter for button start point.
+     * @param start Button start point.
+     */
+    public void setStart(Point start) {
+        this.start = start;
+    }
+
+    /**
+     * Getter for button start point.
+     * @return Button start point.
+     */
+    public Point getStart() {
+        return this.start;
+    }
+
+    /**
+     * Setter for button size.
+     * @param size Button size.
+     */
+    public void setSize(Dimension size) {
+        this.size = size;
+    }
+
+    /**
+     * Getter for button size.
+     * @return Button size.
+     */
+    public Dimension getSize() {
+        return this.size;
+    }
+
+    /**
+     * Setter for the button background color.
+     * @param bgColor Button background color.
+     */
+    public void setBgColor(Color bgColor) {
+        this.bgColor = bgColor;
+    }
+
+    /**
+     * Getter for button background color.
+     * @return Button background color.
+     */
+    public Color getBgColor() {
+        return this.bgColor;
+    }
+
+    /**
+     * Setter for the button foreground color.
+     * @param fgColor Button foreground color.
+     */
+    public void setFgColor(Color fgColor) {
+        this.fgColor = fgColor;
+    }
+
+    /**
+     * Getter for the button foreground color.
+     * @return Button foreground color.
+     */
+    public Color getFgColor() {
+        return this.fgColor;
+    }
+
+    /**
+     * Setter for the button margin color.
+     * @param mgColor Button margin color.
+     */
+    public void setMgColor(Color mgColor) {
+        this.mgColor = mgColor;
+    }
+
+    /**
+     * Getter for the button margin color.
+     * @return Button margin color.
+     */
+    public Color getMgColor() {
+        return this.mgColor;
+    }
+
+    /**
+     * Setter for the font size of the button content.
+     * @param fontSize Font size of the button content.
+     */
+    public void setFontSize(int fontSize) {
+        this.fontSize = fontSize;
+    }
+
+    /**
+     * Getter for the font size of the button content.
+     * @return Font size of the button content.
+     */
+    public int getFontSize() {
+        return this.fontSize;
+    }
+
+    /**
+     * Setter for the margin size of the button.
+     * @param mgSize Margin size of the button.
+     */
+    public void setMgSize(int mgSize) {
+        this.mgSize = mgSize;
+    }
+
+    /**
+     * Getter for the marign size of the button.
+     * @return Margin size of the button.
+     */
+    public int getMgSize() {
+        return this.mgSize;
+    }
+
+    /**
+     * Setter for the content of the button.
+     * @param content Content of the button.
+     */
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    /**
+     * Getter for the content of the button.
+     * @return Content of the button.
+     */
+    public String getContent() {
+        return this.content;
+    }
+
+    /**
+     * Add listener to listeners.
+     *
+     * @param listener Listener to add.
+     */
+    public void addMyButtonListener(MyButtonListener listener) {
+        listeners.add(listener);
+    }
+
+    /**
+     * Remove listener from buttons listeners.
+     *
+     * @param listener Listener to remove.
+     */
+    public void removeMyButtonListener(MyButtonListener listener) {
+        this.listeners.remove(listener);
+    }
+
+    /**
      * Constructor with all default parameters.
      */
     public MyButton() {
@@ -382,24 +528,6 @@ public class MyButton implements MouseListener, MouseMotionListener {
         this.mgSize = mgSize;
         this.content = content;
         listeners = new ArrayList<>();
-    }
-
-    /**
-     * Add listener to listeners.
-     *
-     * @param listener Listener to add.
-     */
-    public void addMyButtonListener(MyButtonListener listener) {
-        listeners.add(listener);
-    }
-
-    /**
-     * Remove listener from buttons listeners.
-     *
-     * @param listener Listener to remove.
-     */
-    public void removeMyButtonListener(MyButtonListener listener) {
-        this.listeners.remove(listener);
     }
 
     /**

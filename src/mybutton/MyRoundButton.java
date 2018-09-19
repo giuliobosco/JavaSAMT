@@ -32,6 +32,28 @@ import java.awt.Dimension;
 public class MyRoundButton extends MyButton {
 
     /**
+     * Default center point of the round button.
+     * Value:
+     * <ul>
+     * <li>X: 50</li>
+     * <li>Y: 50</li>
+     * </ul>
+     */
+    public static final Point DEFAULT_CENTER = new Point(50, 50);
+
+    /**
+     * Default radius of the round button.
+     * Value: 50.
+     */
+    public static final int DEFAULT_RADIUS = 50;
+
+    /**
+     * Default content of the round button.
+     * Value: "MyRoundButton".
+     */
+    public static final String DEFAULT_CONTENT = "MyRoundButton";
+
+    /**
      * Center of the round button.
      */
     private Point buttonCenter;
@@ -51,6 +73,80 @@ public class MyRoundButton extends MyButton {
     }
 
     /**
+     * Setter for the center of the round button center.
+     *
+     * @param buttonCenter Center of the round button.
+     */
+    public void setButtonCenter(Point buttonCenter) {
+        this.buttonCenter = buttonCenter;
+    }
+
+    /**
+     * Getter for the radius of the button center.
+     *
+     * @return Radius of the button center.
+     */
+    public int getRadius() {
+        return this.radius;
+    }
+
+    /**
+     * Setter for the radius of the button center.
+     *
+     * @param radius Radius of the button center.
+     */
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
+
+    /**
+     * No parameter constructor. All default parameters.
+     */
+    public MyRoundButton() {
+        this(DEFAULT_CENTER);
+    }
+
+    /**
+     * Constructor with y position, x position.
+     *
+     * @param y Y position of the button in the view.
+     * @param x X position of the button in the view.
+     */
+    public MyRoundButton(int x, int y) {
+        this(x, y, DEFAULT_RADIUS);
+    }
+
+    /**
+     * Contructor with button center.
+     *
+     * @param buttonCenter Center of the Round button
+     */
+    public MyRoundButton(Point buttonCenter) {
+        this(buttonCenter, DEFAULT_RADIUS);
+    }
+
+    /**
+     * Constructor with y position, x position, radius.
+     *
+     * @param y      Y position of the button in the view.
+     * @param x      X position of the button in the view.
+     * @param radius Radius of the round button.
+     */
+    public MyRoundButton(int x, int y, int radius) {
+        this(x, y, radius, DEFAULT_CONTENT);
+    }
+
+    /**
+     * Contructor with button center, radius.
+     *
+     * @param buttonCenter Center of the Round button
+     * @param radius       Radius of the round button.
+     */
+    public MyRoundButton(Point buttonCenter, int radius) {
+        this(buttonCenter, radius, DEFAULT_CONTENT);
+    }
+
+    /**
      * Constructor with y position, x position, width, height, bgColor, label content.
      *
      * @param y       Y position of the button in the view.
@@ -59,7 +155,18 @@ public class MyRoundButton extends MyButton {
      * @param content Content of the button.
      */
     public MyRoundButton(int x, int y, int radius, String content) {
-        this(x, y, radius, DEFAULT_BG_COLOR, DEFAULT_FG_COLOR, DEFAULT_FONT_SIZE, content);
+        this(x, y, radius, DEFAULT_BG_COLOR, content);
+    }
+
+    /**
+     * Contructor with button center, button radiuscontent.
+     *
+     * @param buttonCenter Center of the Round button
+     * @param radius       Radius of the round button.
+     * @param content      Content of the round button.
+     */
+    public MyRoundButton(Point buttonCenter, int radius, String content) {
+        this(buttonCenter, radius, DEFAULT_BG_COLOR, content);
     }
 
     /**
@@ -72,7 +179,19 @@ public class MyRoundButton extends MyButton {
      * @param content Content of the button.
      */
     public MyRoundButton(int x, int y, int radius, Color bgColor, String content) {
-        this(x, y, radius, bgColor, DEFAULT_FG_COLOR, DEFAULT_FONT_SIZE, content);
+        this(x, y, radius, bgColor, DEFAULT_FG_COLOR, content);
+    }
+
+    /**
+     * Contructor with button center, button radius, background color, content.
+     *
+     * @param buttonCenter Center of the Round button
+     * @param radius       Radius of the round button.
+     * @param bgColor      Background round button color.
+     * @param content      Content of the round button.
+     */
+    public MyRoundButton(Point buttonCenter, int radius, Color bgColor, String content) {
+        this(buttonCenter, radius, bgColor, DEFAULT_FG_COLOR, content);
     }
 
     /**
@@ -87,6 +206,19 @@ public class MyRoundButton extends MyButton {
      */
     public MyRoundButton(int x, int y, int radius, Color bgColor, Color fgColor, String content) {
         this(x, y, radius, bgColor, fgColor, DEFAULT_FONT_SIZE, content);
+    }
+
+    /**
+     * Contructor with button center, button radius, background color, foreground color, content.
+     *
+     * @param buttonCenter Center of the Round button
+     * @param radius       Radius of the round button.
+     * @param bgColor      Background round button color.
+     * @param fgColor      Foreground round button color.
+     * @param content      Content of the round button.
+     */
+    public MyRoundButton(Point buttonCenter, int radius, Color bgColor, Color fgColor, String content) {
+        this(buttonCenter, radius, bgColor, fgColor, DEFAULT_FONT_SIZE, content);
     }
 
     /**
@@ -105,7 +237,21 @@ public class MyRoundButton extends MyButton {
     }
 
     /**
-     * Constructor with y position, x position, width, height, bgColor, label content.
+     * Contructor with button center, button radius, background color, foreground color, font size, content.
+     *
+     * @param buttonCenter Center of the Round button
+     * @param radius       Radius of the round button.
+     * @param bgColor      Background round button color.
+     * @param fgColor      Foreground round button color.
+     * @param fontSize     Font content size.
+     * @param content      Content of the round button.
+     */
+    public MyRoundButton(Point buttonCenter, int radius, Color bgColor, Color fgColor, int fontSize, String content) {
+        this(buttonCenter, radius, bgColor, fgColor, DEFAULT_MG_COLOR, fontSize, content);
+    }
+
+    /**
+     * Constructor with y position, x position, radius, background color, foreground color, font size, label content.
      *
      * @param y        Y position of the button in the view.
      * @param x        X position of the button in the view.
@@ -124,7 +270,25 @@ public class MyRoundButton extends MyButton {
     }
 
     /**
-     * Constructor with y position, x position, width, height, bgColor, label content.
+     * Contructor with button center, button radius, background color, foreground color, marign color, font size, content.
+     *
+     * @param buttonCenter Center of the Round button
+     * @param radius       Radius of the round button.
+     * @param bgColor      Background round button color.
+     * @param fgColor      Foreground round button color.
+     * @param mgColor      Margin round button color.
+     * @param fontSize     Font content size.
+     * @param content      Content of the round button.
+     */
+    public MyRoundButton(Point buttonCenter, int radius,
+                         Color bgColor, Color fgColor, Color mgColor,
+                         int fontSize,
+                         String content) {
+        this(buttonCenter, radius, bgColor, fgColor, mgColor, fontSize, DEFAULT_MG_SIZE, content);
+    }
+
+    /**
+     * Constructor with y position, x position, width, height, background color, foreground color, font size, label content.
      *
      * @param y        Y position of the button in the view.
      * @param x        X position of the button in the view.
@@ -139,11 +303,38 @@ public class MyRoundButton extends MyButton {
                          Color bgColor, Color fgColor, Color mgColor,
                          int fontSize, int mgSize,
                          String content) {
-        super(x, y, radius * 2, radius * 2, bgColor, fgColor, mgColor, fontSize, mgSize, content);
+        this(new Point(x, y), radius, bgColor, fgColor, mgColor, fontSize, mgSize, content);
+    }
 
-        this.buttonCenter = new Point(this.start.x + radius, this.start.y + radius);
-        this.radius = radius;
-        this.size = new Dimension(radius * 2, radius * 2);
+    /**
+     * Constructor with position, radius, background color, foreground color, margin color, font size, margins size, content.
+     *
+     * @param buttonCenter Center of the Round button
+     * @param radius       Radius of the round button.
+     * @param bgColor      Background round button color.
+     * @param fgColor      Foreground round button color.
+     * @param mgColor      Margin round button color.
+     * @param fontSize     Font content size.
+     * @param mgSize       Margin size of the round button.
+     * @param content      Content of the round button.
+     */
+    public MyRoundButton(Point buttonCenter, int radius,
+                         Color bgColor, Color fgColor, Color mgColor,
+                         int fontSize, int mgSize,
+                         String content) {
+        this.setButtonCenter(buttonCenter);
+        this.setRadius(radius);
+
+        this.setBgColor(bgColor);
+        this.setFgColor(fgColor);
+        this.setMgColor(mgColor);
+
+        this.setFontSize(fontSize);
+        this.setMgSize(mgSize);
+
+        this.setContent(content);
+
+        this.setSize(new Dimension(radius * 2, radius * 2));
     }
 
     /**
