@@ -61,8 +61,8 @@ public class Main extends JFrame implements MyButtonListener {
 
         // add buttons
         buttons.add(new MyButton(30, 52, 100, 100, Color.red, "L1")); // button on left top
-        buttons.add(new MyRoundButton(30, 172, 100, "L2")); // round button on left bottom
-        buttons.add(new MyRoundButton(150, 52, 100, "R1")); // round button on right top
+        buttons.add(new MyRoundButton(30, 172, 50, "L2")); // round button on left bottom
+        buttons.add(new MyRoundButton(150, 52, 50, "R1")); // round button on right top
         buttons.add(new MyButton(150, 172, 100, 100, "R2")); // round button on right bottom
 
         // execute for all buttons in the this.buttons list
