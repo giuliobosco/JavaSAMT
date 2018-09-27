@@ -55,6 +55,9 @@ public class CafeRacerPanel extends JPanel{
      */
     private int squareSize;
     
+    /**
+     * Constructor
+     */
     public CafeRacerPanel() {
     }
 
