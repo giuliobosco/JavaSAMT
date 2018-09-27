@@ -26,7 +26,7 @@ public class MyFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cafeRacer1 = new CafeRacer();
+        cafeRacer1 = new CafeRacerPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +82,6 @@ public class MyFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private CafeRacer cafeRacer1;
+    private CafeRacerPanel cafeRacer1;
     // End of variables declaration//GEN-END:variables
 }

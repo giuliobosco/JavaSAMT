@@ -31,7 +31,7 @@ import java.awt.Color;
  * @author giuliobosco
  * @version 26.09.2018
  */
-public class CafeRacer extends JPanel{
+public class CafeRacerPanel extends JPanel{
     /**
      * Columns used for the design.
      */
@@ -55,7 +55,7 @@ public class CafeRacer extends JPanel{
      */
     private int squareSize;
     
-    public CafeRacer() {
+    public CafeRacerPanel() {
     }
 
     /**
