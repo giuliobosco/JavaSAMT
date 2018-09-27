@@ -26,22 +26,51 @@ public class MyFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cafeRacer1 = new CafeRacerPanel();
+        cafeRacerPanel1 = new CafeRacerPanel();
+        superCiucPanel1 = new SuperCiucPanel();
+        flowerPowerPanel1 = new FlowerPowerPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridLayout(2, 2));
 
-        javax.swing.GroupLayout cafeRacer1Layout = new javax.swing.GroupLayout(cafeRacer1);
-        cafeRacer1.setLayout(cafeRacer1Layout);
-        cafeRacer1Layout.setHorizontalGroup(
-            cafeRacer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        javax.swing.GroupLayout cafeRacerPanel1Layout = new javax.swing.GroupLayout(cafeRacerPanel1);
+        cafeRacerPanel1.setLayout(cafeRacerPanel1Layout);
+        cafeRacerPanel1Layout.setHorizontalGroup(
+            cafeRacerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
-        cafeRacer1Layout.setVerticalGroup(
-            cafeRacer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        cafeRacerPanel1Layout.setVerticalGroup(
+            cafeRacerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
         );
 
-        getContentPane().add(cafeRacer1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(cafeRacerPanel1);
+
+        javax.swing.GroupLayout superCiucPanel1Layout = new javax.swing.GroupLayout(superCiucPanel1);
+        superCiucPanel1.setLayout(superCiucPanel1Layout);
+        superCiucPanel1Layout.setHorizontalGroup(
+            superCiucPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        superCiucPanel1Layout.setVerticalGroup(
+            superCiucPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(superCiucPanel1);
+
+        javax.swing.GroupLayout flowerPowerPanel1Layout = new javax.swing.GroupLayout(flowerPowerPanel1);
+        flowerPowerPanel1.setLayout(flowerPowerPanel1Layout);
+        flowerPowerPanel1Layout.setHorizontalGroup(
+            flowerPowerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        flowerPowerPanel1Layout.setVerticalGroup(
+            flowerPowerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(flowerPowerPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -82,6 +111,8 @@ public class MyFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private CafeRacerPanel cafeRacer1;
+    private CafeRacerPanel cafeRacerPanel1;
+    private FlowerPowerPanel flowerPowerPanel1;
+    private SuperCiucPanel superCiucPanel1;
     // End of variables declaration//GEN-END:variables
 }
