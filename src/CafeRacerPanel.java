@@ -331,7 +331,7 @@ public class CafeRacerPanel extends JPanel{
      */
     public void paintGrid(Graphics g) {
         g.setColor(Color.white);
-        for (int i = 0; i < GRID_COLUMS; i++) {
+        for (int i = 0; i <= GRID_COLUMS; i++) {
             g.drawLine(
                     getLeft(i),
                     getTop(0),
@@ -339,7 +339,7 @@ public class CafeRacerPanel extends JPanel{
                     getTop(GRID_ROWS)
             );
         }
-        for (int i = 0; i < GRID_ROWS; i++) {
+        for (int i = 0; i <= GRID_ROWS; i++) {
             g.drawLine(
                     getLeft(0),
                     getTop(i),
