@@ -31,23 +31,70 @@ public class TriangleFrame extends javax.swing.JFrame {
         downButton = new javax.swing.JButton();
         leftButton = new javax.swing.JButton();
         rightButton = new javax.swing.JButton();
+        trianglePanel = new triangle.TrianglePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(500, 500));
 
         upButton.setText("Up");
+        upButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(upButton, java.awt.BorderLayout.PAGE_START);
 
         downButton.setText("Down");
+        downButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                downButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(downButton, java.awt.BorderLayout.PAGE_END);
 
         leftButton.setText("Left");
+        leftButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leftButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(leftButton, java.awt.BorderLayout.LINE_START);
 
         rightButton.setText("Right");
+        rightButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rightButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(rightButton, java.awt.BorderLayout.LINE_END);
+        getContentPane().add(trianglePanel, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void rightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightButtonActionPerformed
+        // TODO add your handling code here:
+        this.trianglePanel.moveX(10);
+        this.repaint();
+    }//GEN-LAST:event_rightButtonActionPerformed
+
+    private void upButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upButtonActionPerformed
+        // TODO add your handling code here:
+        this.trianglePanel.moveY(-10);
+        this.repaint();
+    }//GEN-LAST:event_upButtonActionPerformed
+
+    private void downButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downButtonActionPerformed
+        // TODO add your handling code here:
+        this.trianglePanel.moveY(10);
+        this.repaint();
+    }//GEN-LAST:event_downButtonActionPerformed
+
+    private void leftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftButtonActionPerformed
+        // TODO add your handling code here:
+        this.trianglePanel.moveX(-10);
+        this.repaint();
+    }//GEN-LAST:event_leftButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +135,7 @@ public class TriangleFrame extends javax.swing.JFrame {
     private javax.swing.JButton downButton;
     private javax.swing.JButton leftButton;
     private javax.swing.JButton rightButton;
+    private triangle.TrianglePanel trianglePanel;
     private javax.swing.JButton upButton;
     // End of variables declaration//GEN-END:variables
 }
