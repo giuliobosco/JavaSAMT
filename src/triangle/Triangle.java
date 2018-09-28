@@ -92,7 +92,7 @@ public class Triangle {
      * 
      * @param position Coordinates of the triangle.
      */
-    public void setPoint(Point position) {
+    public void setPosition(Point position) {
         this.position = position;
     }
     
@@ -101,7 +101,7 @@ public class Triangle {
      * 
      * @return Coordinates of the triangle. 
      */
-    public Point getPoint() {
+    public Point getPosition() {
         return this.position;
     }
     
@@ -136,7 +136,7 @@ public class Triangle {
      * @param position Coordinates of the triangle
      */
     public Triangle(Point position) {
-        this.setPoint(position);
+        this.setPosition(position);
     }
     
     /**
@@ -147,7 +147,7 @@ public class Triangle {
      * @param height Height of the triangle.
      */
     public Triangle(Point position, double base, double height) {
-        this.setPoint(position);
+        this.setPosition(position);
         this.setBase(base);
         this.setHeight(height);
     }
