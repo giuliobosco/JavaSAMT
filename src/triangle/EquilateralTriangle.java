@@ -24,8 +24,11 @@
 
 package triangle;
 
+import java.awt.Point;
+
 /**
- *
+ * Class for rappresent a triangle equilateral.
+ * .
  * @author giuliobosco
  */
 public class EquilateralTriangle extends Triangle {
@@ -58,5 +61,10 @@ public class EquilateralTriangle extends Triangle {
         this.height = Math.sqrt(
                 Math.pow(this.base, 2) - Math.pow(this.base / 2, 2)
         );        
+    }
+    
+    public EquilateralTriangle(Point position, double side) {
+        this.position = position;
+        this.setBase(side);
     }
 }
