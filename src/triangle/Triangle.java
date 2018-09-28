@@ -24,6 +24,8 @@
 
 package triangle;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Point;
 
 /**
@@ -173,5 +175,35 @@ public class Triangle {
         double perimeter = this.base + side * 2;
         
         return perimeter>=0?perimeter:perimeter*-1;
+    }
+
+    /**
+     * Paint the triangle.
+     * 
+     * @param g Graphics of the window. 
+     */
+    public void paint(Graphics g) {
+        g.setColor(Color.BLACK);
+        
+        g.drawLine(
+                (int)(this.position.x + this.base / 2),
+                this.position.y,
+                (int)(this.position.x + this.base), 
+                (int)(this.position.y + this.height)
+        );
+        
+        g.drawLine(
+                (int)(this.position.x + this.base),
+                (int)(this.position.y + this.height),
+                this.position.x,
+                (int)(this.position.y + this.height)
+        );
+        
+        g.drawLine(
+                (int)(this.position.x),
+                (int)(this.position.y + this.height),
+                (int)(this.position.x + this.base / 2),
+                (int)(this.position.y)
+        );
     }
 }
