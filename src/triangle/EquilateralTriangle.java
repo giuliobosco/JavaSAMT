@@ -34,6 +34,11 @@ import java.awt.Point;
 public class EquilateralTriangle extends Triangle {
     
     /**
+     * Default triangle side.
+     */
+    public static final double DEFAULT_SIDE = 20;
+    
+    /**
      * Setter for the height.
      * Calculate Base. Formula: hypotenuse = arccos(30°) * adjacent cateto. 
      * 
@@ -63,8 +68,25 @@ public class EquilateralTriangle extends Triangle {
         );        
     }
     
+    /**
+     * Constructor with position and side.
+     * Calculate the height.
+     * 
+     * @param position Position of the triangle.
+     * @param side Side of the triangle.
+     */
     public EquilateralTriangle(Point position, double side) {
         this.position = position;
         this.setBase(side);
+    }
+    
+    /**
+     * Constructor with position.
+     * Default side.
+     * 
+     * @param position Position of the triangle.
+     */
+    public EquilateralTriangle(Point position) {
+        this(position, DEFAULT_SIDE);
     }
 }
