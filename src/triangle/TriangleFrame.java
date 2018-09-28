@@ -27,7 +27,24 @@ public class TriangleFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        upButton = new javax.swing.JButton();
+        downButton = new javax.swing.JButton();
+        leftButton = new javax.swing.JButton();
+        rightButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        upButton.setText("Up");
+        getContentPane().add(upButton, java.awt.BorderLayout.PAGE_START);
+
+        downButton.setText("Down");
+        getContentPane().add(downButton, java.awt.BorderLayout.PAGE_END);
+
+        leftButton.setText("Left");
+        getContentPane().add(leftButton, java.awt.BorderLayout.LINE_START);
+
+        rightButton.setText("Right");
+        getContentPane().add(rightButton, java.awt.BorderLayout.LINE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -68,5 +85,9 @@ public class TriangleFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton downButton;
+    private javax.swing.JButton leftButton;
+    private javax.swing.JButton rightButton;
+    private javax.swing.JButton upButton;
     // End of variables declaration//GEN-END:variables
 }
