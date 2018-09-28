@@ -156,7 +156,9 @@ public class Triangle {
      * @return Area of the triangle. 
      */
     public double getArea() {
-        return this.base * this.height / 2;
+        double area = this.base * this.height / 2;
+        
+        return area>=0?area:area*-1;
     }
     
     /**
@@ -168,7 +170,8 @@ public class Triangle {
         double side = Math.sqrt(
                 Math.pow(this.height, 2) + Math.pow(this.base / 2, 2)
         );
+        double perimeter = this.base + side * 2;
         
-        return this.base + side * 2;
+        return perimeter>=0?perimeter:perimeter*-1;
     }
 }
