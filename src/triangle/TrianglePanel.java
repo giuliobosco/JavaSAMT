@@ -76,6 +76,8 @@ public class TrianglePanel extends JPanel {
     }
     
     public void paint(Graphics g) {
+        this.moveX(0);
+        this.moveY(0);
         this.triangle.paint(g);
     }
 }
