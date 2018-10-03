@@ -47,7 +47,14 @@ public class TrianglePanel extends JPanel {
      */
     public TrianglePanel() {
         int triangleSide = 50;
-        this.triangle = new EquilateralTriangle(new Point(0,0), triangleSide);        
+        this.triangle = new EquilateralTriangle(new Point(0,0), triangleSide);
+    }
+    
+    public void centerTriangle() {
+        int triangleX = (int)(this.getWidth() - this.triangle.getBase())/2;
+        int triangleY = (int)(this.getHeight() - this.triangle.getHeight())/2;
+        
+        this.triangle.setPosition(new Point(triangleX, triangleY));
     }
     
     /**

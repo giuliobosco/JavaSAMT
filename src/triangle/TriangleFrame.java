@@ -16,6 +16,7 @@ public class TriangleFrame extends javax.swing.JFrame {
      */
     public TriangleFrame() {
         initComponents();
+        trianglePanel.centerTriangle();
     }
 
     /**
