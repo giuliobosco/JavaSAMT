@@ -30,118 +30,118 @@ import java.awt.Point;
 
 /**
  * Class for rappresent a triangle.
- * 
+ *
  * @author giuliobosco
  */
 public class Triangle {
-    
+
     /**
      * Side of the triangle.
      */
     protected double base;
-    
+
     /**
      * Height of the triangle.
      */
     protected double height;
-    
+
     /**
      * Coordinates of the triangle.
      * Top left point.
      */
     protected Point position;
-    
+
     /**
      * Setter for the side of the triangle.
-     * 
+     *
      * @param base Side of the triangle.
      */
     public void setBase(double base) {
         this.base = base;
     }
-    
+
     /**
      * Getter for the side of the triangle.
-     * 
+     *
      * @return Side of the triangle.
      */
     public double getBase() {
         return this.base;
     }
-    
+
     /**
      * Setter for the height of the triangle.
-     * 
+     *
      * @param height Height of the triangle.
      */
     public void setHeight(double height) {
         this.height = height;
     }
-    
+
     /**
      * Getter for the height of the triangle.
-     * 
+     *
      * @return Height of the triangle.
      */
     public double getHeight() {
         return this.height;
     }
-    
+
     /**
      * Setter for the coordinates of the triangle.
-     * 
+     *
      * @param position Coordinates of the triangle.
      */
     public void setPosition(Point position) {
         this.position = position;
     }
-    
+
     /**
      * Getter for the coordinates of the triangle.
-     * 
-     * @return Coordinates of the triangle. 
+     *
+     * @return Coordinates of the triangle.
      */
     public Point getPosition() {
         return this.position;
     }
-    
+
     /**
      * Setter for the X coordinate of the triangle.
-     * 
+     *
      * @param x X coordinate of the triangle.
      */
     public void setX(int x) {
         this.position.x = x;
     }
-    
+
     /**
      * Setter for the Y coordinate of the triangle.
-     * 
+     *
      * @param y Y coordinate of the triangle.
      */
     public void setY(int y) {
         this.position.y = y;
     }
-    
+
     /**
      * Empty constructor.
      */
     public Triangle() {
-        
+
     }
-    
+
     /**
      * Constructor with position.
-     * 
+     *
      * @param position Coordinates of the triangle
      */
     public Triangle(Point position) {
         this.setPosition(position);
     }
-    
+
     /**
      * Constructor with position, base and height of the triangle.
-     * 
+     *
      * @param position Coordinates of the triangle.
      * @param base Base of the triangle.
      * @param height Height of the triangle.
@@ -151,21 +151,21 @@ public class Triangle {
         this.setBase(base);
         this.setHeight(height);
     }
-    
+
     /**
      * Getter for the area of the triangle.
-     * 
-     * @return Area of the triangle. 
+     *
+     * @return Area of the triangle.
      */
     public double getArea() {
         double area = this.base * this.height / 2;
-        
+
         return area>=0?area:area*-1;
     }
-    
+
     /**
      * Getter for the perimeter of the triangle.
-     * 
+     *
      * @return Perimeter of the triangle.
      */
     public double getPerimeter() {
@@ -173,32 +173,32 @@ public class Triangle {
                 Math.pow(this.height, 2) + Math.pow(this.base / 2, 2)
         );
         double perimeter = this.base + side * 2;
-        
+
         return perimeter>=0?perimeter:perimeter*-1;
     }
 
     /**
      * Paint the triangle.
-     * 
-     * @param g Graphics of the window. 
+     *
+     * @param g Graphics of the window.
      */
     public void paint(Graphics g) {
         g.setColor(Color.BLACK);
-        
+
         g.drawLine(
                 (int)(this.position.x + this.base / 2),
                 this.position.y,
-                (int)(this.position.x + this.base), 
+                (int)(this.position.x + this.base),
                 (int)(this.position.y + this.height)
         );
-        
+
         g.drawLine(
                 (int)(this.position.x + this.base),
                 (int)(this.position.y + this.height),
                 this.position.x,
                 (int)(this.position.y + this.height)
         );
-        
+
         g.drawLine(
                 (int)(this.position.x),
                 (int)(this.position.y + this.height),
