@@ -30,17 +30,17 @@ import java.awt.Graphics;
 
 /**
  * TrianglePanel
- * 
+ *
  * @author giuliobosco
  * @version 28.09.2018
  */
 public class TrianglePanel extends JPanel {
-    
+
     /**
      * Triangle of the view.
      */
     private Triangle triangle;
-    
+
     /**
      * Constructor without parameters.
      * Create the triangle on position (0,0).
@@ -49,42 +49,46 @@ public class TrianglePanel extends JPanel {
         int triangleSide = 50;
         this.triangle = new EquilateralTriangle(new Point(0,0), triangleSide);
     }
-    
+
+    /**
+     * Calculate the center of the triangle and set the triangle position to the center of the
+     * window.
+     */
     public void centerTriangle() {
         int triangleX = (int)(this.getWidth() - this.triangle.getBase())/2;
         int triangleY = (int)(this.getHeight() - this.triangle.getHeight())/2;
-        
+
         this.triangle.setPosition(new Point(triangleX, triangleY));
     }
-    
+
     /**
-     * Move the triangle on the X asses for the number of pixels passed as 
+     * Move the triangle on the X asses for the number of pixels passed as
      * parameter.
-     * 
-     * @param move Number of pixel to move the triangle. 
+     *
+     * @param move Number of pixel to move the triangle.
      */
     public void moveX(int move) {
         this.triangle.getPosition().x += move;
-        
+
         if (this.triangle.getPosition().x < 0) {
             this.triangle.getPosition().x = 0;
         } else if (
-                this.triangle.getPosition().x >= 
+                this.triangle.getPosition().x >=
                 this.getWidth() - this.triangle.getBase()) {
             this.triangle.getPosition().x = (int)(
                     this.getWidth() - this.triangle.getBase());
         }
     }
-    
+
     /**
      * Move the triangle on the Y asses for the number of pixels passed as
      * parameter.
-     * 
-     * @param move Number of pixel to move the triangle. 
+     *
+     * @param move Number of pixel to move the triangle.
      */
     public void moveY(int move) {
         this.triangle.getPosition().y += move;
-        
+
         if (this.triangle.getPosition().y < 0) {
             this.triangle.getPosition().y = 0;
         } else if (
@@ -94,10 +98,10 @@ public class TrianglePanel extends JPanel {
                     this.getHeight() - this.triangle.getHeight());
         }
     }
-    
+
     /**
      * Paint the TrianglePanel.
-     * 
+     *
      * @param g Graphics of the window.
      */
     @Override
