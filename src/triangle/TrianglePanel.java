@@ -46,9 +46,16 @@ public class TrianglePanel extends JPanel {
      * Create the triangle on position (0,0).
      */
     public TrianglePanel() {
-        this.triangle = new EquilateralTriangle(new Point(50,50), 50);
+        int triangleSide = 50;
+        this.triangle = new EquilateralTriangle(new Point(0,0), triangleSide);        
     }
     
+    /**
+     * Move the triangle on the X asses for the number of pixels passed as 
+     * parameter.
+     * 
+     * @param move Number of pixel to move the triangle. 
+     */
     public void moveX(int move) {
         this.triangle.getPosition().x += move;
         
@@ -62,6 +69,12 @@ public class TrianglePanel extends JPanel {
         }
     }
     
+    /**
+     * Move the triangle on the Y asses for the number of pixels passed as
+     * parameter.
+     * 
+     * @param move Number of pixel to move the triangle. 
+     */
     public void moveY(int move) {
         this.triangle.getPosition().y += move;
         
@@ -75,6 +88,12 @@ public class TrianglePanel extends JPanel {
         }
     }
     
+    /**
+     * Paint the TrianglePanel.
+     * 
+     * @param g Graphics of the window.
+     */
+    @Override
     public void paint(Graphics g) {
         this.moveX(0);
         this.moveY(0);
