@@ -72,32 +72,26 @@ public class ManualBorderLayout extends JFrame {
         this.setMinimumSize(new Dimension(500, 500));
         
         // Set Frame Layout.
-        BorderLayout borderLayout = new BorderLayout();
-        this.getContentPane().setLayout(borderLayout);
+        this.getContentPane().setLayout(new BorderLayout());
         
         // create and add the Top Button
-        this.northButton = new JButton();
-        this.northButton.setText("N");
+        this.northButton = new JButton("N");
         this.getContentPane().add(northButton, BorderLayout.NORTH);
         
         // create and add the Right Button
-        this.eastButton = new JButton();
-        this.eastButton.setText("E");
+        this.eastButton = new JButton("E");
         this.getContentPane().add(eastButton, BorderLayout.EAST);
         
         // create and add the Bottom Button
-        this.southButton = new JButton();
-        this.southButton.setText("S");
+        this.southButton = new JButton("S");
         this.getContentPane().add(southButton, BorderLayout.SOUTH);
         
         // create and add the West Button
-        this.westButton = new JButton();
-        this.westButton.setText("W");
+        this.westButton = new JButton("W");
         this.getContentPane().add(westButton, BorderLayout.WEST);
         
         // create and add the Center Button
-        this.centerButton = new JButton();
-        this.centerButton.setText("C");
+        this.centerButton = new JButton("C");
         this.getContentPane().add(centerButton, BorderLayout.CENTER);
         
         // recalcule size of the app.
