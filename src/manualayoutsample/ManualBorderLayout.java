@@ -39,22 +39,22 @@ public class ManualBorderLayout extends JFrame {
     /**
      * Button on the top of the App.
      */
-    private JButton topButton;
+    private JButton northButton;
     
     /**
      * Button on the right of the App.
      */
-    private JButton rightButton;
+    private JButton eastButton;
     
     /**
      * Button on the bottom of the App.
      */
-    private JButton bottomButton;
+    private JButton southButton;
     
     /**
      * Button on the left of the App.
      */
-    private JButton leftButton;
+    private JButton westButton;
     
     /**
      * Button on the center of the App.
@@ -76,28 +76,28 @@ public class ManualBorderLayout extends JFrame {
         this.getContentPane().setLayout(borderLayout);
         
         // create and add the Top Button
-        this.topButton = new JButton();
-        this.topButton.setText("A");
-        this.getContentPane().add(topButton, BorderLayout.PAGE_START);
+        this.northButton = new JButton();
+        this.northButton.setText("N");
+        this.getContentPane().add(northButton, BorderLayout.NORTH);
         
         // create and add the Right Button
-        this.rightButton = new JButton();
-        this.rightButton.setText("B");
-        this.getContentPane().add(rightButton, BorderLayout.LINE_END);
+        this.eastButton = new JButton();
+        this.eastButton.setText("E");
+        this.getContentPane().add(eastButton, BorderLayout.EAST);
         
         // create and add the Bottom Button
-        this.bottomButton = new JButton();
-        this.bottomButton.setText("C");
-        this.getContentPane().add(bottomButton, BorderLayout.PAGE_END);
+        this.southButton = new JButton();
+        this.southButton.setText("S");
+        this.getContentPane().add(southButton, BorderLayout.SOUTH);
         
-        // create and add the Left Button
-        this.leftButton = new JButton();
-        this.leftButton.setText("D");
-        this.getContentPane().add(leftButton, BorderLayout.LINE_START);
+        // create and add the West Button
+        this.westButton = new JButton();
+        this.westButton.setText("W");
+        this.getContentPane().add(westButton, BorderLayout.WEST);
         
         // create and add the Center Button
         this.centerButton = new JButton();
-        this.centerButton.setText("E");
+        this.centerButton.setText("C");
         this.getContentPane().add(centerButton, BorderLayout.CENTER);
         
         // recalcule size of the app.
