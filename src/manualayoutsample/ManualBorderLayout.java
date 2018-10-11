@@ -24,12 +24,61 @@
 
 package manualayoutsample;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
 /**
  * Create a BorderLayout with 5 buttons manually.
  * 
  * @author giuliobosco
  * @version 11.10.2018
  */
-public class ManualBorderLayout {
-
+public class ManualBorderLayout extends JFrame {
+    
+    private JButton topButton;
+    private JButton rightButton;
+    private JButton bottomButton;
+    private JButton leftButton;
+    private JButton centerButton;
+    public ManualBorderLayout() {
+        super();
+        
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setMinimumSize(new Dimension(500, 500));
+        
+        this.topButton = new JButton();
+        this.topButton.setText("A");
+        this.getContentPane().add(topButton, BorderLayout.PAGE_START);
+        
+        this.rightButton = new JButton();
+        this.rightButton.setText("B");
+        this.getContentPane().add(rightButton, BorderLayout.LINE_END);
+        
+        this.bottomButton = new JButton();
+        this.bottomButton.setText("C");
+        this.getContentPane().add(bottomButton, BorderLayout.PAGE_END);
+        
+        this.leftButton = new JButton();
+        this.leftButton.setText("D");
+        this.getContentPane().add(leftButton, BorderLayout.LINE_START);
+        
+        this.centerButton = new JButton();
+        this.centerButton.setText("E");
+        this.getContentPane().add(centerButton, BorderLayout.CENTER);
+        
+        pack();
+    }
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ManualBorderLayout().setVisible(true);
+            }
+        });
+    }
 }
