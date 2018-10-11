@@ -71,6 +71,10 @@ public class ManualBorderLayout extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setMinimumSize(new Dimension(500, 500));
         
+        // Set Frame Layout.
+        BorderLayout borderLayout = new BorderLayout();
+        this.getContentPane().setLayout(borderLayout);
+        
         // create and add the Top Button
         this.topButton = new JButton();
         this.topButton.setText("A");
