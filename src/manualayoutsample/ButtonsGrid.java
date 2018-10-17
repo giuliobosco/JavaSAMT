@@ -40,12 +40,26 @@ import javax.swing.JButton;
  */
 public class ButtonsGrid extends JFrame implements ActionListener {
     
+    /**
+     * Default rows of the matrix of buttons.
+     */
     public static final int DFL_ROWS = 10;
     
+    /**
+     * Default columns of the matrix of buttons.
+     */
     public static final int DFL_COLS = 10;
     
+    /**
+     * Matrix of buttons.
+     */
     private JButton[][] buttons;
     
+    /**
+     * Constructor with the sie of the matrix.
+     * 
+     * @param size Size of the matrix
+     */
     public ButtonsGrid(Dimension size) {
         this.buttons = new JButton[size.height][size.width];
         
@@ -66,20 +80,36 @@ public class ButtonsGrid extends JFrame implements ActionListener {
         pack();
     }
     
+    /**
+     * Constructor with size of the matrix as two parameter.
+     * 
+     * @param x Width of the matrix.
+     * @param y Height of the matrix.
+     */
     public ButtonsGrid(int x, int y) {
         this(new Dimension(x, y));
     }
     
+    /**
+     * Create the matrix with default dimension.
+     */
     public ButtonsGrid() {
         this(DFL_ROWS, DFL_COLS);
     }
 
+    /**
+     * An button as been clicked.
+     * 
+     * @param e Clicked Event.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Pressed Button: " + ((JButton) e.getSource()).getText());
     }
     
     /**
+     * Main method of the class, create the frame.
+     * 
      * @param args the command line arguments
      */
     public static void main(String args[]) {
