@@ -56,11 +56,26 @@ public class ButtonsGrid extends JFrame implements ActionListener {
     private JButton[][] buttons;
     
     /**
+     * Size of the matrix of buttons.
+     */
+    private Dimension size;
+    
+    /**
      * Constructor with the sie of the matrix.
      * 
      * @param size Size of the matrix
      */
     public ButtonsGrid(Dimension size) {
+        if (size.height > 0 && size.width > 0) {
+            this.size = size;
+        }
+        this.initComponents();
+    }
+    
+    /**
+     * Initialize Components of the frame.
+     */
+    private void initComponents() {
         this.buttons = new JButton[size.height][size.width];
         
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
