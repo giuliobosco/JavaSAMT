@@ -241,28 +241,28 @@ public class GridPanel extends JPanel{
     /**
      * Increase the rows of the grid.
      */
-    public void increaseRow() {
+    public void increaseRows() {
         this.setRows(this.getRows() + 1);
     }
     
     /**
      * Decrease the rows in the grid.
      */
-    public void decreaseRow() {
+    public void decreaseRows() {
         this.setRows(this.getRows() - 1);
     }
     
     /**
      * Increase the columns in the grid.
      */
-    public void increaseCol() {
+    public void increaseCols() {
         this.setCols(this.getCols() + 1);
     }
     
     /**
      * Decrease the columns in the grid.
      */
-    public void decreaseCol() {
+    public void decreaseCols() {
         this.setCols(this.getCols() - 1);
     }
     
