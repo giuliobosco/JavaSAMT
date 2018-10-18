@@ -175,8 +175,6 @@ public class GridPanel extends JPanel{
                 (int) ((getHeightMargin() - this.rows * this.size) / 2) + this.margin,
                 (int) ((getWidthMargin() - this.cols * this.size) / 2) + this.margin
         );
-        
-        System.out.println(size);
     }
     
     /**
