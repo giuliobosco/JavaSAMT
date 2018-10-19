@@ -25,6 +25,9 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
 
 /**
@@ -33,7 +36,7 @@ import javax.swing.JPanel;
  * @author giuliobosco
  * @version 04.10.2018
  */
-public class GridPanel extends JPanel{
+public class GridPanel extends JPanel implements MouseMotionListener {
     
     /**
      * Default margin of the grid.
@@ -85,6 +88,11 @@ public class GridPanel extends JPanel{
      * Padding for center the grid.
      */
     private Dimension padding;
+    
+    /**
+     * Over square.
+     */
+    private Point hover;
     
     /**
      * Setter for the margin of the grid.
@@ -184,6 +192,10 @@ public class GridPanel extends JPanel{
         this.cols = DFL_COLS;
         
         this.margin = DFL_MARGIN;
+        
+        this.hover = new Point(-1, -1);
+        
+        this.addMouseMotionListener(this);
     }
     
     /**
@@ -258,6 +270,13 @@ public class GridPanel extends JPanel{
                    this.getTop(i));
         }
         
+        if (this.hover.x >= 0 && this.hover.y >= 0) {
+            g.fillRect(
+                    this.getLeft(this.hover.x), 
+                    this.getTop(this.hover.y), 
+                    this.size, 
+                    this.size);
+        }
     }
     
     /**
@@ -300,5 +319,54 @@ public class GridPanel extends JPanel{
      */
     public void decreaseMargin() {
         this.setMargin(this.getMargin() - DFL_MARGIN);
+    }
+    
+    /**
+     * Check if the the mouse event is in the grid. 
+     * Write the column and the row, on which is the hover attribute.
+     * 
+     * @param e Mouse Event.
+     * @return True if the event has been triggered in the grid.
+     */
+    public boolean contains(MouseEvent e) {
+        if (e.getX() > this.getLeft(0) && e.getX() < this.getLeft(this.cols)) {
+            this.hover.x = (int) ((e.getX() - this.getLeft(0)) / this.size);
+        } else {
+            this.hover.x = -1;
+        }
+        
+        if (e.getY() > this.getTop(0) && e.getY() < this.getTop(this.rows)) {
+            this.hover.y = (int) ((e.getY() - this.getTop(0)) / this.size);
+        } else {
+            this.hover.y = -1;
+        }
+        
+        this.repaint();
+        
+        if (this.hover.x >= 0 && this.hover.y >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Mouse dragged event.
+     * 
+     * @param e Mouse Event.
+     */
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        this.contains(e);
+    }
+
+    /**
+     * Mouse moved event.
+     * 
+     * @param e Mouse Event.
+     */
+    @Override
+    public void mouseMoved(MouseEvent e) {        
+        this.contains(e);
     }
 }
