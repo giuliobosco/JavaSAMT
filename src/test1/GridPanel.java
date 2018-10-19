@@ -172,8 +172,8 @@ public class GridPanel extends JPanel{
         this.size = (midHeight > midWidth)? midWidth : midHeight;
         
         this.padding = new Dimension(
-                (int) ((getHeightMargin() - this.rows * this.size) / 2) + this.margin,
-                (int) ((getWidthMargin() - this.cols * this.size) / 2) + this.margin
+                (int) ((getWidthMargin() - this.cols * this.size) / 2) + this.margin,
+                (int) ((getHeightMargin() - this.rows * this.size) / 2) + this.margin
         );
     }
     
@@ -221,17 +221,17 @@ public class GridPanel extends JPanel{
         g.setColor(Color.black);
         for (int i = 0; i <= this.cols; i++) {
            g.drawLine(
+                   this.getLeft(i), 
                    this.getTop(0), 
                    this.getLeft(i), 
-                   this.getTop(this.rows), 
-                   this.getLeft(i));
+                   this.getTop(this.rows));
         }
         for (int i = 0; i <= this.rows; i++) {
             g.drawLine(
-                   this.getTop(i), 
                    this.getLeft(0), 
                    this.getTop(i), 
-                   this.getLeft(this.cols));
+                   this.getLeft(this.cols), 
+                   this.getTop(i));
         }
         
     }
