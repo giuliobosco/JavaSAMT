@@ -245,6 +245,8 @@ public class GridPanel extends JPanel implements MouseMotionListener {
     
     /**
      * Paint the grid.
+     * Fill the cell that contains the mouse.
+     * 
      * @param g Graphics of the window.
      */
     @Override
