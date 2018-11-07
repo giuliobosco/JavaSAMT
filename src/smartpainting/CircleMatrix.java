@@ -47,7 +47,7 @@ public class CircleMatrix extends Panel implements MouseListener {
     /**
      * Old clicked point.
      */
-    private Point old;
+    private Point lastClick;
 
     /**
      * Constructor without parameters.
@@ -55,7 +55,7 @@ public class CircleMatrix extends Panel implements MouseListener {
      */
     public CircleMatrix() {
         this.addMouseListener(this);
-        old = new Point(0, 0);
+        lastClick = new Point(0, 0);
     }
 
     /**
@@ -78,10 +78,13 @@ public class CircleMatrix extends Panel implements MouseListener {
         if (clippingArea.getWidth() == size && clippingArea.getHeight() == size) {
             g.setColor(Color.red);
             g.fillOval(clippingArea.x, clippingArea.y, size, size);
-            g.setClip(old.x, old.y, size, size);
+            
+            g.setClip(lastClick.x, lastClick.y, size, size);
+            
             g.setColor(Color.green);
-            g.fillOval(old.x, old.y, size, size);
-            old = new Point(clippingArea.getLocation());
+            g.fillOval(lastClick.x, lastClick.y, size, size);
+            
+            this.lastClick = new Point(clippingArea.getLocation());
         } else {
             for (int i = 0; i < this.getWidth() / 10; i++) {
                 for (int j = 0; j < this.getHeight() / 10; j++) {
@@ -156,7 +159,7 @@ public class CircleMatrix extends Panel implements MouseListener {
         int row = getRow(e.getPoint());
         int col = getCol(e.getPoint());
 
-        if (row != getRow(old) || col != getCol(old)) {
+        if (row != getRow(lastClick) || col != getCol(lastClick)) {
             this.repaint(col * size, row * size, size, size);
         }
     }
