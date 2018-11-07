@@ -92,23 +92,33 @@ public class CircleMatrix extends Panel implements MouseListener {
     }
 
     /**
-     * Get the row by x coordinate.
+     * Get the row by y coordinate.
      * 
-     * @param x X coordinate.
+     * @param point Coordinates point.
      * @return Row of the circles matrix.
      */
-    public int getRow(int x) {
-        return x / this.size;
+    public int getRow(Point point) {
+        return this.getBySize(point.y);
     }
 
     /**
-     * Get the column by the y coordinate.
+     * Get the column by the x coordinate.
      * 
-     * @param y Y coordinate.
+     * @param point Coordinates point.
      * @return Column of the circles matrix.
      */
-    public int getColumn(int y) {
-        return y / this.size;
+    public int getCol(Point point) {
+        return this.getBySize(point.x);
+    }
+    
+    /**
+     * Get the column or row by size.
+     * 
+     * @param n Size in pixels.
+     * @return Number of the row or column.
+     */
+    public int getBySize(int n) {
+        return n / this.size;
     }
 
     /**
@@ -138,10 +148,10 @@ public class CircleMatrix extends Panel implements MouseListener {
      */
     @Override
     public void mouseReleased(MouseEvent e) {
-        int row = getRow(e.getY());
-        int col = getColumn(e.getX());
+        int row = getRow(e.getPoint());
+        int col = getCol(e.getPoint());
 
-        if (row != getRow(old.y) || col != getColumn(old.x)) {
+        if (row != getRow(old) || col != getCol(old)) {
             this.repaint(col * size, row * size, size, size);
         }
     }
