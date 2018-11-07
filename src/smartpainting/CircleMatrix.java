@@ -66,19 +66,23 @@ public class CircleMatrix extends Panel implements MouseListener {
     @Override
     public void paint(Graphics g) {
         long startTime = System.nanoTime();
+        
         Rectangle clippingArea = g.getClipBounds();
+        
         g.setColor(Color.blue);
-        g.fillRect(clippingArea.x, clippingArea.y, clippingArea.width, clippingArea.height);
+        g.fillRect(clippingArea.x, 
+                clippingArea.y, 
+                clippingArea.width, 
+                clippingArea.height);
+        
         if (clippingArea.getWidth() == size && clippingArea.getHeight() == size) {
-            g.setColor(Color.RED);
+            g.setColor(Color.red);
             g.fillOval(clippingArea.x, clippingArea.y, size, size);
             g.setClip(old.x, old.y, size, size);
-            g.setColor(Color.GREEN);
+            g.setColor(Color.green);
             g.fillOval(old.x, old.y, size, size);
-            old = new Point(clippingArea.x, clippingArea.y);
+            old = new Point(clippingArea.getLocation());
         } else {
-            System.out.println("first");
-
             for (int i = 0; i < this.getWidth() / 10; i++) {
                 for (int j = 0; j < this.getHeight() / 10; j++) {
                     g.setColor(Color.green);
@@ -87,6 +91,7 @@ public class CircleMatrix extends Panel implements MouseListener {
                 }
             }
         }
+        
         long endTime = System.nanoTime();
         System.out.println(endTime - startTime);
     }
