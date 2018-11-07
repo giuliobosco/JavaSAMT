@@ -130,13 +130,18 @@ public class CircleMatrix extends Panel implements MouseListener {
     }
 
     /**
-     * Mouse clicked event (not used).
+     * Mouse clicked event.
      * 
      * @param e Mouse Event.
      */
     @Override
     public void mouseClicked(MouseEvent e) {
+        int row = getRow(e.getPoint());
+        int col = getCol(e.getPoint());
 
+        if (row != getRow(lastClick) || col != getCol(lastClick)) {
+            this.repaint(col * size, row * size, size, size);
+        }
     }
 
     /**
@@ -150,18 +155,13 @@ public class CircleMatrix extends Panel implements MouseListener {
     }
 
     /**
-     * Mouse released event.
+     * Mouse released event (not used).
      * 
      * @param e Mouse Event.
      */
     @Override
     public void mouseReleased(MouseEvent e) {
-        int row = getRow(e.getPoint());
-        int col = getCol(e.getPoint());
-
-        if (row != getRow(lastClick) || col != getCol(lastClick)) {
-            this.repaint(col * size, row * size, size, size);
-        }
+        
     }
 
     /**
