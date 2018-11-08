@@ -1,3 +1,5 @@
+package panelsframes;
+
 /*
  * The MIT License
  *
@@ -22,25 +24,27 @@
  * THE SOFTWARE.
  */
 
+import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
-import java.awt.Color;
+
 /**
- * CafeRacer Responsive Design
- * 
- * @author giuliobosco
- * @version 26.09.2018
+ * Exercise begin use graphical interface Design.
+ * Design a flower.
+ * @author Giulio Bosco
+ * @version 23.04.2018
  */
-public class CafeRacerPanel extends JPanel{
+public class FlowerPowerPanel extends JPanel {
+
     /**
      * Columns used for the design.
      */
-    public final int GRID_COLUMS = 27;
+    public final int GRID_COLUMS = 3;
     
     /**
      * Rows used for the design.
      */
-    public final int GRID_ROWS = 18;
+    public final int GRID_ROWS = 9;
     
     /**
      * Array margins.
@@ -56,19 +60,19 @@ public class CafeRacerPanel extends JPanel{
     private int squareSize;
     
     /**
-     * Constructor
+     * Empty Constructor.
      */
-    public CafeRacerPanel() {
+    public FlowerPowerPanel() {
+        
     }
-
+    
     /**
      * Calculate margin, for respect the proportion.
      * Array contains 2 elements.
      * 1° Element: Lateral margin.
      * 2° Element: Vertical margin.
-     * @return Array margins.
      */
-    private int[] marginSize() {
+    private void marginSize() {
         int squareWidth = (int) getWidth() / GRID_COLUMS;
         
         int idealHeight = squareWidth * GRID_ROWS;
@@ -82,12 +86,12 @@ public class CafeRacerPanel extends JPanel{
             
             this.squareSize = squareWidth;
             
-            return new int[]{(getWidth() - idealWidth) / 2, 0};
+            margins = new int[]{(getWidth() - idealWidth) / 2, 0};
         } else {
             this.squareSize = squareWidth;
             idealWidth = squareSize * GRID_COLUMS;
             
-            return new int[]{(getWidth() - idealWidth) / 2, (actualHeight - idealHeight) / 2};
+            margins = new int[]{(getWidth() - idealWidth) / 2, (actualHeight - idealHeight) / 2};
         }
     }
     
@@ -128,11 +132,11 @@ public class CafeRacerPanel extends JPanel{
     }
     
     /**
-     * Paint a container for the design.
+     * Paint the sky of the design.
      * @param g Graphics of the window.
      */
-    public void paintContainer(Graphics g) {
-        g.setColor(Color.lightGray);
+    public void paintSky(Graphics g) {
+        g.setColor(Color.cyan);
         g.fillRect(
                 getLeft(0),
                 getTop(0),
@@ -142,187 +146,124 @@ public class CafeRacerPanel extends JPanel{
     }
     
     /**
-     * Paint the grass in the middle of the container.
+     * Paint the bottom grass where to plant the flower.
      * @param g Graphics of the window.
      */
     public void paintGrass(Graphics g) {
         g.setColor(Color.green);
         g.fillRect(
-                getLeft(0),
-                getTop(5),
-                getFigureSize(GRID_COLUMS),
-                getFigureSize(5)
+                getLeft(0), 
+                getTop(8), 
+                getFigureSize(GRID_COLUMS), 
+                getFigureSize(1)
         );
     }
     
     /**
-     * Paint the sky in the top of the container.
-     * @param g Graphics of the window.
-     */
-    public void paintSky(Graphics g) {
-        g.setColor(Color.cyan);
-        g.fillRect(
-                getLeft(0),
-                getTop(0),
-                getFigureSize(GRID_COLUMS),
-                getFigureSize(5)
-        );
-    }
-    
-    /**
-     * Paint the background of the image.
+     * Paint the background of the design.
      * @param g Graphics of the window.
      */
     public void paintBg(Graphics g) {
-        paintContainer(g);
-        paintGrass(g);
         paintSky(g);
+        paintGrass(g);
     }
     
     /**
-     * Paint the sit of the bike.
+     * Paint the gambo of the flower.
      * @param g Graphics of the window.
      */
-    public void paintBikeSeat(Graphics g) {
-        g.setColor(Color.black);
+    public void paintFlowerGambo(Graphics g) {
+        g.setColor(Color.green);
         g.fillRect(
-                getLeft(5), 
+                getLeft(1), 
                 getTop(3), 
-                getFigureSize(2), 
-                getFigureSize(1)
-        );
-        g.fillRect(
-                getLeft(5), 
-                getTop(4), 
-                getFigureSize(7), 
-                getFigureSize(1)
-        );
-    }
-    
-    /**
-     * Paint the top part of the bike.
-     * @param g Graphics of the window.
-     */
-    public void paintBikeTop(Graphics g) {
-        g.setColor(Color.red);
-        g.fillRect(
-                getLeft(5), 
-                getTop(5), 
-                getFigureSize(15), 
-                getFigureSize(1)
-        );
-        g.fillOval(
-                getLeft(12),
-                getTop(2),
-                getFigureSize(9),
+                getFigureSize(1), 
                 getFigureSize(6)
         );
     }
     
     /**
-     * Paint the bottom part of the bike.
+     * Paint the leaf of the flower.
+     * Left & Right Leafs
      * @param g Graphics of the window.
      */
-    public void paintBikeBottom(Graphics g) {
-        g.setColor(Color.gray);
-        g.fillRect(
-                getLeft(12),
-                getTop(6),
-                getFigureSize(9),
+    public void paintFlowerLeaf(Graphics g) {
+        g.setColor(Color.green);
+        // left leaf
+        g.fillOval(
+                getLeft(0),
+                getTop(4),
+                getFigureSize(1),
                 getFigureSize(2)
         );
-        g.fillRect(
-                getLeft(12),
-                getTop(8),
-                getFigureSize(3),
-                getFigureSize(5)
+        // right leaf
+        g.fillOval(
+                getLeft(2),
+                getTop(5),
+                getFigureSize(1),
+                getFigureSize(2)
         );
     }
     
     /**
-     * Paint the back wheel of the bike. 
+     * Paint the main part of the flower.
      * @param g Graphics of the window.
      */
-    public void paintBikeBackWheel(Graphics g) {
-        g.setColor(Color.black);
+    public void paintFlowerMain(Graphics g) {
+        // print the yellow main part.
+        g.setColor(Color.yellow);
+        g.fillOval(
+                getLeft(0),
+                getTop(1),
+                getFigureSize(3),
+                getFigureSize(3)
+        );
+        
+        // print the four orange ovals.
+        g.setColor(Color.orange);
         g.fillOval(
                 getLeft(1),
-                getTop(8),
-                getFigureSize(9),
-                getFigureSize(9)
-        );
-        g.setColor(Color.lightGray);
-        g.fillOval(
-                getLeft(3),
-                getTop(10),
-                getFigureSize(5),
-                getFigureSize(5)
-        );
-        g.setColor(Color.yellow);
-        g.fillRect(
-                getLeft(5),
-                getTop(12),
-                getFigureSize(8),
-                getFigureSize(1)
-        );
-    }
-    
-    /**
-     * Paint the front wheel of the bike.
-     * @param g Graphics of the window.
-     */
-    public void paintBikeFrontWheel(Graphics g) {
-        g.setColor(Color.black);
-        g.fillOval(
-                getLeft(16),
-                getTop(8),
-                getFigureSize(9),
-                getFigureSize(9)
-        );
-        g.setColor(Color.lightGray);
-        g.fillOval(
-                getLeft(18),
-                getTop(10),
-                getFigureSize(5),
-                getFigureSize(5)
-        );
-        g.setColor(Color.yellow);
-        g.fillRect(
-                getLeft(20),
-                getTop(2),
-                getFigureSize(1),
-                getFigureSize(10)
-        );
-    }
-    
-    /**
-     * Paint the HandleBar of the bike.
-     * @param g Graphics of the bike.
-     */
-    public void paintBikeHandleBar(Graphics g) {
-        g.setColor(Color.black);
-        g.fillOval(
-                getLeft(19),
                 getTop(1),
                 getFigureSize(1),
                 getFigureSize(1)
         );
+        g.fillOval(
+                getLeft(2),
+                getTop(2),
+                getFigureSize(1),
+                getFigureSize(1)
+        );
+        g.fillOval(
+                getLeft(1),
+                getTop(3),
+                getFigureSize(1),
+                getFigureSize(1)
+        );
+        g.fillOval(
+                getLeft(0),
+                getTop(2),
+                getFigureSize(1),
+                getFigureSize(1)
+        );
+        
+        // paint the center oval
+        g.setColor(Color.white);
+        g.fillOval(
+                getLeft(1),
+                getTop(2),
+                getFigureSize(1),
+                getFigureSize(1)
+        );
     }
     
     /**
-     * Paint the bike in center of the window.
+     * Paint the flower.
      * @param g Graphics of the window.
      */
-    public void paintBike(Graphics g) {
-        paintBikeSeat(g);
-        
-        paintBikeTop(g);
-        paintBikeBottom(g);
-        
-        paintBikeBackWheel(g);
-        paintBikeFrontWheel(g);
-        
-        paintBikeHandleBar(g);
+    public void paintFlower(Graphics g) {
+        paintFlowerGambo(g);
+        paintFlowerLeaf(g);
+        paintFlowerMain(g);
     }
     
     /**
@@ -330,7 +271,7 @@ public class CafeRacerPanel extends JPanel{
      * @param g Graphics of the window.
      */
     public void paintGrid(Graphics g) {
-        g.setColor(Color.white);
+        g.setColor(Color.lightGray);
         for (int i = 0; i <= GRID_COLUMS; i++) {
             g.drawLine(
                     getLeft(i),
@@ -351,16 +292,13 @@ public class CafeRacerPanel extends JPanel{
     
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
-        margins = marginSize();
+        marginSize();
         clearBg(g);
         
         paintBg(g);
-        paintBike(g);
+        
+        paintFlower(g);
         
         paintGrid(g);
     }
-    
-    
-    
 }
