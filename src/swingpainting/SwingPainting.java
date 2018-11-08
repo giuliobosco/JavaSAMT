@@ -28,19 +28,31 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 /**
- *
+ * Swing painting frame.
+ * 
  * @author giuliobosco
+ * @version 08.11.2018
  */
 public class SwingPainting extends JFrame {
     
+    /**
+     * Circle follower.
+     */
     private CircleFollower circleFollower;
     
+    /**
+     * Constructor without parameters.
+     * Initialize components.
+     */
     public SwingPainting() {
         this.initComponents();
         
         this.setSize(300,300);
     }
     
+    /**
+     * Initialize components.
+     */
     private void initComponents() {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
@@ -50,6 +62,12 @@ public class SwingPainting extends JFrame {
         pack();
     }
     
+    /**
+     * Main method of the class.
+     * Create an SwingPainting.
+     * 
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
