@@ -24,7 +24,9 @@
 package smartpainting;
 
 import java.awt.BorderLayout;
-import javax.swing.JFrame;
+import java.awt.event.WindowAdapter;
+import java.awt.Frame;
+import java.awt.event.WindowEvent;
 
 /**
  * Smart painting frame.
@@ -32,7 +34,7 @@ import javax.swing.JFrame;
  * @author giuliobosco
  * @version 07.11.2018
  */
-public class SmartPainting extends JFrame {
+public class SmartPainting extends Frame {
     
     /**
      * Circle matrix, with smart painting.
@@ -53,10 +55,16 @@ public class SmartPainting extends JFrame {
      * Initialize components.
      */
     private void initComponents() {
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         this.circleMatrix = new CircleMatrix();
-        this.getContentPane().add(this.circleMatrix, BorderLayout.CENTER);
+        
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+                System.exit(0);
+            }
+        });
+        
+        add(circleMatrix, BorderLayout.CENTER);
         
         pack();
     }
