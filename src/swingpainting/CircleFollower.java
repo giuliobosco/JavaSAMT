@@ -26,6 +26,7 @@ package swingpainting;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
@@ -36,7 +37,17 @@ import javax.swing.JPanel;
  */
 public class CircleFollower extends JPanel implements MouseMotionListener {
     
+    public final static int DEFAULT_CIRCLE_SIZE = 30;
+    
+    public final static Point DEFAULT_SELECTED_CELL = new Point(-1,-1);
+    
     private int circleSize;
+    
+    private Point selectedCell;
+    
+    public void setCell(MouseEvent e) {
+        this.selectedCell = new Point(getCell(e.getX()), getCell(e.getY()));
+    }
     
     public int getCell(int pixels) {
         return pixels / this.circleSize;
@@ -48,7 +59,19 @@ public class CircleFollower extends JPanel implements MouseMotionListener {
     
     public CircleFollower() {
         this.addMouseMotionListener(this);
-        this.circleSize = 30;
+        this.circleSize = DEFAULT_CIRCLE_SIZE;
+        this.selectedCell = DEFAULT_SELECTED_CELL;
+    }
+    
+    private void fillOval(Graphics g, int row, int col) {
+        this.fillOval(g, new Point(row, col));
+    }
+    
+    private void fillOval(Graphics g, Point cell) {
+        g.fillOval(getPixels(cell.x), 
+                getPixels(cell.y), 
+                this.circleSize, 
+                this.circleSize);
     }
     
     @Override
@@ -60,13 +83,12 @@ public class CircleFollower extends JPanel implements MouseMotionListener {
         g.setColor(Color.black);
         for (int i = 0; i <= this.getCell(this.getWidth()); i++) {
             for (int  j = 0; j <= this.getCell(this.getHeight()); j++) {
-                g.fillOval(this.getPixels(i),
-                        this.getPixels(j),
-                        this.circleSize,
-                        this.circleSize
-                );
+                this.fillOval(g, i, j);
             }
         }
+        
+        g.setColor(Color.red);
+        this.fillOval(g, selectedCell);
     }
 
     @Override
@@ -76,7 +98,9 @@ public class CircleFollower extends JPanel implements MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
+        this.setCell(e);
         
+        this.repaint();
     }
 
 }
