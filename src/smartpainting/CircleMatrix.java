@@ -106,7 +106,7 @@ public class CircleMatrix extends Panel implements MouseListener {
      * @return Row of the circles matrix.
      */
     public int getRow(Point point) {
-        return this.getBySize(point.y);
+        return this.getCell(point.y);
     }
 
     /**
@@ -116,17 +116,27 @@ public class CircleMatrix extends Panel implements MouseListener {
      * @return Column of the circles matrix.
      */
     public int getCol(Point point) {
-        return this.getBySize(point.x);
+        return this.getCell(point.x);
     }
     
     /**
-     * Get the column or row by size.
+     * Get the cell from the pixels.
      * 
-     * @param n Size in pixels.
+     * @param pixels Size in pixels.
      * @return Number of the row or column.
      */
-    public int getBySize(int n) {
-        return n / this.size;
+    public int getCell(int pixels) {
+        return pixels / this.size;
+    }
+    
+    /**
+     * Get the pixels from the cell.
+     * 
+     * @param cell Cell.
+     * @return Pixels.
+     */
+    public int getPixels(int cell) {
+        return cell * this.size;
     }
 
     /**
