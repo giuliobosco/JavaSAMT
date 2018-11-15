@@ -21,56 +21,47 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package concurrency;
 
 /**
  * Concurrency exercise, using threads.
- * 
+ *
  * @author giuliobosco
  * @version 15.11.2018
  */
 public class HelloThread extends Thread {
-    
+
     /**
-     * Default number of threads.
-     * Value: 3.
-     */
-    private static final int DEFAULT_THREADS = 3;
-    
-    /**
-     * Default thread name.
-     * Value: Thread.
+     * Default thread name. Value: Thread.
      */
     private static final String DEFAULT_THREAD_NAME = "Thread";
-    
+
     /**
-     * Default sleep time.
-     * Value: 500.
+     * Default sleep time. Value: 500.
      */
     private final int SLEEP_TIME = 500;
-    
+
     /**
      * Name of the thread.
      */
     private String threadName;
-    
+
     /**
      * Create the thread with his name.
-     * 
+     *
      * @param threadName Name of the thread.
      */
     public HelloThread(String threadName) {
         this.threadName = threadName;
     }
-    
+
     /**
      * Create the thread with the default name.
      */
     public HelloThread() {
         this(DEFAULT_THREAD_NAME);
     }
-    
+
     /**
      * Run the thread.
      */
@@ -83,18 +74,32 @@ public class HelloThread extends Thread {
                 System.out.println("Thread: " + this.threadName + " has been interrupted");
                 break;
             }
-            
+
         }
     }
-    
+
     /**
      * Main method of the class.
-     * 
+     *
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
-        for (int i = 0; i < DEFAULT_THREADS; i++) {
-            (new HelloThread(Integer.toString(i))).start();
+        if (args.length == 1) {
+            try {
+                int threads = Integer.parseInt(args[0]);
+                
+                for (int i = 0; i < threads; i++) {
+                    (new HelloThread(Integer.toString(i))).start();
+                }
+            } catch (NumberFormatException nfe) {
+                (new HelloThread(args[0])).start();
+            }
+        } else if (args.length > 0) {
+            for (int i = 0; i < args.length; i++) {
+                (new HelloThread(args[i])).start();
+            }
+        } else {
+            (new HelloThread()).start();
         }
     }
 }
