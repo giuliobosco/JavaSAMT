@@ -91,8 +91,22 @@ public class HelloRunnable implements Runnable {
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
-        for (int i = 0; i < DEFAULT_THREADS; i++) {
-            (new Thread(new HelloRunnable(Integer.toString(i)))).start();
+        if (args.length == 1) {
+            try {
+                int threads = Integer.parseInt(args[0]);
+                
+                for (int i = 0; i < threads; i++) {
+                    (new Thread(new HelloRunnable(Integer.toString(i)))).start();
+                }
+            } catch (NumberFormatException nfe) {
+                (new Thread(new HelloThread(args[0]))).start();
+            }
+        } else if (args.length > 0) {
+            for (int i = 0; i < args.length; i++) {
+                (new Thread(new HelloThread(args[i]))).start();
+            }
+        } else {
+            (new Thread(new HelloThread())).start();
         }
     }
 }
