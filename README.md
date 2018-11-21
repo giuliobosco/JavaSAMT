@@ -19,7 +19,7 @@ become familiar with the java panel and frames (AWT &amp; Swing).
 	Comapare smart painting with swing painting (AWT vs Swing).
 	- test1    
 	The solution of the first test of the course.
-	- triangle
+	- triangle  
 	Create a triangle in the panel moved from buttons
 - Concurrency 
 Understand how the concurrency programming works.
