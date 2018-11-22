@@ -1,4 +1,4 @@
-package panelsframes;
+package panelsalmple.panelsframes;
 
 /*
  * The MIT License

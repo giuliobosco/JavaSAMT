@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package triangle;
+package panelsalmple.triangle;
 
 import java.awt.Color;
 import java.awt.Graphics;

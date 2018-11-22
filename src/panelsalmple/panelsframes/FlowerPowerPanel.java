@@ -1,4 +1,4 @@
-package panelsframes;
+package panelsalmple.panelsframes;
 
 /*
  * The MIT License
@@ -29,20 +29,22 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 /**
- *
- * @author Giulio
+ * Exercise begin use graphical interface Design.
+ * Design a flower.
+ * @author Giulio Bosco
+ * @version 23.04.2018
  */
-public class SuperCiucPanel extends JPanel {
-    
+public class FlowerPowerPanel extends JPanel {
+
     /**
      * Columns used for the design.
      */
-    public final int GRID_COLUMS = 7;
+    public final int GRID_COLUMS = 3;
     
     /**
      * Rows used for the design.
      */
-    public final int GRID_ROWS = 8;
+    public final int GRID_ROWS = 9;
     
     /**
      * Array margins.
@@ -58,9 +60,10 @@ public class SuperCiucPanel extends JPanel {
     private int squareSize;
     
     /**
-     * Constructor.
+     * Empty Constructor.
      */
-    public SuperCiucPanel() {
+    public FlowerPowerPanel() {
+        
     }
     
     /**
@@ -68,7 +71,6 @@ public class SuperCiucPanel extends JPanel {
      * Array contains 2 elements.
      * 1° Element: Lateral margin.
      * 2° Element: Vertical margin.
-     * @return Array margins.
      */
     private void marginSize() {
         int squareWidth = (int) getWidth() / GRID_COLUMS;
@@ -130,11 +132,11 @@ public class SuperCiucPanel extends JPanel {
     }
     
     /**
-     * Paint a container for the design.
+     * Paint the sky of the design.
      * @param g Graphics of the window.
      */
-    public void paintContainer(Graphics g) {
-        g.setColor(Color.white);
+    public void paintSky(Graphics g) {
+        g.setColor(Color.cyan);
         g.fillRect(
                 getLeft(0),
                 getTop(0),
@@ -143,115 +145,125 @@ public class SuperCiucPanel extends JPanel {
         );
     }
     
-    public void paintCiucHairs(Graphics g) {
-        g.setColor(Color.black);
-        for (int i = 1; i < 6; i++) {
-            g.fillOval(
-                    getLeft(i),
-                    getTop(1),
-                    getFigureSize(1),
-                    getFigureSize(2)
-            );
-        }
+    /**
+     * Paint the bottom grass where to plant the flower.
+     * @param g Graphics of the window.
+     */
+    public void paintGrass(Graphics g) {
+        g.setColor(Color.green);
+        g.fillRect(
+                getLeft(0), 
+                getTop(8), 
+                getFigureSize(GRID_COLUMS), 
+                getFigureSize(1)
+        );
     }
     
     /**
-     * Paint the yellow part of the ciuc.
+     * Paint the background of the design.
      * @param g Graphics of the window.
      */
-    public void paintCiucYellow(Graphics g) {
-        g.setColor(Color.yellow);
+    public void paintBg(Graphics g) {
+        paintSky(g);
+        paintGrass(g);
+    }
+    
+    /**
+     * Paint the gambo of the flower.
+     * @param g Graphics of the window.
+     */
+    public void paintFlowerGambo(Graphics g) {
+        g.setColor(Color.green);
         g.fillRect(
                 getLeft(1), 
-                getTop(2), 
-                getFigureSize(5), 
-                getFigureSize(5)
+                getTop(3), 
+                getFigureSize(1), 
+                getFigureSize(6)
         );
+    }
+    
+    /**
+     * Paint the leaf of the flower.
+     * Left & Right Leafs
+     * @param g Graphics of the window.
+     */
+    public void paintFlowerLeaf(Graphics g) {
+        g.setColor(Color.green);
+        // left leaf
         g.fillOval(
                 getLeft(0),
-                getTop(3),
-                getFigureSize(2),
-                getFigureSize(2)
-        );
-        g.fillOval(
-                getLeft(5),
-                getTop(3),
-                getFigureSize(2),
-                getFigureSize(2)
-        );
-        g.fillOval(
-                getLeft(3),
-                getTop(6),
+                getTop(4),
                 getFigureSize(1),
                 getFigureSize(2)
         );
-    }
-    
-    /**
-     * Paint the iyes of the ciuc.
-     * @param g Graphics of the window.
-     */
-    public void paintCiucFaceIyes(Graphics g) {
-        for (int i = 2; i < 5; i += 2) {
-            g.setColor(Color.white);
-            g.fillOval(
-                    getLeft(i),
-                    getTop(3),
-                    getFigureSize(1),
-                    getFigureSize(1)
-            );
-            g.setColor(Color.black);
-            g.drawOval(
-                    getLeft(i),
-                    getTop(3),
-                    getFigureSize(1),
-                    getFigureSize(1)
-            );
-        }
-    }
-    
-    /**
-     * Paint the nose of the ciuc.
-     * @param g Graphics of the window.
-     */
-    public void paintCiucFaceNaso(Graphics g) {
-        g.setColor(Color.orange);
-        g.fillOval(
-                getLeft(3),
-                getTop(3),
-                getFigureSize(1),
-                getFigureSize(2)
-        );
-    }
-    
-    public void paintCiucFaceMouth(Graphics g) {
-        g.setColor(Color.red);
+        // right leaf
         g.fillOval(
                 getLeft(2),
                 getTop(5),
-                getFigureSize(3),
+                getFigureSize(1),
                 getFigureSize(2)
         );
     }
     
     /**
-     * Paint the face of the Ciuc.
+     * Paint the main part of the flower.
      * @param g Graphics of the window.
      */
-    public void paintCiucFace(Graphics g) {
-        paintCiucFaceIyes(g);
-        paintCiucFaceNaso(g);
-        paintCiucFaceMouth(g);
+    public void paintFlowerMain(Graphics g) {
+        // print the yellow main part.
+        g.setColor(Color.yellow);
+        g.fillOval(
+                getLeft(0),
+                getTop(1),
+                getFigureSize(3),
+                getFigureSize(3)
+        );
+        
+        // print the four orange ovals.
+        g.setColor(Color.orange);
+        g.fillOval(
+                getLeft(1),
+                getTop(1),
+                getFigureSize(1),
+                getFigureSize(1)
+        );
+        g.fillOval(
+                getLeft(2),
+                getTop(2),
+                getFigureSize(1),
+                getFigureSize(1)
+        );
+        g.fillOval(
+                getLeft(1),
+                getTop(3),
+                getFigureSize(1),
+                getFigureSize(1)
+        );
+        g.fillOval(
+                getLeft(0),
+                getTop(2),
+                getFigureSize(1),
+                getFigureSize(1)
+        );
+        
+        // paint the center oval
+        g.setColor(Color.white);
+        g.fillOval(
+                getLeft(1),
+                getTop(2),
+                getFigureSize(1),
+                getFigureSize(1)
+        );
     }
     
     /**
-     * Paint the Ciuc.
+     * Paint the flower.
      * @param g Graphics of the window.
      */
-    public void paintCiuc(Graphics g) {
-        paintCiucHairs(g);
-        paintCiucYellow(g);
-        paintCiucFace(g);
+    public void paintFlower(Graphics g) {
+        paintFlowerGambo(g);
+        paintFlowerLeaf(g);
+        paintFlowerMain(g);
     }
     
     /**
@@ -278,18 +290,14 @@ public class SuperCiucPanel extends JPanel {
         }
     }
     
-    /**
-     * Paint on the window.
-     * @param g Graphics of the window.
-     */
     @Override
     public void paint(Graphics g) {
         marginSize();
         clearBg(g);
         
-        paintContainer(g);
+        paintBg(g);
         
-        paintCiuc(g);
+        paintFlower(g);
         
         paintGrid(g);
     }

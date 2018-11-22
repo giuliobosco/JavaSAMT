@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package triangle;
+package panelsalmple.triangle;
 
 /**
  *
@@ -32,7 +32,7 @@ public class TriangleFrame extends javax.swing.JFrame {
         downButton = new javax.swing.JButton();
         leftButton = new javax.swing.JButton();
         rightButton = new javax.swing.JButton();
-        trianglePanel = new triangle.TrianglePanel();
+        trianglePanel = new TrianglePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
@@ -136,7 +136,7 @@ public class TriangleFrame extends javax.swing.JFrame {
     private javax.swing.JButton downButton;
     private javax.swing.JButton leftButton;
     private javax.swing.JButton rightButton;
-    private triangle.TrianglePanel trianglePanel;
+    private TrianglePanel trianglePanel;
     private javax.swing.JButton upButton;
     // End of variables declaration//GEN-END:variables
 }

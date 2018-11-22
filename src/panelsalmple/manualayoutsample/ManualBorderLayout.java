@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package manualayoutsample;
+package panelsalmple.manualayoutsample;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

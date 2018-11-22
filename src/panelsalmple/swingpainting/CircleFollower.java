@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package swingpainting;
+package panelsalmple.swingpainting;
 
 import java.awt.Color;
 import java.awt.Graphics;

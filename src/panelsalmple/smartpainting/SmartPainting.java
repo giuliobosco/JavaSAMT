@@ -21,57 +21,64 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
-package swingpainting;
+package panelsalmple.smartpainting;
 
 import java.awt.BorderLayout;
-import javax.swing.JFrame;
+import java.awt.event.WindowAdapter;
+import java.awt.Frame;
+import java.awt.event.WindowEvent;
 
 /**
- * Swing painting frame.
+ * Smart painting frame.
  * 
  * @author giuliobosco
- * @version 08.11.2018
+ * @version 07.11.2018
  */
-public class SwingPainting extends JFrame {
+public class SmartPainting extends Frame {
     
     /**
-     * Circle follower.
+     * Circle matrix, with smart painting.
      */
-    private CircleFollower circleFollower;
+    private CircleMatrix circleMatrix;
     
     /**
      * Constructor without parameters.
      * Initialize components.
      */
-    public SwingPainting() {
+    public SmartPainting() {
         this.initComponents();
         
-        this.setSize(300,300);
+        this.setSize(300, 300);
     }
     
     /**
      * Initialize components.
      */
     private void initComponents() {
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        this.circleFollower = new CircleFollower();
-        this.getContentPane().add(this.circleFollower, BorderLayout.CENTER);
+        this.circleMatrix = new CircleMatrix();
+        
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+                System.exit(0);
+            }
+        });
+        
+        add(circleMatrix, BorderLayout.CENTER);
         
         pack();
     }
     
     /**
-     * Main method of the class.
-     * Create an SwingPainting.
+     * Main method of the class. 
+     * Create an SmartPainting.
      * 
      * @param args Command line arguments.
      */
-    public static void main(String[] args) {
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SwingPainting().setVisible(true);
+                new SmartPainting().setVisible(true);
             }
         });
     }
