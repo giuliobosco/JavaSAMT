@@ -84,7 +84,7 @@ public class Bomb extends Thread {
         try {
             long startTime = System.currentTimeMillis();
 
-            while (System.currentTimeMillis() > startTime + this.timeOut) {
+            while (System.currentTimeMillis() < startTime + this.timeOut) {
                 System.out.println("Bomb " + this.getName() + ": TIC");
                 Thread.sleep(period);
 
