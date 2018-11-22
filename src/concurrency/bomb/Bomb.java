@@ -30,7 +30,7 @@ package concurrency.bomb;
 public class Bomb extends Thread {
     // -------------------------------------------------------------------------------------------------------- Costants
 
-    public static final long DEFAULT_TIME_OUT = 3000;
+    public static final long DEFAULT_TIME_OUT = 30000;
 
     public static final long DEFAUL_PERIOD = 500;
 
