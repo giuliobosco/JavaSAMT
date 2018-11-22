@@ -68,6 +68,10 @@ public class Bomb extends Thread {
         this(timeOut, DEFAUL_PERIOD);
     }
 
+    public Bomb(String name) {
+        this(DEFAULT_TIME_OUT, DEFAUL_PERIOD, name);
+    }
+
     public Bomb() {
         this(DEFAULT_TIME_OUT);
     }
