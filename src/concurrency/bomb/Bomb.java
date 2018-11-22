@@ -99,4 +99,12 @@ public class Bomb extends Thread {
     }
 
     // ----------------------------------------------------------------------------------------------- Static Components
+
+    public static void main(String[] args) {
+        String[] names = {"Nuclear", "Hydrogen", "Granate"};
+
+        for (String name : names) {
+            (new Bomb(name)).start();
+        }
+    }
 }
