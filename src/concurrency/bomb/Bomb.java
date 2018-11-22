@@ -22,6 +22,10 @@
  * THE SOFTWARE.
  */
 package concurrency.bomb;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 
  * @author giuliobosco
@@ -102,9 +106,17 @@ public class Bomb extends Thread {
 
     public static void main(String[] args) {
         String[] names = {"Nuclear", "Hydrogen", "Granate"};
-
+        List<Bomb> bombs = new ArrayList<>();
         for (String name : names) {
-            (new Bomb(name)).start();
+            bombs.add(new Bomb(name));
+            bombs.get(bombs.size() - 1).start();
+        }
+
+        try {
+            Thread.sleep(15000);
+            bombs.get(bombs.size() / 2).interrupt();
+        } catch (InterruptedException ie) {
+
         }
     }
 }
