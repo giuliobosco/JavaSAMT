@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package mybutton;
+package button;
 
 import javax.swing.JFrame;
 import java.awt.Graphics;
