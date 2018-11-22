@@ -25,3 +25,5 @@ become familiar with the java panel and frames (AWT &amp; Swing).
 Understand how the concurrency programming works.
 	- concurrency  
 	Implement Runnable Interface and extends Thread Class for understand basics.
+    - Bomb  
+    Exercise for learn how the works interrupt with threads in concurrency programming paradigm. 
