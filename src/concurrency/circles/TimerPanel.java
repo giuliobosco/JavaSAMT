@@ -24,8 +24,11 @@
 package concurrency.circles;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -37,14 +40,24 @@ public class TimerPanel extends JPanel implements MouseListener, TimerListener {
 
     // -------------------------------------------------------------------------------------------------------- Costants
     // ------------------------------------------------------------------------------------------------------ Attributes
+
+    private List<Timer> timers;
+
     // ----------------------------------------------------------------------------------------------- Getters & Setters
     // ---------------------------------------------------------------------------------------------------- Constructors
+
+    public TimerPanel() {
+        this.timers = new ArrayList<>();
+
+        this.addMouseListener(this);
+    }
+
     // ---------------------------------------------------------------------------------------------------- Help Methods
     // ------------------------------------------------------------------------------------------------- General Methods
 
     @Override
     public void timeElapsed(Timer source) {
-
+        this.repaint();
     }
 
     @Override
@@ -54,7 +67,11 @@ public class TimerPanel extends JPanel implements MouseListener, TimerListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        Timer timer = new Timer(e.getPoint());
+        timer.addTimerListener(this);
+        timer.start();
+        this.timers.add(timer);
+        this.repaint();
     }
 
     @Override
@@ -75,6 +92,15 @@ public class TimerPanel extends JPanel implements MouseListener, TimerListener {
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        g.setColor(Color.white);
+        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        for (Timer timer : this.timers) {
+            timer.paint(g);
+        }
     }
 
     // ----------------------------------------------------------------------------------------------- Static Components
