@@ -33,9 +33,7 @@ import java.util.List;
  */
 public interface TimerListener {
 
-    List<Timer> timers = new ArrayList<>();
-
     void timeElapsed(Timer source);
-    
+
     void click();
 }
