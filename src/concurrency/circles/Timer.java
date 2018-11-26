@@ -64,6 +64,45 @@ public class Timer extends Thread {
     private int radius;
 
     // ----------------------------------------------------------------------------------------------- Getters & Setters
+
+    /**
+     * Get the radius of the circle.
+     *
+     * @return Radius of the circle.
+     */
+    public int getRadius() {
+        return this.radius;
+    }
+
+    /**
+     * Get the diameter of the circle.
+     *
+     * @return Diameter of the circle.
+     */
+    public int getDiameter() {
+        return this.radius * 2;
+    }
+
+    /**
+     * Get the center of the circle.
+     *
+     * @return Center of the circle.
+     */
+    public Point getCenter() {
+        return this.center;
+    }
+
+    /**
+     * Get the start point to start paint the circle. Top left point.
+     *
+     * @return Start point to start paint the circle. Top left point.
+     */
+    public Point getStart() {
+        Point moved = this.getCenter();
+        moved.translate(-this.radius, -this.radius);
+        return moved;
+    }
+
     // ---------------------------------------------------------------------------------------------------- Constructors
 
     /**
