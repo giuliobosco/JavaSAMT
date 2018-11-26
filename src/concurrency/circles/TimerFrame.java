@@ -27,7 +27,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * 
+ * Timer frame app.
+ *
  * @author giuliobosco
  * @version 1.0
  */
@@ -35,11 +36,18 @@ public class TimerFrame extends JFrame {
     // -------------------------------------------------------------------------------------------------------- Costants
     // ------------------------------------------------------------------------------------------------------ Attributes
 
+    /**
+     * Timer panel.
+     */
     private TimerPanel timerPanel;
 
     // ----------------------------------------------------------------------------------------------- Getters & Setters
     // ---------------------------------------------------------------------------------------------------- Constructors
 
+    /**
+     * Initialize the timer frame. Sets the default close operation to exit, initialize the timer panel and sets the
+     * size of the window.
+     */
     public TimerFrame() {
         super();
 
@@ -49,13 +57,18 @@ public class TimerFrame extends JFrame {
         this.getContentPane().add(this.timerPanel);
 
         pack();
-        this.setSize(new Dimension(300,300));
+        this.setSize(new Dimension(300, 300));
     }
 
     // ---------------------------------------------------------------------------------------------------- Help Methods
     // ------------------------------------------------------------------------------------------------- General Methods
     // ----------------------------------------------------------------------------------------------- Static Components
 
+    /**
+     * Main method of the app. Create the timer frame.
+     *
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(() -> new TimerFrame().setVisible(true));
     }

@@ -24,12 +24,18 @@
 package concurrency.circles;
 
 /**
+ * Timer listener.
  *
  * @author giuliobosco
  * @version 1.0
  */
 public interface TimerListener {
 
+    /**
+     * An timer has made a tick.
+     *
+     * @param source Source timer.
+     */
     void timeElapsed(Timer source);
 
     void click();

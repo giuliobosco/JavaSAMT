@@ -28,7 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * Timer circle, create a circle that reduces his radius every second of one pixel.
+ *
  * @author giuliobosco
  * @version 1.0
  */

@@ -31,7 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * Panel for the Timer.
+ *
  * @author giuliobosco
  * @version 1.0
  */
@@ -41,11 +42,17 @@ public class TimerPanel extends JPanel implements MouseListener, TimerListener {
     // -------------------------------------------------------------------------------------------------------- Costants
     // ------------------------------------------------------------------------------------------------------ Attributes
 
+    /**
+     * Timers in the panel.
+     */
     private List<Timer> timers;
 
     // ----------------------------------------------------------------------------------------------- Getters & Setters
     // ---------------------------------------------------------------------------------------------------- Constructors
 
+    /**
+     * Create the timer panel, initialize the timers and add the mouse listener.
+     */
     public TimerPanel() {
         this.timers = new ArrayList<>();
 
@@ -55,6 +62,11 @@ public class TimerPanel extends JPanel implements MouseListener, TimerListener {
     // ---------------------------------------------------------------------------------------------------- Help Methods
     // ------------------------------------------------------------------------------------------------- General Methods
 
+    /**
+     * An Timer has made an tick.
+     *
+     * @param source Source timer.
+     */
     @Override
     public void timeElapsed(Timer source) {
         this.repaint();
@@ -65,6 +77,11 @@ public class TimerPanel extends JPanel implements MouseListener, TimerListener {
 
     }
 
+    /**
+     * Mouse clicked in the TimerPanel.
+     *
+     * @param e Mouse clicked event.
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         Timer timer = new Timer(e.getPoint());
@@ -94,6 +111,10 @@ public class TimerPanel extends JPanel implements MouseListener, TimerListener {
 
     }
 
+    /**
+     * Paint the timers.
+     * @param g
+     */
     @Override
     public void paintComponent(Graphics g) {
         g.setColor(Color.white);
