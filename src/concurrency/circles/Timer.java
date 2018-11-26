@@ -24,6 +24,7 @@
 package concurrency.circles;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,12 +51,14 @@ public class Timer extends Thread {
     // ---------------------------------------------------------------------------------------------------- Constructors
 
     public Timer(int x, int y) {
-        this.center = new Point(x, y);
-        this.radius = INITIAL_RADIIUS;
+        this(new Point(x, y));
     }
 
     public Timer(Point center) {
         this.center = center;
+        this.radius = INITIAL_RADIIUS;
+
+        this.listeners = new ArrayList<>();
     }
 
     // ---------------------------------------------------------------------------------------------------- Help Methods
