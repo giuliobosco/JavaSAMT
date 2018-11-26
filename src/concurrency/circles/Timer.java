@@ -22,18 +22,79 @@
  * THE SOFTWARE.
  */
 package concurrency.circles;
+
+import java.awt.*;
+import java.util.List;
+
 /**
  * 
  * @author giuliobosco
  * @version 1.0
  */
-public class Timer {
+public class Timer extends Thread {
     // -------------------------------------------------------------------------------------------------------- Costants
+
+    public static final int INITIAL_RADIIUS = 20;
+
+    public static final int SLEEP_TIME = 1000;
+
     // ------------------------------------------------------------------------------------------------------ Attributes
+
+    private List<TimerListener> listeners;
+
+    private Point center;
+
+    private int radius;
+
     // ----------------------------------------------------------------------------------------------- Getters & Setters
     // ---------------------------------------------------------------------------------------------------- Constructors
+
+    public Timer(int x, int y) {
+        this.center = new Point(x, y);
+        this.radius = INITIAL_RADIIUS;
+    }
+
+    public Timer(Point center) {
+        this.center = center;
+    }
+
     // ---------------------------------------------------------------------------------------------------- Help Methods
     // ------------------------------------------------------------------------------------------------- General Methods
+
+    public void addTimerListener(TimerListener listener) {
+        this.listeners.add(listener);
+    }
+
+    public void removeTimerListener(TimerListener listener) {
+        this.listeners.remove(listener);
+    }
+
+    public void paint(Graphics g) {
+        for (int i = 0; i < this.radius; i++) {
+            if (i % 2 == 0) {
+                g.setColor(Color.green);
+            } else {
+                g.setColor(Color.red);
+            }
+
+            g.fillOval(center.x - i, center.y - i, i * 2, i * 2);
+        }
+    }
+
+    public void run() {
+        try {
+            while (radius > 0) {
+                for (TimerListener listener : this.listeners) {
+                    listener.timeElapsed(this);
+                }
+                radius--;
+                Thread.sleep(SLEEP_TIME);
+            }
+        } catch (InterruptedException ie) {
+
+        }
+    }
+
     // ----------------------------------------------------------------------------------------------- Static Components
     
 }
