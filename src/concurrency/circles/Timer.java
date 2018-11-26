@@ -35,25 +35,51 @@ import java.util.List;
 public class Timer extends Thread {
     // -------------------------------------------------------------------------------------------------------- Costants
 
+    /**
+     * Initial radius of the timer.
+     */
     public static final int INITIAL_RADIIUS = 20;
 
+    /**
+     * Sleep time of the timer.
+     */
     public static final int SLEEP_TIME = 1000;
 
     // ------------------------------------------------------------------------------------------------------ Attributes
 
+    /**
+     * List of listeners. They will receive the timeElapsed call.
+     */
     private List<TimerListener> listeners;
 
+    /**
+     * Center of the timer circle.
+     */
     private Point center;
 
+    /**
+     * Radius of the timer circle.
+     */
     private int radius;
 
     // ----------------------------------------------------------------------------------------------- Getters & Setters
     // ---------------------------------------------------------------------------------------------------- Constructors
 
+    /**
+     * Create the timer circle with the the X and Y position of the timer circle center.
+     *
+     * @param x X position of the timer circle center.
+     * @param y Y position of the timer circle center.
+     */
     public Timer(int x, int y) {
         this(new Point(x, y));
     }
 
+    /**
+     * Create the timer circle with the point of the timer circle center.
+     *
+     * @param center Circle center point.
+     */
     public Timer(Point center) {
         this.center = center;
         this.radius = INITIAL_RADIIUS;
@@ -64,14 +90,29 @@ public class Timer extends Thread {
     // ---------------------------------------------------------------------------------------------------- Help Methods
     // ------------------------------------------------------------------------------------------------- General Methods
 
+    /**
+     * Add a listener to the list of listeners.
+     *
+     * @param listener Listener to add to the list of listeners.
+     */
     public void addTimerListener(TimerListener listener) {
         this.listeners.add(listener);
     }
 
+    /**
+     * Remove the listener to the list of listeners.
+     *
+     * @param listener Listener from the list of listeners.
+     */
     public void removeTimerListener(TimerListener listener) {
         this.listeners.remove(listener);
     }
 
+    /**
+     * Paint the Timer circle.
+     *
+     * @param g Graphics of the Frame.
+     */
     public void paint(Graphics g) {
         for (int i = this.radius; i > 0; i--) {
             if (i % 2 == 0) {
@@ -84,6 +125,9 @@ public class Timer extends Thread {
         }
     }
 
+    /**
+     * Thread code to run.
+     */
     public void run() {
         try {
             while (this.radius > 0) {
