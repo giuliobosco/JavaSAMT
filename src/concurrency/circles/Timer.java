@@ -73,24 +73,24 @@ public class Timer extends Thread {
     }
 
     public void paint(Graphics g) {
-        for (int i = 0; i < this.radius; i++) {
+        for (int i = this.radius; i > 0; i--) {
             if (i % 2 == 0) {
                 g.setColor(Color.green);
             } else {
                 g.setColor(Color.red);
             }
 
-            g.fillOval(center.x - i, center.y - i, i * 2, i * 2);
+            g.fillOval(this.center.x - i, this.center.y - i, i * 2, i * 2);
         }
     }
 
     public void run() {
         try {
-            while (radius > 0) {
+            while (this.radius > 0) {
                 for (TimerListener listener : this.listeners) {
                     listener.timeElapsed(this);
                 }
-                radius--;
+                this.radius--;
                 Thread.sleep(SLEEP_TIME);
             }
         } catch (InterruptedException ie) {
