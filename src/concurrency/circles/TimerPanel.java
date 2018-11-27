@@ -135,7 +135,8 @@ public class TimerPanel extends JPanel implements MouseListener, TimerListener {
 
     /**
      * Paint the timers.
-     * @param g
+     *
+     * @param g Graphics of the panel.
      */
     @Override
     public void paintComponent(Graphics g) {
