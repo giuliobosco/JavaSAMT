@@ -48,6 +48,25 @@ public class TimerPanel extends JPanel implements MouseListener, TimerListener {
     private List<Timer> timers;
 
     // ----------------------------------------------------------------------------------------------- Getters & Setters
+
+    /**
+     * Add a timer to the list of timers.
+     *
+     * @param timer Timer to add.
+     */
+    public void addTimer(Timer timer) {
+        this.timers.add(timer);
+    }
+
+    /**
+     * Remove a timer from the list of timers.
+     *
+     * @param timer Timer to remove.
+     */
+    public void removeTimer(Timer timer) {
+        this.timers.remove(timer);
+    }
+
     // ---------------------------------------------------------------------------------------------------- Constructors
 
     /**
@@ -69,7 +88,7 @@ public class TimerPanel extends JPanel implements MouseListener, TimerListener {
      */
     @Override
     public void timeElapsed(Timer source) {
-        this.timers.remove(source);
+        this.removeTimer(source);
     }
 
     /**
@@ -90,7 +109,7 @@ public class TimerPanel extends JPanel implements MouseListener, TimerListener {
         Timer timer = new Timer(e.getPoint());
         timer.addTimerListener(this);
         timer.start();
-        this.timers.add(timer);
+        this.addTimer(timer);
         this.repaint();
     }
 
