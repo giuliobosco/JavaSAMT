@@ -172,10 +172,14 @@ public class Timer extends Thread {
         try {
             while (this.radius > 0) {
                 for (TimerListener listener : this.listeners) {
-                    listener.timeElapsed(this);
+                    listener.click();
                 }
                 this.radius--;
                 Thread.sleep(SLEEP_TIME);
+            }
+
+            for (TimerListener listener : this.listeners) {
+                listener.timeElapsed(this);
             }
         } catch (InterruptedException ie) {
 

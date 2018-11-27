@@ -63,18 +63,21 @@ public class TimerPanel extends JPanel implements MouseListener, TimerListener {
     // ------------------------------------------------------------------------------------------------- General Methods
 
     /**
-     * An Timer has made an tick.
+     * An timer has finished the time, have to be removed.
      *
-     * @param source Source timer.
+     * @param source Timer to remove.
      */
     @Override
     public void timeElapsed(Timer source) {
-        this.repaint();
+        this.timers.remove(source);
     }
 
+    /**
+     * The timer has made a tick.
+     */
     @Override
     public void click() {
-
+        this.repaint();
     }
 
     /**
