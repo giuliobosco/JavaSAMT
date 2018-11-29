@@ -27,3 +27,5 @@ Understand how the concurrency programming works.
 	Implement Runnable Interface and extends Thread Class for understand basics.
     - Bomb  
     Exercise for learn how the works interrupt with threads in concurrency programming paradigm. 
+    - circles  
+    Create circles on a frame, they have to became smaller with an timer.
