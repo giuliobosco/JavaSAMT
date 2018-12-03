@@ -38,7 +38,7 @@ public class Sort {
     // ----------------------------------------------------------------------------------------------- Static Components
 
     /**
-     * Bubble Sort an array.
+     * Sort an array, with bubble algorithm.
      *
      * @param array Array to sort.
      * @return Sorted array.
@@ -65,7 +65,7 @@ public class Sort {
     }
 
     /**
-     * Selection sort an array.
+     * Sort an array, with selection algorithm.
      *
      * @param array Array to sort.
      * @return Sorted array.
