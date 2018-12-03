@@ -80,7 +80,7 @@ public class Search {
      *
      * @param array Array with the values.
      * @param number Value to search.
-     * @return Index of the value.
+     * @return Index of the value, if not find returns -1.
      */
     public static int binary(int[] array, int number) {
 
