@@ -24,9 +24,9 @@
 package algorithms;
 /**
  * Search algorithms.
- * 
+ *
  * @author giuliobosco
- * @version 1.0
+ * @version 1.0.1
  */
 public class Search {
     // -------------------------------------------------------------------------------------------------------- Costants
@@ -44,7 +44,7 @@ public class Search {
      * @param number Value to search.
      * @return Index of the value.
      */
-    public static int binarySearch(int[] array, int number) {
+    public static int binary(int[] array, int number) {
 
         int start = 0;
         int end = array.length - 1;
