@@ -3,6 +3,12 @@ Scuola Arti e Mestieri Trevano - Java 3° Year
 In this repository you will find the programs written in the java course of the Scuola Arti e Mestieri in Trevano, Lugano, Switzerland.
 
 ## Contents
+- algorithm  
+Learn how to implements algorithms, solve problems break down them
+    - Sort  
+    Implements sort algorithms, with integer arrays.
+    - Search  
+    Implements search algorithms, with integer arrays.
 - MyButton  
 Try to create a button in java, using `awt`'s `Graphics`.
 	- MyButton  
