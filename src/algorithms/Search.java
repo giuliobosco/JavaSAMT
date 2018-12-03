@@ -38,6 +38,25 @@ public class Search {
     // ----------------------------------------------------------------------------------------------- Static Components
 
     /**
+     * Search the biggest number in the array, there are two it will return the first.
+     *
+     * @param array Array with the values.
+     * @param number Value to search.
+     * @return Index of the value, if not find returns -1.
+     */
+    public static int maxFirst(int[] array, int number) {
+        int max = 1;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > array[max]) {
+                max = i;
+            }
+        }
+
+        return max - 1;
+    }
+
+    /**
      * Binary search algorithm, require an array with incremental order of the values.
      *
      * @param array Array with the values.
