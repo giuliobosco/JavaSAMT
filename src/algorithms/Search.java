@@ -45,7 +45,7 @@ public class Search {
      * @return Index of the value, if not find returns -1.
      */
     public static int maxLast(int[] array, int number) {
-        int max = 1;
+        int max = array.length - 1;
 
         for (int i = array.length - 1; i > 0; i--) {
             if (array[i] > array[max]) {
@@ -64,7 +64,7 @@ public class Search {
      * @return Index of the value, if not find returns -1.
      */
     public static int maxFirst(int[] array, int number) {
-        int max = 1;
+        int max = 0;
 
         for (int i = 0; i < array.length; i++) {
             if (array[i] > array[max]) {
