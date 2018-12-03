@@ -26,7 +26,7 @@ package algorithms;
  * Sort values in array.
  *
  * @author giuliobosco
- * @version 1.0
+ * @version 1.0.2
  */
 public class Sort {
     // -------------------------------------------------------------------------------------------------------- Costants
@@ -43,7 +43,7 @@ public class Sort {
      * @param array Array to sort.
      * @return Sorted array.
      */
-    public static int[] bubbleSort(int[] array) {
+    public static int[] bubble(int[] array) {
         boolean reload = true;
 
         for (int i = 0; i < array.length; i++) {
@@ -70,7 +70,7 @@ public class Sort {
      * @param array Array to sort.
      * @return Sorted array.
      */
-    public static int[] selectionSort(int[] array) {
+    public static int[] selection(int[] array) {
         int n, small;
 
         for (int i = 0; i < array.length; i++) {
