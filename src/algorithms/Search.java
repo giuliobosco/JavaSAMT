@@ -26,7 +26,7 @@ package algorithms;
  * Search algorithms.
  *
  * @author giuliobosco
- * @version 1.0.1
+ * @version 1.0.4
  */
 public class Search {
     // -------------------------------------------------------------------------------------------------------- Costants
