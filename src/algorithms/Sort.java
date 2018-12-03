@@ -63,4 +63,29 @@ public class Sort {
 
         return array;
     }
+
+    /**
+     * Selection sort an array.
+     *
+     * @param array Array to sort.
+     * @return Sorted array.
+     */
+    public static int[] selectionSort(int[] array) {
+        int n, small;
+
+        for (int i = 0; i < array.length; i++) {
+            small = i;
+            for (int j = i; j < array.length - 1; j++) {
+                if (array[small] > array[j + 1]) {
+                    small = j + 1;
+                }
+            }
+
+            n = array[small];
+            array[small] = array[i];
+            array[small] = n;
+        }
+
+        return array;
+    }
 }
