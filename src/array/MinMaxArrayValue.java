@@ -22,6 +22,9 @@
  * THE SOFTWARE.
  */
 package array;
+
+import help.Random;
+
 /**
  * Find the minimum and the maximum value of the array.
  *
@@ -47,7 +50,7 @@ public class MinMaxArrayValue {
 
         for (int i = 0; i < 10; i++) {
             for (int l = 0; l < 10; l++) {
-                matrice[i][l] = 0 + (int) (Math.random() * 100);
+                matrice[i][l] = Random.getInt(0, 100);
                 System.out.print(matrice[i][l] + "    ");
                 if (matrice[i][l] < 10) {
                     System.out.print(" ");
