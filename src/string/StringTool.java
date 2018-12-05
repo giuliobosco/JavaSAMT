@@ -22,6 +22,7 @@
  * THE SOFTWARE.
  */
 package string;
+
 /**
  * Tools for strings, works with UTF-8 vowels and consonant mostly.
  *
@@ -48,8 +49,7 @@ public class StringTool {
 
         if ((charN > 64 && charN < 91) || (charN > 96 && charN < 123)) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
 
@@ -63,18 +63,16 @@ public class StringTool {
      * @return True if is consonant.
      */
     public static boolean isConsonant(char c) {
-        int charN = Integer.parseInt(Integer.toHexString((int) c), 16);
+        if (isLetter(c)) {
+            int charN = Integer.parseInt(Integer.toHexString((int) c), 16);
 
-        if ((charN > 64 && charN < 91) || (charN > 96 && charN < 123)) {
             if (charN == 65 || charN == 69 || charN == 73 || charN == 79 || charN == 85 || charN == 97 || charN == 101 || charN == 105 || charN == 111 || charN == 117) {
                 return false;
-            }
-            else {
+            } else {
                 return true;
             }
 
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -86,20 +84,7 @@ public class StringTool {
      * @return True if is vowel.
      */
     public static boolean isVowel(char c) {
-        int charN = Integer.parseInt(Integer.toHexString((int) c), 16);
-
-        if ((charN > 64 && charN < 91) || (charN > 96 && charN < 123)) {
-            if (charN == 65 || charN == 69 || charN == 73 || charN == 79 || charN == 85 || charN == 97 || charN == 101 || charN == 105 || charN == 111 || charN == 117) {
-                return true;
-            }
-            else {
-                return false;
-            }
-
-        }
-        else {
-            return false;
-        }
+        return !isConsonant(c);
     }
 
     /**
@@ -114,14 +99,12 @@ public class StringTool {
 
         for (int i = stringN; i > 0; i--) {
             char c = text.charAt(i - 1);
-            int charN = Integer.parseInt(Integer.toHexString((int) c), 16);
 
-            if ((charN > 64 && charN < 91) || (charN > 96 && charN < 123)) {
-                if (charN == 65 || charN == 69 || charN == 73 || charN == 79 || charN == 85 || charN == 97 || charN == 101 || charN == 105 || charN == 111 || charN == 117) {
-                    vowelCount++;
-                }
+            if (isVowel(c)) {
+                vowelCount++;
             }
         }
+
         return vowelCount;
     }
 
@@ -136,17 +119,9 @@ public class StringTool {
         int consCount = 0;
 
         for (int i = stringN; i > 0; i--) {
-            char c = text.charAt(i -1);
-            int charN = Integer.parseInt(Integer.toHexString((int) c), 16);
+            char c = text.charAt(i - 1);
 
-            boolean voc = true;
-
-            if ((charN > 64 && charN < 91) || (charN > 96 && charN < 123)) {
-                if (charN == 65 || charN == 69 || charN == 73 || charN == 79 || charN == 85 || charN == 97 || charN == 101 || charN == 105 || charN == 111 || charN == 117) {
-                    voc = false;
-                }
-            }
-            if (voc == true) {
+            if (isConsonant(c)) {
                 consCount++;
             }
         }
@@ -166,12 +141,9 @@ public class StringTool {
 
         for (int i = stringN; i > 0; i--) {
             char c = text.charAt(i - 1);
-            int charN = Integer.parseInt(Integer.toHexString((int) c), 16);
 
-            if ((charN > 64 && charN < 91) || (charN > 96 && charN < 123)) {
-                if (charN == 65 || charN == 69 || charN == 73 || charN == 79 || charN == 85 || charN == 97 || charN == 101 || charN == 105 || charN == 111 || charN == 117) {
-                    ret += c;
-                }
+            if (isVowel(c)) {
+                ret += c;
             }
         }
 
@@ -190,42 +162,31 @@ public class StringTool {
 
         for (int i = stringN; i > 0; i--) {
             char c = s.charAt(i - 1);
-            int charN = Integer.parseInt(Integer.toHexString((int) c), 16);
 
-            if ((charN > 64 && charN < 91) || (charN > 96 && charN < 123)) {
-                if (charN == 65 || charN == 69 || charN == 73 || charN == 79 || charN == 85 || charN == 97 || charN == 101 || charN == 105 || charN == 111 || charN == 117) {
-                    ret = true;
-
+            if (isLetter(c)) {
+                if (isVowel(c)) {
                     i--;
-                    c = s.charAt(i -1 );
-                    charN = Integer.parseInt(Integer.toHexString((int) c), 16);
+                    c = s.charAt(i - 1);
 
-                    if ((charN > 64 && charN < 91) || (charN > 96 && charN < 123)) {
-                        if (!(charN == 65 || charN == 69 || charN == 73 || charN == 79 || charN == 85 || charN == 97 || charN == 101 || charN == 105 || charN == 111 || charN == 117)) {
+                    if (isLetter(c)) {
+                        if (isConsonant(c)) {
                             ret = true;
-                        }
-                        else {
+                        } else {
                             ret = false;
                             i = 0;
                         }
-                    }
-                    else {
+                    } else {
                         ret = false;
                         i = 0;
                     }
-                }
-                else if (!(charN == 65 || charN == 69 || charN == 73 || charN == 79 || charN == 85 || charN == 97 || charN == 101 || charN == 105 || charN == 111 || charN == 117)) {
-                    ret = true;
-
+                } else if (isConsonant(c)) {
                     i--;
                     c = s.charAt(i - 1);
-                    charN = Integer.parseInt(Integer.toHexString((int) c), 16);
 
-                    if ((charN > 64 && charN < 91) || (charN > 96 && charN < 123)) {
-                        if (charN == 65 || charN == 69 || charN == 73 || charN == 79 || charN == 85 || charN == 97 || charN == 101 || charN == 105 || charN == 111 || charN == 117) {
+                    if (isLetter(c)) {
+                        if (isVowel(c)) {
                             ret = true;
-                        }
-                        else {
+                        } else {
                             ret = false;
                             i = 0;
                         }
@@ -239,7 +200,7 @@ public class StringTool {
     /**
      * Check if the two string are anagrams one of the other.
      *
-     * @param firstWord First word.
+     * @param firstWord  First word.
      * @param secondWord Word to check if it's anagram of the first.
      * @return True if the two words are anagrams on of the other.
      */
@@ -250,9 +211,7 @@ public class StringTool {
 
         if (firstWordN != secondWordN) {
             anagramma = false;
-        }
-
-        else {
+        } else {
             for (int i = 0; i < firstWordN; i++) {
                 char c = firstWord.charAt(i);
                 int pos = secondWord.indexOf(c);
@@ -266,8 +225,7 @@ public class StringTool {
 
             if (secondWord.equals("")) {
                 anagramma = true;
-            }
-            else {
+            } else {
                 anagramma = false;
             }
         }
@@ -278,7 +236,7 @@ public class StringTool {
      * Count char in string.
      *
      * @param text String where to count the char.
-     * @param c Char to count.
+     * @param c    Char to count.
      * @return Count of the char in the string.
      */
     public static int countInString(String text, char c) {
@@ -312,8 +270,7 @@ public class StringTool {
             System.out.println("isAlternative: " + isAlternative(args[1]));
             System.out.println("isAnagram: " + isAnagram(args[1], args[2]));
             System.out.println("countInString: " + countInString(args[1], args[0].charAt(0)));
-        }
-        else {
+        } else {
             System.out.println("Inserisci degli argomenti");
         }
     }
