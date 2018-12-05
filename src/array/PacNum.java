@@ -22,6 +22,9 @@
  * THE SOFTWARE.
  */
 package array;
+
+import help.Random;
+
 /**
  * 
  * @author giuliobosco
@@ -43,10 +46,10 @@ public class PacNum {
      */
     public static void main(String[] args) {
 
-        int x = (int)((10 - 0 + 1) * Math.random()) + 0;
-        int y = (int)((10 - 0 + 1) * Math.random()) + 0;
-        int vx = (int) ((x - 0 + 1) * Math.random()) + 0;
-        int vy = (int) ((y - 0 + 1) * Math.random()) + 0;
+        int x = Random.getInt(0, 10);
+        int y = Random.getInt(0, 10);
+        int vx = Random.getInt(0, x);
+        int vy = Random.getInt(0, y);
 
         int[][] m = new int[x][y];
         for (int i = 0; i < m.length; i++) {
@@ -55,7 +58,7 @@ public class PacNum {
             }
         }
 
-        int n = (int) ((4 - 1 + 1) * Math.random()) + 1;
+        int n = Random.getInt(0,4);
 
         m[vx][vy] = n;
 
