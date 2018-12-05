@@ -23,6 +23,10 @@
  */
 package array;
 
+import help.asker.Asker;
+import help.asker.FormInterruptedException;
+import help.validators.IntegerValidator;
+
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,39 +52,34 @@ public class MatrixTDLR {
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader tastiera = new BufferedReader(input);
-
         try {
-            System.out.print("Inserire numero di righe: ");
-            String righeString = tastiera.readLine();
-            int righe = Integer.parseInt(righeString);
+            Asker asker = new Asker();
+            IntegerValidator iv = new IntegerValidator(0, Integer.MAX_VALUE);
 
-            System.out.print("Inserire numero di colonne: ");
-            String colonneString = tastiera.readLine();
-            int colonne = Integer.parseInt(colonneString);
+            int rows = Integer.parseInt(asker.ask("rows", iv));
+            int cols = Integer.parseInt(asker.ask("cols", iv));
 
-            int[][] matrice = new int[righe][colonne];
+            int[][] matrix = new int[rows][cols];
 
             int counter = 0;
 
-            for (int i = 0; i < colonne; i++) {
-                for (int l = 0; l < righe; l++) {
-                    matrice[l][i] = counter;
+            for (int i = 0; i < cols; i++) {
+                for (int l = 0; l < rows; l++) {
+                    matrix[l][i] = counter;
                     counter++;
                 }
             }
 
-            for (int i = 0; i < righe; i++) {
-                for (int l = 0; l < colonne; l++) {
-                    System.out.print(matrice[i][l] + "    ");
-                    if (matrice[i][l] >= 0 && matrice[i][l] <= 9) {
+            for (int i = 0; i < matrix.length; i++) {
+                for (int l = 0; l < matrix[i].length; l++) {
+                    System.out.print(matrix[i][l] + "    ");
+                    if (matrix[i][l] >= 0 && matrix[i][l] <= 9) {
                         System.out.print(" ");
                     }
                 }
                 System.out.println();
             }
-        } catch (IOException ioe) {
+        } catch (IOException | FormInterruptedException ignored) {
 
         }
     }
