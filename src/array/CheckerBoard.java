@@ -23,8 +23,10 @@
  */
 package array;
 
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
+import help.asker.Asker;
+import help.asker.FormInterruptedException;
+import help.validators.IntegerValidator;
+
 import java.io.IOException;
 
 /**
@@ -48,32 +50,28 @@ public class CheckerBoard {
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader tastira = new BufferedReader(input);
 
         try {
-            System.out.print("Inserire numero di righe: ");
-            String righeString = tastira.readLine();
-            int righe = Integer.parseInt(righeString);
+            IntegerValidator iv = new IntegerValidator(0, Integer.MAX_VALUE);
+            Asker asker = new Asker();
 
-            System.out.print("Inserire numero di colonne: ");
-            String colonneString  = tastira.readLine();
-            int colonne = Integer.parseInt(colonneString);
+            int rows = Integer.parseInt(asker.ask("rows", iv));
+            int cols = Integer.parseInt(asker.ask("cols", iv));
 
-            int[][] matrice = new int[righe][colonne];
+            int[][] matrix = new int[rows][cols];
 
-            for (int i = 0; i < righe; i++) {
-                for (int l = 0; l < colonne; l++) {
+            for (int i = 0; i < matrix.length; i++) {
+                for (int l = 0; l < matrix[i].length; l++) {
                     int sum = (i + l) % 2;
-                    matrice[i][l] = sum;
+                    matrix[i][l] = sum;
 
                     System.out.print(sum + " ");
                 }
                 System.out.println();
             }
         }
-        catch (IOException ioe) {
-            System.out.println("Errore!");
+        catch (IOException | FormInterruptedException ignored) {
+            System.out.println("Error!");
         }
     }
 }
