@@ -9,6 +9,8 @@ Learn how to implements algorithms, solve problems break down them
     Implements sort algorithms, with integer arrays.
     - Search  
     Implements search algorithms, with integer arrays.
+- array  
+Are classes relatives array, written in the first year course.
 - MyButton  
 Try to create a button in java, using `awt`'s `Graphics`.
 	- MyButton  
