@@ -64,7 +64,7 @@ public class MinMaxArrayValue {
         int x = matrice[0][0];
 
         for (int i = 0; i < 10; i++) {
-            for (int l = 0; l < 10; i++) {
+            for (int l = 0; l < 10; l++) {
                 if (matrice[i][l] < x) {
                     x = matrice[i][l];
                 }
