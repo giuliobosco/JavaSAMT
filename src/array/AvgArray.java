@@ -23,6 +23,8 @@
  */
 package array;
 
+import help.Random;
+
 /**
  * Calculate the avg of the array, create array with random values.
  *
@@ -50,7 +52,7 @@ public class AvgArray {
 
         // assegno a tutto l'array val i valori
         for (int i = 0; i < 50; i++) {
-            val[i] = -10 + Math.random() * 10;
+            val[i] = Random.getInt(-10, 10);
         }
 
         // stampo tutti i valori conuti nell'array
