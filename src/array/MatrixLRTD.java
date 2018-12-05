@@ -23,8 +23,8 @@
  */
 package array;
 
-import help.Asker;
-import help.FormInterruptedException;
+import help.asker.Asker;
+import help.asker.FormInterruptedException;
 import help.validators.IntegerValidator;
 
 import java.awt.*;

@@ -21,89 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package help;
-
-import help.validators.Validator;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
+package help.asker;
 /**
- * 
+ * Exception for interrupt form.
+ *
  * @author giuliobosco
  * @version 1.0
  */
-public class Asker {
+public class FormInterruptedException extends Exception {
     // -------------------------------------------------------------------------------------------------------- Costants
-
-    /**
-     * Default quit command.
-     */
-    public static final String DEFAULT_QUIT_CMD = "quit";
-
     // ------------------------------------------------------------------------------------------------------ Attributes
-
-    /**
-     * Quit command.
-     */
-    private String quitCommand;
-
     // ----------------------------------------------------------------------------------------------- Getters & Setters
     // ---------------------------------------------------------------------------------------------------- Constructors
 
     /**
-     * Asker with quit command parameter.
+     * Create exception with message.
      *
-     * @param quitCommand Quit command.
+     * @param message Exception message.
      */
-    public Asker(String quitCommand) {
-        if (quitCommand != null && quitCommand.trim().length() > 0) {
-            this.quitCommand = quitCommand;
-        } else {
-            this.quitCommand = DEFAULT_QUIT_CMD;
-        }
-    }
-
-    /**
-     * Asker with default quit command.
-     */
-    public Asker() {
-        this(DEFAULT_QUIT_CMD);
+    public FormInterruptedException(String message) {
+        super(message);
     }
 
     // ---------------------------------------------------------------------------------------------------- Help Methods
     // ------------------------------------------------------------------------------------------------- General Methods
-
-    /**
-     * Method for ask the value.
-     *
-     * @param message Message to print, without the ":".
-     * @param validator Validator to check the value.
-     * @return The answer.
-     * @throws FormInterruptedException Form interruption.
-     * @throws IOException Input/Output Exception.
-     */
-    public String ask(String message, Validator validator) throws FormInterruptedException, IOException {
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader keyboard = new BufferedReader(input);
-
-        String value = "";
-
-        while (true) {
-            System.out.printf("%s:", message, quitCommand);
-
-            value = keyboard.readLine().trim();
-
-            if (value.equalsIgnoreCase(quitCommand)) {
-                throw new FormInterruptedException("Interrupted compilation");
-            } else if (validator.isValid(value)) {
-                return value;
-            } else {
-            }
-        }
-    }
-
     // ----------------------------------------------------------------------------------------------- Static Components
+    
 }
