@@ -146,7 +146,7 @@ public class Bomb extends Thread {
             boolean ticTac = true;
 
             while (System.currentTimeMillis() < startTime + this.timeOut) {
-                System.out.format("Bomb %s: %s", this.getName(), ticTac ? "Tic" : "Tac");
+                System.out.format("Bomb %s: %s%n", this.getName(), ticTac ? "Tic" : "Tac");
                 ticTac = !ticTac;
                 Thread.sleep(period);
             }
