@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Bomb is a thread for execise the concurrency programming paradigm.
+ * Bomb is a thread for exercise the concurrency programming paradigm.
  *
  * @author giuliobosco
  * @version 1.0
@@ -146,7 +146,7 @@ public class Bomb extends Thread {
             boolean ticTac = true;
 
             while (System.currentTimeMillis() < startTime + this.timeOut) {
-                System.out.format("Bomb %s: %s", this.getName(), ticTac?"Tic":"Tac");
+                System.out.format("Bomb %s: %s", this.getName(), ticTac ? "Tic" : "Tac");
                 ticTac = !ticTac;
                 Thread.sleep(period);
             }
