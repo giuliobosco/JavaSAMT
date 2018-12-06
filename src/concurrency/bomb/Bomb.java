@@ -55,12 +55,12 @@ public class Bomb extends Thread {
     /**
      * Timeout time. Time to explode bomb.
      */
-    private long timeOut;
+    protected long timeOut;
 
     /**
      * Period in between ticks.
      */
-    private long period;
+    protected long period;
 
     // ----------------------------------------------------------------------------------------------- Getters & Setters
 
