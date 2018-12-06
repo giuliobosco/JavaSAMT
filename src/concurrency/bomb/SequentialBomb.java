@@ -84,4 +84,23 @@ public class SequentialBomb extends Bomb {
 
     // ----------------------------------------------------------------------------------------------- Static Components
 
+    /**
+     * Main method of the class, used for test the class.
+     *
+     * @param args Command line arguments.
+     */
+    public static  void main(String[] args) {
+        Bomb atomic = new Bomb("atomic");
+        atomic.start();
+
+        SequentialBomb hidrogen = new SequentialBomb("hidrogen", atomic);
+        hidrogen.start();
+
+        try {
+            Thread.sleep(10000);
+            atomic.interrupt();
+        } catch (InterruptedException ie) {
+
+        }
+    }
 }
