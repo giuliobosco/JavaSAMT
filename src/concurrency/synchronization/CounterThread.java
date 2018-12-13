@@ -103,5 +103,15 @@ public class CounterThread extends Thread {
         }
     }
 
+    /**
+     * Write the values of the CounterThread, Print the name of the thread and the values of the counters.
+     *
+     * @return String with the name of the CounterThread and the values of the counters.
+     */
+    @Override
+    public String toString() {
+        return this.getName() + ": [internal: " + this.internalCounter.value() + ", global: " + this.globalCounter.value() + "]";
+    }
+
     // ----------------------------------------------------------------------------------------------- Static Components
 }
