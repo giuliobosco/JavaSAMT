@@ -80,6 +80,7 @@ public class Rat extends Thread {
 
     /**
      * Get the position of the rat.
+     *
      * @return Position of the rat.
      */
     public Point getPosition() {
@@ -90,13 +91,14 @@ public class Rat extends Thread {
 
     /**
      * Constructor with the container of the rat.
+     *
      * @param container Container of the rat.
      */
     public Rat(RatContainer container) {
         this.container = container;
         this.position = new Point(
-                this.container.getWidth(),
-                this.container.getHeight()
+                this.container.getWidth() - DIM,
+                this.container.getHeight() - DIM
         );
     }
 
@@ -174,5 +176,5 @@ public class Rat extends Thread {
     }
 
     // ----------------------------------------------------------------------------------------------- Static Components
-    
+
 }
