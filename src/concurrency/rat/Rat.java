@@ -31,7 +31,7 @@ import java.awt.*;
  * @author giuliobosco
  * @version 1.0
  */
-public class Rat {
+public class Rat extends Thread {
     // -------------------------------------------------------------------------------------------------------- Costants
 
     /**
@@ -57,9 +57,102 @@ public class Rat {
     private Point position;
 
     // ----------------------------------------------------------------------------------------------- Getters & Setters
+
+    /**
+     * Get the position of the rat.
+     * @return Position of the rat.
+     */
+    public Point getPosition() {
+        return this.position;
+    }
+
     // ---------------------------------------------------------------------------------------------------- Constructors
+
+    /**
+     * Constructor with the container of the rat.
+     * @param container Container of the rat.
+     */
+    public Rat(RatContainer container) {
+        this.container = container;
+        this.position = new Point(
+                this.container.getWidth(),
+                this.container.getHeight()
+        );
+    }
+
     // ---------------------------------------------------------------------------------------------------- Help Methods
+
+    /**
+     * Calculate random integer number.
+     *
+     * @param min Minimum of the random number.
+     * @param max Maximum of the random number.
+     * @return Random integer number.
+     */
+    private int getRandom(int min, int max) {
+        return (int) ((max - min) * Math.random()) + min;
+    }
+
     // ------------------------------------------------------------------------------------------------- General Methods
+
+    /**
+     * Paint the rat.
+     *
+     * @param g Graphics of the rat container.
+     */
+    public void paint(Graphics g) {
+        g.setColor(Color.black);
+        g.drawOval(
+                this.position.x - DIM,
+                this.position.y - DIM,
+                DIM * 2,
+                DIM * 2
+        );
+    }
+
+    /**
+     * Life of the rat, manage movements of the rat.
+     */
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                boolean flag = true;
+                do {
+                    int direction = this.getRandom(0, 4);
+
+                    if (direction == 0) {
+                        if (this.position.y - DIM > 0) {
+                            flag = false;
+                            this.position.y -= DIM;
+                        }
+                    } else if (direction == 1) {
+                        if (this.position.x + DIM < this.container.getWidth()) {
+                            flag = false;
+                            this.position.x += DIM;
+                        }
+                    } else if (direction == 2) {
+                        if (this.position.y + DIM < this.container.getHeight()) {
+                            flag = false;
+                            this.position.y += DIM;
+                        }
+                    } else if (direction == 3) {
+                        if (this.position.x - DIM > 0) {
+                            flag = false;
+                            this.position.x -= DIM;
+                        }
+                    }
+                } while (flag);
+
+                this.container.ratMoved(this);
+
+                Thread.sleep(60 * 1000 / STEP_PER_MINUTE);
+            }
+        } catch (InterruptedException ie) {
+
+        }
+    }
+
     // ----------------------------------------------------------------------------------------------- Static Components
     
 }
