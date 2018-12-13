@@ -74,6 +74,43 @@ public class RatPanel extends JPanel implements MouseListener, RatContainer {
         this.rats.add(rat);
     }
 
+    /**
+     * Paint the background of the panel.
+     *
+     * @param g Graphics of the panel.
+     */
+    private void paintBackground(Graphics g) {
+        g.setColor(Color.orange);
+        Rectangle clippingArea = g.getClipBounds();
+
+        g.fillRect(
+                clippingArea.x,
+                clippingArea.y,
+                clippingArea.width,
+                clippingArea.height
+        );
+
+        for (int i = 0; i < clippingArea.height / BG_DOT_SIZE * 2; i++) {
+            for (int j = 0; j < clippingArea.width / BG_DOT_SIZE * 2; i++) {
+                g.setColor(Color.black);
+                g.fillOval(
+                        clippingArea.x + j * BG_DOT_SIZE * 2,
+                        clippingArea.y + i * BG_DOT_SIZE * 2,
+                        BG_DOT_SIZE * 2,
+                        BG_DOT_SIZE * 2
+                );
+
+                g.setColor(Color.yellow);
+                g.fillOval(
+                        clippingArea.x + j * BG_DOT_SIZE * 2 + 1,
+                        clippingArea.y + i * BG_DOT_SIZE * 2 + 1,
+                        BG_DOT_SIZE,
+                        BG_DOT_SIZE
+                );
+            }
+        }
+    }
+
     // ------------------------------------------------------------------------------------------------- General Methods
 
     /**
@@ -111,6 +148,7 @@ public class RatPanel extends JPanel implements MouseListener, RatContainer {
 
     /**
      * Not used.
+     *
      * @param e Mouse event.
      */
     @Override
@@ -120,6 +158,7 @@ public class RatPanel extends JPanel implements MouseListener, RatContainer {
 
     /**
      * Not used.
+     *
      * @param e Mouse event.
      */
     @Override
