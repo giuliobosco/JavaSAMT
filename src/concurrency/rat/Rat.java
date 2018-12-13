@@ -22,14 +22,40 @@
  * THE SOFTWARE.
  */
 package concurrency.rat;
+
+import java.awt.*;
+
 /**
- * 
+ * Class for represent a Rat.
+ *
  * @author giuliobosco
  * @version 1.0
  */
 public class Rat {
     // -------------------------------------------------------------------------------------------------------- Costants
+
+    /**
+     * Step of the rat and radius of the rat.
+     */
+    public final static int DIM = 10;
+
+    /**
+     * Step per minute of the rat.
+     */
+    public final static int STEP_PER_MINUTE = 100;
+
     // ------------------------------------------------------------------------------------------------------ Attributes
+
+    /**
+     * Container of the rat.
+     */
+    private RatContainer container;
+
+    /**
+     * Position of the rat.
+     */
+    private Point position;
+
     // ----------------------------------------------------------------------------------------------- Getters & Setters
     // ---------------------------------------------------------------------------------------------------- Constructors
     // ---------------------------------------------------------------------------------------------------- Help Methods
