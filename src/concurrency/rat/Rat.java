@@ -44,6 +44,26 @@ public class Rat extends Thread {
      */
     public final static int STEP_PER_MINUTE = 100;
 
+    /**
+     * Rat direction north.
+     */
+    public final static int DIRECTION_NORTH = 0;
+
+    /**
+     * Rat direction east.
+     */
+    public final static int DIRECTION_EAST = 1;
+
+    /**
+     * Rat direction south.
+     */
+    public final static int DIRECTION_SOUTH = 2;
+
+    /**
+     * Rat direction west.
+     */
+    public final static int DIRECTION_WEST = 3;
+
     // ------------------------------------------------------------------------------------------------------ Attributes
 
     /**
@@ -122,21 +142,21 @@ public class Rat extends Thread {
                     int direction = this.getRandom(0, 4);
 
                     if (direction == 0) {
-                        if (this.position.y - DIM > 0) {
+                        if (this.position.y - DIM > DIRECTION_NORTH) {
                             flag = false;
                             this.position.y -= DIM;
                         }
-                    } else if (direction == 1) {
+                    } else if (direction == DIRECTION_EAST) {
                         if (this.position.x + DIM < this.container.getWidth()) {
                             flag = false;
                             this.position.x += DIM;
                         }
-                    } else if (direction == 2) {
+                    } else if (direction == DIRECTION_SOUTH) {
                         if (this.position.y + DIM < this.container.getHeight()) {
                             flag = false;
                             this.position.y += DIM;
                         }
-                    } else if (direction == 3) {
+                    } else if (direction == DIRECTION_WEST) {
                         if (this.position.x - DIM > 0) {
                             flag = false;
                             this.position.x -= DIM;
