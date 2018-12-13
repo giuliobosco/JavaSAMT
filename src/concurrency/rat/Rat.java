@@ -97,8 +97,8 @@ public class Rat extends Thread {
     public Rat(RatContainer container) {
         this.container = container;
         this.position = new Point(
-                this.container.getWidth() - DIM,
-                this.container.getHeight() - DIM
+                this.container.getWidth() / 2 - DIM,
+                this.container.getHeight() / 2 - DIM
         );
     }
 
