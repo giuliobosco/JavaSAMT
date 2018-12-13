@@ -115,4 +115,13 @@ public class CounterThread extends Thread {
     }
 
     // ----------------------------------------------------------------------------------------------- Static Components
+
+    public static void main(String[] args) {
+        Counter counter = new Counter();
+
+        CounterThread ct1 = new CounterThread(counter, "ct1");
+        CounterThread ct2 = new CounterThread(counter, "ct2");
+        ct1.start();
+        ct2.start();
+    }
 }
