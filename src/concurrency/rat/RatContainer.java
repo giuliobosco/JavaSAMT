@@ -31,5 +31,26 @@ package concurrency.rat;
  * @version 29.11.2018
  */
 public interface RatContainer {
+
+    /**
+     * Get the width of the container.
+     *
+     * @return Width of the container.
+     */
+    public int getWidth();
+
+    /**
+     * Get the height of the container.
+     *
+     * @return Height of the container.
+     */
+    public int getHeight();
+
+    /**
+     * The rat has moved.
+     *
+     * @param source Moved rat.
+     */
+    public void ratMoved(Rat source);
 }
 
