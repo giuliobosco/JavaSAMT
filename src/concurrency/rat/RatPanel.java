@@ -91,7 +91,7 @@ public class RatPanel extends JPanel implements MouseListener, RatContainer {
         );
 
         for (int i = 0; i < clippingArea.height / BG_DOT_SIZE * 2; i++) {
-            for (int j = 0; j < clippingArea.width / BG_DOT_SIZE * 2; i++) {
+            for (int j = 0; j < clippingArea.width / BG_DOT_SIZE * 2; j++) {
                 g.setColor(Color.black);
                 g.fillOval(
                         clippingArea.x + j * BG_DOT_SIZE * 2,
