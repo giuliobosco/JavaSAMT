@@ -114,6 +114,20 @@ public class RatPanel extends JPanel implements MouseListener, RatContainer {
     // ------------------------------------------------------------------------------------------------- General Methods
 
     /**
+     * Paint the component.
+     *
+     * @param g Graphics of the panel.
+     */
+    @Override
+    public void paintComponent(Graphics g) {
+        this.paintBackground(g);
+
+        for (Rat rat : rats) {
+            rat.paint(g);
+        }
+    }
+
+    /**
      * Rat moved, repaint the panel.
      *
      * @param source Moved rat.
