@@ -96,6 +96,7 @@ public class CounterThread extends Thread {
                     this.internalCounter.decrement();
                 }
 
+                System.out.println(this.toString());
                 Thread.sleep(60 * 1000 / CICLES_PER_MINUTE);
             }
         } catch (InterruptedException ie) {
