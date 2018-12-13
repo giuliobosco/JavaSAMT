@@ -60,4 +60,18 @@ public class RatForm extends JFrame {
     // ---------------------------------------------------------------------------------------------------- Help Methods
     // ------------------------------------------------------------------------------------------------- General Methods
     // ----------------------------------------------------------------------------------------------- Static Components
+
+    /**
+     * Main method of the class, create an instance of RatForm.
+     *
+     * @param args Command line arguments.
+     */
+    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new RatForm().setVisible(true);
+            }
+        });
+    }
 }
