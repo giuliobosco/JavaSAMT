@@ -27,12 +27,12 @@ package concurrency.synchronization;
 import help.Random;
 
 /**
- * Create two counter, an internal and an external, random increase or decrease them.
+ * Create two synchronized counter, an internal and an external, random increase or decrease them.
  *
  * @author giuliobosco
  * @version 1.0
  */
-public class CounterThread extends Thread {
+public class SynchronizedCounterThread extends Thread {
     // -------------------------------------------------------------------------------------------------------- Costants
 
     /**
@@ -43,37 +43,37 @@ public class CounterThread extends Thread {
     // ------------------------------------------------------------------------------------------------------ Attributes
 
     /**
-     * Global counter.
+     * Global synchronized counter.
      */
-    private Counter globalCounter;
+    private SynchronizedCounter globalCounter;
 
     /**
-     * Internal counter.
+     * Internal synchronized counter.
      */
-    private Counter internalCounter;
+    private SynchronizedCounter internalCounter;
 
     // ----------------------------------------------------------------------------------------------- Getters & Setters
     // ---------------------------------------------------------------------------------------------------- Constructors
 
     /**
-     * Create the CounterThread with the global counter.
+     * Create the synchronized counter thread with the global counter and the thread name.
      *
-     * @param globalCounter Counter of the thread.
+     * @param globalCoutner Synchronized counter thread.
+     * @param name          Thead name.
      */
-    public CounterThread(Counter globalCounter) {
-        this.globalCounter = globalCounter;
-        this.internalCounter = new Counter();
+    public SynchronizedCounterThread(SynchronizedCounter globalCoutner, String name) {
+        this.globalCounter = globalCoutner;
+        this.internalCounter = new SynchronizedCounter();
+        this.setName(name);
     }
 
     /**
-     * Create the CounterThread with the global counter and the thread name.
+     * Create the Synchronized counter thread with the global counter,
      *
-     * @param globalCounter Global counter.
-     * @param name          Name of the thread.
+     * @param globalCounter Synchronized global counter.
      */
-    public CounterThread(Counter globalCounter, String name) {
-        this(globalCounter);
-        this.setName(name);
+    public SynchronizedCounterThread(SynchronizedCounter globalCounter) {
+        this(globalCounter, "Synchronized Counter Thread");
     }
 
     // ---------------------------------------------------------------------------------------------------- Help Methods
@@ -86,8 +86,8 @@ public class CounterThread extends Thread {
     public void run() {
         try {
             while (!this.isInterrupted()) {
-
                 int rnd = Random.getInt(2);
+
                 if (rnd == 1) {
                     this.globalCounter.increment();
                     this.internalCounter.increment();
@@ -116,12 +116,17 @@ public class CounterThread extends Thread {
 
     // ----------------------------------------------------------------------------------------------- Static Components
 
+    /**
+     * Main class method, test the class.
+     *
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
-        Counter counter = new Counter();
+        SynchronizedCounter synchronizedCounter = new SynchronizedCounter();
 
-        CounterThread ct1 = new CounterThread(counter, "ct1");
-        CounterThread ct2 = new CounterThread(counter, "ct2");
-        ct1.start();
-        ct2.start();
+        SynchronizedCounterThread sct1 = new SynchronizedCounterThread(synchronizedCounter, "sct1");
+        SynchronizedCounterThread sct2 = new SynchronizedCounterThread(synchronizedCounter, "sct2");
+        sct1.start();
+        sct2.start();
     }
 }
