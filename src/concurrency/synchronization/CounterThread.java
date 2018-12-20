@@ -33,14 +33,14 @@ import help.Random;
  * @version 1.0
  */
 public class CounterThread extends Thread {
-    // -------------------------------------------------------------------------------------------------------- Costants
+    // ------------------------------------------------------------------------------------ Costants
 
     /**
-     * Sleep time of the thread.
+     * Cycles to execute.
      */
-    public final static int CICLES_PER_MINUTE = 20;
+    public final static int CYCLES = 10000;
 
-    // ------------------------------------------------------------------------------------------------------ Attributes
+    // ---------------------------------------------------------------------------------- Attributes
 
     /**
      * Global counter.
@@ -52,8 +52,19 @@ public class CounterThread extends Thread {
      */
     private Counter internalCounter;
 
-    // ----------------------------------------------------------------------------------------------- Getters & Setters
-    // ---------------------------------------------------------------------------------------------------- Constructors
+    // --------------------------------------------------------------------------- Getters & Setters
+
+    /**
+     * Get the internal counter.
+     *
+     * @return Internal counter.
+     */
+    public Counter getInternalCounter() {
+        return this.internalCounter;
+    }
+
+
+    // -------------------------------------------------------------------------------- Constructors
 
     /**
      * Create the CounterThread with the global counter.
@@ -76,31 +87,23 @@ public class CounterThread extends Thread {
         this.setName(name);
     }
 
-    // ---------------------------------------------------------------------------------------------------- Help Methods
-    // ------------------------------------------------------------------------------------------------- General Methods
+    // -------------------------------------------------------------------------------- Help Methods
+    // ----------------------------------------------------------------------------- General Methods
 
     /**
      * Run the thread.
      */
     @Override
     public void run() {
-        try {
-            while (!this.isInterrupted()) {
-
-                int rnd = Random.getInt(2);
-                if (rnd == 1) {
-                    this.globalCounter.increment();
-                    this.internalCounter.increment();
-                } else {
-                    this.globalCounter.decrement();
-                    this.internalCounter.decrement();
-                }
-
-                System.out.println(this.toString());
-                Thread.sleep(60 * 1000 / CICLES_PER_MINUTE);
+        for (int i = 0; i < CYCLES; i++) {
+            int rnd = Random.getInt(2);
+            if (rnd == 1) {
+                this.globalCounter.increment();
+                this.internalCounter.increment();
+            } else {
+                this.globalCounter.decrement();
+                this.internalCounter.decrement();
             }
-        } catch (InterruptedException ie) {
-
         }
     }
 
@@ -114,14 +117,30 @@ public class CounterThread extends Thread {
         return this.getName() + ": [internal: " + this.internalCounter.value() + ", global: " + this.globalCounter.value() + "]";
     }
 
-    // ----------------------------------------------------------------------------------------------- Static Components
+    // --------------------------------------------------------------------------- Static Components
 
     public static void main(String[] args) {
         Counter counter = new Counter();
 
-        CounterThread ct1 = new CounterThread(counter, "ct1");
-        CounterThread ct2 = new CounterThread(counter, "ct2");
-        ct1.start();
-        ct2.start();
+        CounterThread[] counterThreads = new CounterThread[20];
+        for (int i = 0; i < counterThreads.length; i++) {
+            counterThreads[i] = new CounterThread(counter, "ct" + i);
+            counterThreads[i].start();
+        }
+
+        try {
+            Thread.sleep(10000);
+
+            int sum = 0;
+            for (int i = 0; i < counterThreads.length; i++) {
+                counterThreads[i].join();
+                sum += counterThreads[i].getInternalCounter().value();
+            }
+
+            System.out.println("sum of internals: " + sum);
+            System.out.println("global counter: " + counter.value());
+        } catch (InterruptedException ie) {
+
+        }
     }
 }
