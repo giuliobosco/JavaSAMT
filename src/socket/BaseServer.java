@@ -25,8 +25,6 @@
 package socket;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -35,7 +33,7 @@ import java.net.Socket;
  * @author giuliobosco
  * @version 1.0
  */
-public class EchoServer {
+public class BaseServer {
     // ------------------------------------------------------------------------------------ Costants
     // ---------------------------------------------------------------------------------- Attributes
     // --------------------------------------------------------------------------- Getters & Setters
@@ -54,19 +52,10 @@ public class EchoServer {
 
             System.out.println("Connection from: " + client.getRemoteSocketAddress().toString());
 
-            InputStream in = client.getInputStream();
-            OutputStream out = client.getOutputStream();
-
-            int read = 0;
-            while ((read = in.read()) != -1) {
-                out.write(read);
-            }
-
-            in.close();
-            out.close();
             client.close();
         } catch (IOException ignored) {
 
         }
     }
+
 }
