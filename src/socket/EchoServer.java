@@ -88,20 +88,26 @@ public class EchoServer {
 
                     if (command.trim().equals(QUIT_COMMAND)) {
                         connected = false;
+                        
+                        System.out.println("Closing the connection");
                     } else if (command.trim().equals(SHUT_COMMAND)) {
                         connected = false;
                         alive = false;
+                        
+                        System.out.println("Shuting down the web socket server.");
                     } else if (command.trim().equals(TIME_COMMAND)) {
                         Calendar cal = Calendar.getInstance();
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        
                         String date = new Date().toString();//sdf.format(cal.getTime());
                         for (int i = 0; i < date.length(); i++) {
                             out.write(date.charAt(i));
                         }
+                        
+                        System.out.println("date");
                     } else {
                         out.write(read);
                     }
-                    System.out.println(command);
                 }
                 System.out.println("Connection close with :" + client.getRemoteSocketAddress().toString());
 
