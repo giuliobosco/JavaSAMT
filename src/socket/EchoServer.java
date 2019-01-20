@@ -34,8 +34,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
+ * Example program for learn how to use sockets.
+ *
  * @author giuliobosco
- * @version 1.0
+ * @version 1.2
  */
 public class EchoServer {
     // ------------------------------------------------------------------------------------ Costants
@@ -62,6 +64,11 @@ public class EchoServer {
     // ----------------------------------------------------------------------------- General Methods
     // --------------------------------------------------------------------------- Static Components
 
+    /*
+     * Main method of the class.
+     *
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
         try {
             ServerSocket server = new ServerSocket(5555);
