@@ -39,3 +39,11 @@ Understand how the concurrency programming works.
     Create circles on a frame, they have to became smaller with an timer.
     - rat  
     Is the test2, solution of the test. 
+- soket
+    - EchoServer  
+    An base implementation for learn how sockets works, use it with telnet, but one client by time. 
+    It can handle just on client by time, when one finish his connection an other client can connect
+    it. 
+        - quit: disconnect connection
+        - time: get server time
+        - shutdown: shutdown web server
