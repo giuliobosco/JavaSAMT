@@ -64,7 +64,7 @@ public class EchoServer {
     // ----------------------------------------------------------------------------- General Methods
     // --------------------------------------------------------------------------- Static Components
 
-    /*
+    /**
      * Main method of the class.
      *
      * @param args Command line arguments.
@@ -88,6 +88,10 @@ public class EchoServer {
                 String command = "";
                 while ((read = in.read()) != -1 && connected) {
                     if (read == 13 || read == 10) {
+                        for (int  i = 0; i < command.length(); i++) {
+                            out.write(command.charAt(i));
+                        }
+                        out.write(read);
                         command = "";
                     } else {
                         command += (char) read;
@@ -101,19 +105,15 @@ public class EchoServer {
                         connected = false;
                         alive = false;
                         
-                        System.out.println("Shuting down the web socket server.");
+                        System.out.println("Shouting down the web socket server.");
                     } else if (command.trim().equals(TIME_COMMAND)) {
                         Calendar cal = Calendar.getInstance();
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         
-                        String date = new Date().toString();//sdf.format(cal.getTime());
-                        for (int i = 0; i < date.length(); i++) {
-                            out.write(date.charAt(i));
-                        }
+                        command = new Date().toString();
                         
                         System.out.println("date");
                     } else {
-                        out.write(read);
                     }
                 }
                 System.out.println("Connection close with :" + client.getRemoteSocketAddress().toString());
