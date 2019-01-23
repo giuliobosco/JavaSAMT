@@ -27,21 +27,32 @@ package socket.timer;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * Time server,
+ * Timer socket, return the requests of the client.
  *
  * @author giuliobosco
  * @version 1.0
  */
 public class TimerSocket extends Thread {
     // ------------------------------------------------------------------------------------ Costants
+
+    /**
+     * Connection length request code.
+     */
+    public static final int REQUEST_CODE = 65;
+
     // ---------------------------------------------------------------------------------- Attributes
 
+    /**
+     * Connection socket.
+     */
     private Socket socket;
 
+    /**
+     * Initial connection time.
+     */
     private long initTime;
 
     // --------------------------------------------------------------------------- Getters & Setters
@@ -62,6 +73,9 @@ public class TimerSocket extends Thread {
     // -------------------------------------------------------------------------------- Help Methods
     // ----------------------------------------------------------------------------- General Methods
 
+    /**
+     * Run the timer server.
+     */
     @Override
     public void run() {
         try {
@@ -71,7 +85,7 @@ public class TimerSocket extends Thread {
 
             int read = 0;
             while ((read = in.read()) != -1) {
-                if (read == 65) {
+                if (read == REQUEST_CODE) {
                     long difference = System.currentTimeMillis() - this.initTime;
                     byte min = (byte) (difference / 60000);
                     byte sec = (byte) ((difference - min * 60000) / 1000);
@@ -89,7 +103,6 @@ public class TimerSocket extends Thread {
 
         }
     }
-
 
     // --------------------------------------------------------------------------- Static Components
 
