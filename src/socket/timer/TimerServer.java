@@ -21,68 +21,49 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
- 
+
 package socket.timer;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.Socket;
+import java.net.ServerSocket;
 
 /**
- * 
+ * Timer server, initialize socket server on port 9876 and on client connection create timer socket,
+ * with the connection socket.
+ *
  * @author giuliobosco
  * @version 1.0
  */
-public class TimerServer extends Thread {
+public class TimerServer {
     // ------------------------------------------------------------------------------------ Costants
-    // ---------------------------------------------------------------------------------- Attributes
-
-    private Socket socket;
-
-    private long initTime;
-
-    // --------------------------------------------------------------------------- Getters & Setters
-    // -------------------------------------------------------------------------------- Constructors
 
     /**
-     * Create time server with socket.
-     * Initialize the initial time at the current time millis.
-     *
-     * @param socket Socket to use in the server timer.
+     * Default connection port.
      */
-    public TimerServer(Socket socket) {
-        this.socket = socket;
+    public static final int PORT = 9876;
 
-        this.initTime = System.currentTimeMillis();
-    }
-
+    // ---------------------------------------------------------------------------------- Attributes
+    // --------------------------------------------------------------------------- Getters & Setters
+    // -------------------------------------------------------------------------------- Constructors
     // -------------------------------------------------------------------------------- Help Methods
     // ----------------------------------------------------------------------------- General Methods
+    // --------------------------------------------------------------------------- Static Components
 
-    @Override
-    public void run() {
+    /**
+     * Main method of the class.
+     *
+     * @param args Command line arguments.
+     */
+    public static void main(String[] args) {
         try {
-            InputStream in = socket.getInputStream();
-            OutputStream out = socket.getOutputStream();
+            ServerSocket server = new ServerSocket(PORT);
 
-            int read = 0;
-            while ((read = in.read()) != -1) {
-                if (read == 65) {
-                    long difference = System.currentTimeMillis() - this.initTime;
-                    byte min = (byte) (difference / 60000);
-                    byte sec = (byte) ((difference - min * 60000) / 1000);
-                    byte millis = (byte) (difference - min * 60000 - sec * 1000);
-
-                    out.write(new byte[] {min, sec, millis});
-                }
+            boolean alive = true;
+            while (alive) {
+                new TimerSocket(server.accept()).start();
             }
         } catch (IOException ignored) {
 
         }
     }
-
-
-    // --------------------------------------------------------------------------- Static Components
-
 }
