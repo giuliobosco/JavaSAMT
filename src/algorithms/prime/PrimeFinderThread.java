@@ -69,7 +69,7 @@ public class PrimeFinderThread extends Thread {
      * @param end   End of the range where the finder have to count all the 
      *              prime numbers.
      */
-    PrimeFinderThread(long start, long end) {
+    public PrimeFinderThread(long start, long end) {
         this.start = start;
         this.end = end;
         
