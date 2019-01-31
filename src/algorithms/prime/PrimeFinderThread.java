@@ -133,7 +133,7 @@ public class PrimeFinderThread extends Thread {
      */
     @Override 
     public void run() {
-        for (long i = start; i < end; i++) {
+        for (long i = start; i < end && !this.isInterrupted(); i++) {
             if (isPrime(i)) {
                 this.count++;
                 
