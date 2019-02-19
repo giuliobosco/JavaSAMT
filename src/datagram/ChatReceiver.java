@@ -43,6 +43,11 @@ public class ChatReceiver extends Thread {
      */
     private ChatListener chatListener;
 
+    /**
+     * Listening port.
+     */
+    private int port;
+
     // --------------------------------------------------------------------------- Getters & Setters
     // -------------------------------------------------------------------------------- Constructors
 
@@ -50,9 +55,11 @@ public class ChatReceiver extends Thread {
      * Create the chat receiver with the chat listener.
      *
      * @param chatListener Chat listener.
+     * @param port Listening port.
      */
-    public ChatReceiver(ChatListener chatListener) {
+    public ChatReceiver(ChatListener chatListener, int port) {
         this.chatListener = chatListener;
+        this.port = port;
     }
 
     // -------------------------------------------------------------------------------- Help Methods
@@ -64,7 +71,7 @@ public class ChatReceiver extends Thread {
      */
     public void run() {
         try {
-            DatagramSocket socket = new DatagramSocket(5000);
+            DatagramSocket socket = new DatagramSocket(this.port);
             while (!this.isInterrupted()) {
                 byte[] buf = new byte[256];
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
