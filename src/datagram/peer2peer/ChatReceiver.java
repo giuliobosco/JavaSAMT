@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package datagram;
+package datagram.peer2peer;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package datagram;
+package datagram.peer2peer;
 
 import java.awt.*;
 import javax.swing.*;
